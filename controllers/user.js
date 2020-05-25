@@ -67,7 +67,7 @@ exports.loginController = async (req, res) => {
 
         telegramBot.sendTwoFactorCode(req.user.telegramId, code)
 
-        res.redirect("user/login-otp")
+        res.redirect("/login-otp")
     } else {
         req.session.twoFactor = true
         res.redirect("/profile")
