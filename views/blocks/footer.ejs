@@ -1,0 +1,64 @@
+<footer>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <img src="/resources/images/logo.png" alt="logo">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <hr>
+                    <p>вулиця Туполєва, 1</p>
+                    <p>Кривий Ріг, 50045</p>
+                    <p>(0564) 27-56-79</p>
+                    <p>pk@kk.nau.edu.ua</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <div class="footer-info-block">
+
+            <table>
+                <tr class="footer-info-block-subtitle">
+                    <% for(var i = 0; i < menu.footer.length; i++) { %>
+                        <td><%= menu.footer[i].title %></td>
+                    <% } %> 
+                </tr>
+
+                <tr class="footer-info-block-text">
+                    <% for(var i = 0; i < menu.footer.length; i++) { %>
+                        <td>
+                            <ul>
+                                <% for(var j = 0; j < menu.drop.length; j++) { %>
+                                    <% if(menu.drop[j].parentId == menu.footer[i].id) { %>
+                                        <li class="footer-drop-menu"><a href=<%= menu.drop[j].link %>><%= menu.drop[j].title %></a></li>
+                                        <% for(var k = 0; k < menu.deepDrop.length; k++) { %>
+                                            <% if(menu.deepDrop[k].parentId == menu.drop[j].id) { %>
+                                                <li class="footer-deep-drop-menu"><a href=<%= menu.deepDrop[k].link %>><%= menu.deepDrop[k].title %></a></li>
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </ul>
+                        </td>
+                    <% } %>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="footer-social-block">
+            <div>Приєднуйся до нас:</div>
+            <div class="social-links">
+                <a href="#"><img src="/resources/images/footer/social/instagram.png" alt="instagramm"></a>
+                <a href="#"><img src="/resources/images/footer/social/facebook.png" alt="facebook"></a>
+                <a href="#"><img src="/resources/images/footer/social/twitter.png" alt="twitter"></a>
+                <a href="#"><img src="/resources/images/footer/social/youtube.png" alt="youtube"></a>
+            </div>
+        </div>
+
+    </div>
+</footer>

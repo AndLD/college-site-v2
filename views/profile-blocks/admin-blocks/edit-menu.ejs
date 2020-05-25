@@ -1,0 +1,79 @@
+<!-- MENU -->
+<div class="small-menu-button">Меню</div>
+<section class="menu-wrapper">
+    <div class="small-menu-close-button"></div>
+    <!-- <div class="admin-menu-elem-title">Меню</div> -->
+    <div class="icons-wrapper">
+        <img src="/resources/images/profile/icons/add.png" alt="add-main-menu-elem">
+    </div>  
+    <ul id="MENU">
+        <% for(var i = 0; i < menu.main.length; i++) { %>
+            <li>
+                <a id=<%= menu.main[i].id %> position=<%= menu.main[i].position %> footer=<%= menu.main[i].footer %> href=<%= menu.main[i].link %>><%= menu.main[i].title %></a>
+                <div class="icons-wrapper">
+                    <img src="/resources/images/profile/icons/add.png" alt="add-menu">
+                    <img src="/resources/images/profile/icons/edit.png" alt="edit-menu">
+                    <img src="/resources/images/profile/icons/delete.png" alt="delete-menu">
+                </div>
+                <div class="drop-menu">
+                    <ul>
+                        <% for(var j = 0; j < menu.drop.length; j++) { %>
+                            <% if(menu.drop[j].parentId == menu.main[i].id) { %>
+                                
+                                <% var hasDeepDrop = false // Проверка, имеет ли drop соответствующие элементы deep drop %> 
+                                <% for(var k = 0; k < menu.deepDrop.length; k++) { %>
+                                    <% if(menu.deepDrop[k].parentId == menu.drop[j].id) { %>
+                                            <% hasDeepDrop = true %> 
+                                            <% break %> 
+                                    <% } %> 
+                                <% } %> 
+
+                                <% if(hasDeepDrop) { // Если имеет %> 
+                                    <li>
+                                        <a id=<%= menu.drop[j].id %> position=<%= menu.drop[j].position %> footer=<%= menu.drop[j].footer %> href=<%= menu.drop[j].link %>><%= menu.drop[j].title %></a>
+                                        <div class="icons-wrapper">
+                                            <img src="/resources/images/profile/icons/add.png" alt="add-menu">
+                                            <img src="/resources/images/profile/icons/edit.png" alt="edit-menu">
+                                            <img src="/resources/images/profile/icons/delete.png" alt="delete-menu">
+                                        </div>
+                                        <div class="deep-drop-menu">
+                                            <ul>
+                                                <% for(var k = 0; k < menu.deepDrop.length; k++) { %>
+
+                                                    <% if(menu.deepDrop[k].parentId == menu.drop[j].id) { %>
+                                                        <li>
+                                                            <a id=<%= menu.deepDrop[k].id %> position=<%= menu.deepDrop[k].position %> footer=<%= menu.deepDrop[k].footer %> href=<%= menu.deepDrop[k].link %>><%= menu.deepDrop[k].title %></a>
+                                                            <div class="icons-wrapper">
+                                                                <img src="/resources/images/profile/icons/edit.png" alt="edit-menu">
+                                                                <img src="/resources/images/profile/icons/delete.png" alt="delete-menu">
+                                                            </div>
+                                                        </li>
+                                                    <% } %>
+
+                                                <% } %> 
+                                            </ul>
+                                        </div>
+                                    </li>
+                                <% } else { %>
+                                    <li>
+                                        <a id=<%= menu.drop[j].id %> position=<%= menu.drop[j].position %> footer=<%= menu.drop[j].footer %> href=<%= menu.drop[j].link %>><%= menu.drop[j].title %></a>
+                                        <div class="icons-wrapper">
+                                            <img src="/resources/images/profile/icons/add.png" alt="add-menu">
+                                            <img src="/resources/images/profile/icons/edit.png" alt="edit-menu">
+                                            <img src="/resources/images/profile/icons/delete.png" alt="delete-menu">
+                                        </div>
+                                    </li>
+                                <% } %> 
+                                
+                            <% } %>
+                        <% } %>  
+                    </ul>
+                </div>
+            </li>
+        <% } %> 
+    </ul>
+
+    <%- include("../../blocks/footer.ejs") %>
+    
+    <script src="/resources/scripts/profile/admin/edit-menu.js"></script>
+</section>

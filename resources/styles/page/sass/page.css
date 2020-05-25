@@ -1,0 +1,143 @@
+.desk-wrapper > :first-child {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.desk-wrapper > :first-child img {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  max-width: 70%;
+  max-height: 90vh;
+}
+
+.desk-wrapper > :first-child .desk-title {
+  margin-left: 5%;
+}
+
+.desk-wrapper > :last-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0% 1% 0% 1%;
+}
+
+.desk-wrapper > :last-child .desk {
+  position: relative;
+  padding: 15% 2% 10% 2%;
+  margin-bottom: 2vmax;
+}
+
+.desk-wrapper > :last-child .desk .desk-title {
+  color: white;
+  font-size: 1.3vw;
+}
+
+.desk-wrapper .desk .desk-text p {
+  font-weight: normal;
+  text-indent: 3%;
+  text-align: justify;
+}
+
+.desk-wrapper .desk .desk-text li {
+  list-style-type: disc;
+  margin-left: 7%;
+}
+
+.current-menu-links-block li {
+  list-style-type: disc;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.current-menu-links-block li:hover {
+  padding-left: 5%;
+}
+
+.current-menu-links-block .drop-menu-links {
+  margin-left: 10%;
+  color: #0054a6;
+}
+
+.current-menu-links-block .drop-menu-links a {
+  color: #0054a6 !important;
+}
+
+.current-menu-links-block .deep-drop-menu-links {
+  margin-left: 15%;
+  color: #003e7b;
+}
+
+.current-menu-links-block .deep-drop-menu-links a {
+  color: #003e7b !important;
+}
+
+.useful-links-block {
+  text-align: center;
+}
+
+.useful-links-block .userful-link {
+  margin-bottom: 3%;
+}
+
+.useful-links-block .userful-link a img {
+  width: 55%;
+}
+
+.addDate {
+  position: absolute;
+  top: 2em;
+  right: 3em;
+  font-weight: bold;
+}
+
+.horizontal-ribbon {
+  position: absolute;
+  background-color: #0054a6;
+  width: 18vw;
+  top: 10px;
+  right: -15px;
+}
+
+.horizontal-ribbon:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 17.99vw;
+  border-left: 1.15vw solid transparent;
+  border-right: 1.15vw solid #0054a6;
+  border-top: 0.9vw solid #0054a6;
+  border-bottom: 0.9vw solid #0054a6;
+}
+
+.horizontal-ribbon:after {
+  z-index: -2;
+  content: "";
+  position: absolute;
+  top: 99%;
+  right: 0px;
+  border-right: 1vw solid transparent;
+  border-top: 1vw solid #003e7b;
+}
+
+.news-links-block li {
+  margin-left: 10%;
+  list-style-type: disc;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  color: #0054a6;
+}
+
+.news-links-block li a {
+  color: #0054a6 !important;
+}
+
+.news-links-block li:hover {
+  color: #003e7b;
+}
+
+.news-links-block li:hover a {
+  color: #003e7b !important;
+  text-decoration: underline !important;
+}
+/*# sourceMappingURL=page.css.map */

@@ -1,0 +1,112 @@
+.users-wrapper {
+  margin: 10vh auto;
+  margin-top: 20vh;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.users-wrapper #add-user {
+  left: 0%;
+}
+
+@media screen and (min-width: 1920px) {
+  .users-wrapper .icons-wrapper:not(#add-user) {
+    left: 85%;
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  .users-wrapper .icons-wrapper:not(#add-user) {
+    left: 80%;
+  }
+}
+
+.users-wrapper .icons-wrapper:not(#add-user) div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.users-wrapper .icons-wrapper:not(#add-user) div div form {
+  height: 45px;
+}
+
+.users-wrapper .icons-wrapper:not(#add-user) div div form button {
+  background-color: transparent;
+  border: none;
+  height: inherit;
+  outline: 0;
+}
+
+.users-wrapper .icons-wrapper:not(#add-user) div div img {
+  background-color: transparent;
+  border: none;
+}
+
+@media screen and (min-width: 1920px) {
+  .users-wrapper .icons-wrapper:not(#add-user) div div img {
+    height: 45px;
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  .users-wrapper .icons-wrapper:not(#add-user) div div img {
+    height: 42px;
+  }
+}
+
+.users-wrapper .users {
+  width: 100%;
+  height: 100%;
+}
+
+.users-wrapper .users tbody > :first-child {
+  font-weight: bold;
+}
+
+.users-wrapper .users tbody > :first-child td {
+  padding-left: 0 !important;
+  text-align: center;
+}
+
+.users-wrapper .users tbody tr > :first-child, .users-wrapper .users tbody tr > :nth-child(5) {
+  text-align: center;
+  width: 7%;
+}
+
+.users-wrapper .users tbody tr > :last-child {
+  background-color: transparent;
+  border: none;
+}
+
+.users-wrapper .users tbody tr > :nth-child(2), .users-wrapper .users tbody tr > :nth-child(3), .users-wrapper .users tbody tr > :nth-child(4) {
+  padding-left: 2%;
+}
+
+.users-wrapper .users tbody tr:hover .icons-wrapper {
+  opacity: 1;
+}
+
+.users-wrapper .users tbody tr td {
+  position: relative;
+  background-color: white;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  font-size: 25px;
+  border: 1px solid black;
+}
+
+.users-wrapper .users tbody tr td .icons-wrapper {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  height: 40px;
+  opacity: 0;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.hidden {
+  visibility: hidden;
+}
+/*# sourceMappingURL=user.css.map */

@@ -1,0 +1,66 @@
+<!-- MENU -->
+<div class="small-menu-button">Меню</div>
+<section class="menu-wrapper">
+    <div class="small-menu-close-button"></div>
+    <ul id="MENU">
+        <% for(var i = 0; i < menu.main.length; i++) { %>
+            <li>
+                <a href=<%= menu.main[i].link %>>
+                    <%= menu.main[i].title %>
+                </a>
+                <div class="drop-menu">
+                    <ul>
+                        <% for(var j = 0; j < menu.drop.length; j++) { %>
+                            <% if(menu.drop[j].parentId == menu.main[i].id) { %>
+                                
+                                <!-- Проверка, имеет ли drop соответствующие элементы deep drop -->
+                                <% var hasDeepDrop = false %> 
+                                <% for(var k = 0; k < menu.deepDrop.length; k++) { %>
+                                    <% if(menu.deepDrop[k].parentId == menu.drop[j].id) { %>
+                                            <% hasDeepDrop = true  %> 
+                                            <% break %> 
+                                    <% } %> 
+                                <% } %> 
+
+                                <!-- Если имеет -->
+                                <% if(hasDeepDrop) { %> 
+                                    <li>
+                                        <a href=<%= menu.drop[j].link %>>
+                                            <%= menu.drop[j].title %>
+                                        </a>
+                                        <div class="deep-drop-menu">
+                                            <ul>
+                                                <% for(var k = 0; k < menu.deepDrop.length; k++) { %>
+
+                                                    <% if(menu.deepDrop[k].parentId == menu.drop[j].id) { %>
+                                                        <a href=<%= menu.deepDrop[k].link %>>
+                                                            <li>
+                                                                <%= menu.deepDrop[k].title %>
+                                                            </li>
+                                                        </a>
+                                                    <% } %>
+
+                                                <% } %> 
+                                            </ul>
+                                        </div>
+                                    </li>
+                                <% } else { %>
+                                    <a href=<%= menu.drop[j].link %>>
+                                        <li>
+                                            <%= menu.drop[j].title %>
+                                        
+                                        </li>
+                                    </a>
+                                <% } %> 
+                                
+                            <% } %>
+                        <% } %>  
+                    </ul>
+                </div>
+            </li>
+        <% } %> 
+    </ul>
+    
+    <script src="/resources/scripts/require.js"></script>
+    <!-- <script src="/resources/scripts/admin/edit-menu.js"></script> -->
+</section>

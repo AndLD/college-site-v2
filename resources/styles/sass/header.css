@@ -1,0 +1,120 @@
+@charset "UTF-8";
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 25%;
+}
+
+header #logo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: auto;
+  text-align: center;
+}
+
+@media screen and (min-width: 481px) {
+  header #logo {
+    width: 20%;
+  }
+}
+
+header #logo img {
+  max-height: 100%;
+  height: 100%;
+}
+
+header #title {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  text-align: center;
+  min-height: inherit;
+  height: 100%;
+  font-family: exo2;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 481px) {
+  header #title {
+    width: 80%;
+  }
+}
+
+header #title #td1 {
+  border-radius: 1rem 1rem 0 0;
+}
+
+header #title :nth-child(1) td {
+  background-color: #003e7b;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: left;
+  height: 52%;
+  font-size: 3vw;
+  color: white;
+  letter-spacing: 0.5rem;
+}
+
+header #title :nth-child(2) td {
+  background-color: #fcd605;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: right;
+  height: 48%;
+  font-size: 1.8vw;
+  color: black;
+  letter-spacing: 0.35rem;
+}
+
+@font-face {
+  font-family: exo2;
+  /* Идентификатор шрифта */
+  src: url(../../fonts/exo2/exo2medium.ttf);
+  /* Путь к файлу со шрифтом */
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  header #title {
+    max-height: 50%;
+  }
+  header #title :nth-child(2) td {
+    font-size: 2vw;
+    letter-spacing: 2;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 40%;
+  }
+  header #logo {
+    min-height: 20vh;
+    max-height: 20vw;
+  }
+  header #title {
+    max-height: 40%;
+  }
+  header #title :nth-child(1) td {
+    letter-spacing: 0.3rem;
+  }
+  header #title :nth-child(2) td {
+    font-size: 3vw;
+    letter-spacing: 0;
+  }
+}
+/*# sourceMappingURL=header.css.map */

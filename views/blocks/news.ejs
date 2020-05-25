@@ -1,0 +1,39 @@
+<div class="desk reset-margin">
+    <div class="desk-title">Останні новини</div>
+    <div class="desk-text">
+        <%
+            const imgBegin = "<img"
+            const imgEnd = '" />'
+
+            const textBegin = "<p>"
+            const textEnd = "</p>"
+        %>
+        <% for(let i = 0; i < news.length; i++) { %>
+            <a href=<%= "/news/" + news[i].id %>>
+                <div class="single-new">
+                    <!-- <div class="news-html" style="display: none;"></div> -->
+                    <div class="single-new-image">
+
+                        <% let indexOfImgBegin = news[i].html.indexOf(imgBegin) %>
+                        <% let indexOfImgEnd =  news[i].html.indexOf(imgEnd) + imgEnd.length %>
+                        <% let img = news[i].html.slice(indexOfImgBegin, indexOfImgEnd) %>
+
+                        <%- img %>
+                        <% news[i].html = news[i].html.slice(indexOfImgEnd + (img != "" && img != null ? imgEnd.length + textBegin.length : 0), news[i].html.length - 1) %>
+                    </div>
+
+                    <div class="single-new-description">
+                        <p class="single-new-title"><%= news[i].title %></p>
+                        <p class="single-new-text">
+                            <% let indexOfTextEnd = news[i].html.indexOf(textEnd);%>
+                            <%= news[i].html.slice(0, (indexOfTextEnd - textEnd.length + 4 < 300 ? indexOfTextEnd - textEnd.length + 4 : 300)) + "..." %>
+                        </p>
+                        <div class="single-new-date"><%= news[i].addDate %></div>
+                    </div>
+
+                </div>
+            </a>
+        <% } %>
+    </div>
+    <div class="ribbon"></div>    
+</div>

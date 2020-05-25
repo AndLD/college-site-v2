@@ -1,0 +1,214 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+* a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #d0ebff;
+  font-family: Corbel;
+}
+
+/* На главной странице шапку, меню, слайдер, "Запрошуємо на навчання!" и кнопку обрамляет небесный фон */
+#sky-section {
+  background-image: url(../../../images/index/sub_background.jpg);
+  background-attachment: fixed;
+  padding-bottom: 0.1%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+/* "Запрошуємо на навчання!" */
+#offer {
+  background-color: #0054a6;
+  margin-top: 1%;
+  text-align: center;
+  font-size: 2.5vw;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+}
+
+.button {
+  padding: 0.5vw;
+  margin: 10px auto;
+  text-align: center;
+  width: 25%;
+  border: 3px solid #0600ff;
+  border-radius: 30px;
+  font-size: 1.5vw;
+  color: #0600ff;
+  font-weight: bold;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.button:hover {
+  -webkit-box-shadow: 0 0 3px 2px #0600ff;
+          box-shadow: 0 0 3px 2px #0600ff;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#CONTENT a, a:visited {
+  color: #0600ff;
+  text-decoration: none;
+}
+
+/* CONTENT */
+#CONTENT table {
+  margin: auto;
+  height: 8vw;
+}
+
+#CONTENT table td {
+  font-size: 1.7vw;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* DESKS */
+/* Оболочка дощечки */
+.desk-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 1%;
+  margin-right: 1%;
+  /* Убираем маркеры элементов списка внутри дощечек */
+}
+
+.desk-wrapper li {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 480px) {
+  .desk-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+/* Дощечка */
+.desk {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+  background-color: #fff8e6;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-bottom: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+  font-size: 1.2vw;
+  -webkit-box-shadow: -0.7vw 0.7vw 0.7vw 0.35vw rgba(0, 0, 0, 0.7);
+          box-shadow: -0.7vw 0.7vw 0.7vw 0.35vw rgba(0, 0, 0, 0.7);
+}
+
+.desk div {
+  margin-bottom: 1%;
+}
+
+.desk div ul {
+  text-align: left;
+}
+
+.ribbon {
+  position: absolute;
+  background-color: #a60000;
+  top: 0;
+  left: 2.5vw;
+  width: 2.3vw;
+  height: 5.5vw;
+}
+
+.ribbon:before {
+  content: "";
+  position: absolute;
+  top: 5.49vw;
+  border-left: 1.15vw solid #a60000;
+  border-right: 1.15vw solid #a60000;
+  border-top: 1.15vw solid #a60000;
+  border-bottom: 1.15vw solid transparent;
+}
+
+/* Заголовок дощечки */
+.desk-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.desk-text {
+  margin-left: 5%;
+  /* Подзаголовки дощечки */
+}
+
+.desk-text p {
+  font-weight: bold;
+}
+
+.single-new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  background-color: #e4e4e4;
+  padding: 1%;
+  max-height: 200px;
+  color: black;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.single-new:hover {
+  background-color: #bebebe;
+}
+
+.single-new .single-new-image {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 1%;
+  max-height: inherit;
+}
+
+.single-new .single-new-image img {
+  max-width: 100%;
+  max-height: inherit;
+}
+
+.single-new .single-new-description {
+  -webkit-box-flex: 3 !important;
+      -ms-flex: 3 !important;
+          flex: 3 !important;
+  text-indent: 3%;
+}
+
+.single-new .single-new-description .single-new-title {
+  margin-bottom: 2%;
+  font-weight: bold !important;
+}
+
+.single-new .single-new-description .single-new-text {
+  font-weight: normal !important;
+}
+
+.single-new .single-new-date {
+  position: absolute;
+  top: 5%;
+  left: 85%;
+  width: 200px;
+}
+/*# sourceMappingURL=index.css.map */

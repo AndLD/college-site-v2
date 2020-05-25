@@ -1,0 +1,36 @@
+<div class="articles-wrapper">
+    <div id="add-article" class="icons-wrapper">
+        <img src="/resources/images/profile/icons/add.png" alt="add-article">
+    </div>
+    <table class="articles">
+        <tr>
+            <td>№</td>
+            <td>Title</td>
+            <td>Id</td>
+        </tr>
+        <% for(var i = 0; i < articles.length; i++) { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><a href=<%= "/article/" + articles[i].id %>><%= articles[i].title %></a><div class="icons-wrapper">
+                    <!-- <img src="/resources/images/profile/icons/download.png" alt="download-article"> -->
+                    <div>
+                        <div>
+                            <form class="download-article" method="POST">
+                                <button><img src="/resources/images/profile/icons/download.png" alt="download-article"></button>
+                            </form>
+                        </div>
+                        <div>
+                            <img src="/resources/images/profile/icons/edit.png" alt="edit-article">
+                        </div>
+                        <div>
+                            <img src="/resources/images/profile/icons/delete.png" alt="delete-article">
+                        </div>
+                    </div>
+                </div></td>
+                <td><%= articles[i].id %></td>
+            </tr> 
+        <% } %>
+    </table>
+    
+    <script src="/resources/scripts/profile/admin/article.js"></script>
+</div>

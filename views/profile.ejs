@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/profile.css">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/menu.css">
+
+    <!-- <link rel="stylesheet" href="resources/styles/profile/chartis/chartist.min.css"> -->
+
+    <link rel="stylesheet" href="/resources/styles/profile/sass/settings.css">
+    <link rel="stylesheet" href="/resources/styles/sass/menu.css">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/edit-menu.css">
+    <link rel="stylesheet" href="/resources/styles/sass/footer.css">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/article.css">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/news.css">
+
+    <link rel="stylesheet" href="/resources/styles/profile/sass/user.css">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/subject.css">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/material.css">
+
+    <link rel="stylesheet" href="/resources/styles/profile/sass/modal.css">
+
+    <script src="/resources/scripts/require.js"></script>
+
+    <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon">
+    <title>Profile</title>
+</head>
+<body>
+    <div class="content-wrapper">
+
+        <% if (user.userrole == "admin" || user.userrole == "moderator") { %>
+            <%- include("profile-blocks/moderator-blocks/settings.ejs") %>
+
+            <%- include("profile-blocks/moderator-blocks/user.ejs") %>
+        <% } %>
+
+        <% if (user.userrole == "admin") { %>
+            <%- include("profile-blocks/admin-blocks/edit-menu.ejs") %>
+
+            <%- include("profile-blocks/admin-blocks/article.ejs") %>
+
+            <%- include("profile-blocks/admin-blocks/news.ejs") %>
+        <% } %>
+
+        <% if (user.userrole == "admin" || user.userrole == "moderator") { %>
+            <%- include("profile-blocks/moderator-blocks/subject.ejs") %>
+
+            <%- include("profile-blocks/moderator-blocks/material.ejs") %>
+        <% } %>
+    </div>
+
+    <%- include("profile-blocks/menu.ejs") %> 
+
+    <%- include("profile-blocks/modal.ejs") %> 
+
+    <script src="/resources/styles/profile/show-menu.js"></script>
+
+    <!-- <script src="resources/styles/profile/chartis/chartist.min.js"></script> -->
+    <!-- <script src="resources/scripts/profile/my-chart.js"></script> -->
+</body>
+</html>

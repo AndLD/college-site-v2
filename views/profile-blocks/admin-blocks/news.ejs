@@ -1,0 +1,36 @@
+<div class="news-wrapper">
+    <div id="add-news" class="icons-wrapper">
+        <img src="/resources/images/profile/icons/add.png" alt="add-news">
+    </div>
+    <table class="news">
+        <tr>
+            <td>№</td>
+            <td>AddDate</td>
+            <td>Title</td>
+            <td>Id</td>
+        </tr>
+        <% for(var i = 0; i < news.length; i++) { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= news[i].addDate %></td>
+                <td><a href=<%= "/news/" + news[i].id %>><%= news[i].title %></a><div class="icons-wrapper">
+                    <div>
+                        <div>
+                            <form class="download-news" method="POST">
+                                <button><img src="/resources/images/profile/icons/download.png" alt="download-news"></button>
+                            </form>
+                        </div>
+                        <div>
+                            <img src="/resources/images/profile/icons/edit.png" alt="edit-news">
+                        </div>
+                        <div>
+                            <img src="/resources/images/profile/icons/delete.png" alt="delete-news">
+                        </div>
+                    </div>
+                </div></td>
+                <td><%= news[i].id %></td>
+            </tr> 
+        <% } %>
+    </table>
+    <script src="/resources/scripts/profile/admin/news.js"></script>
+</div>

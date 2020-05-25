@@ -1,0 +1,136 @@
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 1%;
+  /* box-shadow: -10px 10px 10px 0 rgba(0, 0, 0, 0.7) */
+}
+
+footer > :nth-child(1) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #0054a6;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+footer > :nth-child(1) table {
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 1.2vw;
+}
+
+footer > :nth-child(1) table img {
+  /* padding: 5%; */
+  max-width: 50%;
+}
+
+footer > :nth-child(1) hr {
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 70%;
+}
+
+footer > :nth-child(2) {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #003e7b;
+  padding: 3%;
+}
+
+footer > :nth-child(2) .footer-info-block {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+footer > :nth-child(2) .footer-info-block table {
+  text-align: left;
+  width: 100%;
+  table-layout: fixed;
+}
+
+footer > :nth-child(2) .footer-info-block table tbody td {
+  vertical-align: text-top;
+}
+
+footer > :nth-child(2) .footer-info-block table tbody td li {
+  margin-bottom: 2%;
+}
+
+footer > :nth-child(2) .footer-info-block table tbody td li:hover {
+  text-decoration: underline;
+}
+
+footer > :nth-child(2) .footer-info-block .footer-info-block-subtitle {
+  color: yellow;
+  font-size: 1.35vw;
+  font-weight: bold;
+}
+
+footer > :nth-child(2) .footer-info-block .footer-info-block-text .footer-drop-menu {
+  margin-left: 5%;
+  max-width: 70%;
+  word-wrap: break-word;
+  color: white;
+}
+
+footer > :nth-child(2) .footer-info-block .footer-info-block-text .footer-drop-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2vw;
+}
+
+footer > :nth-child(2) .footer-info-block .footer-info-block-text .footer-deep-drop-menu {
+  margin-left: 12%;
+  max-width: 70%;
+  word-wrap: break-word;
+  color: #8a8a8a;
+}
+
+footer > :nth-child(2) .footer-info-block .footer-info-block-text .footer-deep-drop-menu a {
+  color: #8a8a8a;
+  text-decoration: none;
+  font-size: 1.2vw;
+}
+
+footer > :nth-child(2) .footer-social-block {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: yellow;
+  font-size: 1.35vw;
+  border-top: 2px solid yellow;
+}
+
+footer > :nth-child(2) .footer-social-block .social-links {
+  margin-top: 3%;
+  text-align: center;
+}
+
+footer > :nth-child(2) .footer-social-block .social-links img {
+  width: 5%;
+  margin: 0.5%;
+  cursor: pointer;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+footer > :nth-child(2) .footer-social-block .social-links img:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+/*# sourceMappingURL=footer.css.map */

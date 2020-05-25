@@ -1,0 +1,91 @@
+body {
+  overflow-x: hidden;
+}
+
+.icons-wrapper {
+  position: absolute;
+  text-align: center;
+  top: 13vh;
+  height: 5vmin;
+  width: 100%;
+}
+
+.icons-wrapper img {
+  height: inherit;
+  cursor: pointer;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.icons-wrapper img:hover {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+#MENU {
+  margin-top: 20vh;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#MENU .drop-menu, #MENU .deep-drop-menu {
+  left: 100%;
+  -webkit-transition: none;
+  transition: none;
+}
+
+#MENU li .icons-wrapper {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0vmin;
+  right: 10vmin;
+  opacity: 0;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+@media screen and (min-width: 1920px) {
+  #MENU li .icons-wrapper {
+    height: 5vmin;
+    width: 5vmin;
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  #MENU li .icons-wrapper {
+    height: 4vmin;
+    width: 4vmin;
+  }
+}
+
+#MENU li .icons-wrapper img {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: inherit;
+  width: 100%;
+  cursor: pointer;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+#MENU li .icons-wrapper img:hover {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+#MENU li:hover > .icons-wrapper {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+}
+/*# sourceMappingURL=edit-menu.css.map */

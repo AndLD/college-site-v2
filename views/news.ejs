@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/resources/styles/page/sass/page.css">
+        <link rel="stylesheet" href="/resources/styles/index/sass/index.css">
+        <link rel="stylesheet" href="/resources/styles/sass/header.css">
+        <link rel="stylesheet" href="/resources/styles/sass/menu.css">
+        <link rel="stylesheet" href="/resources/styles/sass/footer.css">
+        <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon">
+        <title>Новини</title>
+    </head>
+    <body>
+        <section id="sky-section">
+            <%- include("blocks/header.ejs") %> 
+            
+            <%- include("blocks/menu.ejs") %>
+        </section>
+        
+        <!-- CONTENT -->
+        <section id="CONTENT">
+
+            <div class="desk-wrapper">
+                <%- include("blocks/news.ejs") %>
+                <div>
+                    <%- include("blocks/useful-links.ejs") %>
+                </div>
+            </div>
+
+        </section>
+
+        <%- include("blocks/footer.ejs") %>
+
+    </body>
+    <script src="/resources/styles/index/small-menu.js"></script>
+    <script src="/resources/styles/page/fix-blocks.js"></script>
+</html>

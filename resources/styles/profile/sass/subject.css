@@ -1,0 +1,107 @@
+.subjects-wrapper {
+  margin: 10vh auto;
+  margin-top: 20vh;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.subjects-wrapper #add-subject {
+  left: 0%;
+}
+
+@media screen and (min-width: 1920px) {
+  .subjects-wrapper .icons-wrapper:not(#add-subject) {
+    left: 85%;
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  .subjects-wrapper .icons-wrapper:not(#add-subject) {
+    left: 80%;
+  }
+}
+
+.subjects-wrapper .icons-wrapper:not(#add-subject) div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.subjects-wrapper .icons-wrapper:not(#add-subject) div div form {
+  height: 45px;
+}
+
+.subjects-wrapper .icons-wrapper:not(#add-subject) div div form button {
+  background-color: transparent;
+  border: none;
+  height: inherit;
+  outline: 0;
+}
+
+.subjects-wrapper .icons-wrapper:not(#add-subject) div div img {
+  background-color: transparent;
+  border: none;
+}
+
+@media screen and (min-width: 1920px) {
+  .subjects-wrapper .icons-wrapper:not(#add-subject) div div img {
+    height: 45px;
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  .subjects-wrapper .icons-wrapper:not(#add-subject) div div img {
+    height: 42px;
+  }
+}
+
+.subjects-wrapper .subjects {
+  width: 100%;
+  height: 100%;
+}
+
+.subjects-wrapper .subjects tbody > :first-child {
+  font-weight: bold;
+}
+
+.subjects-wrapper .subjects tbody > :first-child td {
+  padding-left: 0 !important;
+  text-align: center;
+}
+
+.subjects-wrapper .subjects tbody tr > :first-child, .subjects-wrapper .subjects tbody tr > :last-child {
+  text-align: center;
+  width: 7%;
+}
+
+.subjects-wrapper .subjects tbody tr > :nth-child(2) {
+  padding-left: 2%;
+}
+
+.subjects-wrapper .subjects tbody tr:hover .icons-wrapper {
+  opacity: 1;
+}
+
+.subjects-wrapper .subjects tbody tr td {
+  position: relative;
+  background-color: white;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  font-size: 25px;
+  border: 1px solid black;
+}
+
+.subjects-wrapper .subjects tbody tr td .icons-wrapper {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  height: 40px;
+  opacity: 0;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.hidden {
+  visibility: hidden;
+}
+/*# sourceMappingURL=subject.css.map */

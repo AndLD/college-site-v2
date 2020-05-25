@@ -1,0 +1,178 @@
+@import '../../sass/variables.scss';
+
+.desk-wrapper {
+    &>:first-child {
+        flex: 3;
+
+        img {
+            margin-top: 2%;
+            margin-bottom: 2%;
+
+            max-width: 70%;
+            max-height: 90vh;
+        }
+
+        .desk-title {
+            margin-left: 5%;
+        }
+    }
+    &>:last-child {
+        flex: 1;
+
+        padding: 0% 1% 0% 1%;
+
+        .desk {
+            position: relative;
+
+            padding: 15% 2% 10% 2%;
+            margin-bottom: 2vmax;
+
+            .desk-title {
+                color: white;
+                font-size: 1.3vw;
+                // text-decoration: underline;
+            }
+        }
+    }
+
+    .desk {
+        .desk-text {
+            p {
+                font-weight: normal;
+                text-indent: 3%;
+
+                text-align: justify;
+            }
+        
+            li {
+                list-style-type: disc;
+                margin-left: 7%;
+            }
+        }
+    }
+}
+
+.current-menu-links-block {
+    li {
+        list-style-type: disc;
+
+        transition: all ease 0.3s;
+
+        &:hover {
+            padding-left: 5%;
+        }
+    }
+
+    .drop-menu-links {
+        margin-left: 10%;
+
+        color: $menuColor;
+
+        a {
+            color: $menuColor !important;
+        }
+    }
+
+    .deep-drop-menu-links {
+        margin-left: 15%;
+
+        color: $menuFocusedColor;
+
+        a {
+            color: $menuFocusedColor !important;
+        }
+    }
+}
+
+.useful-links-block {
+    text-align: center;
+
+    .userful-link {
+        margin-bottom: 3%;
+
+        a img {
+            width: 55%;
+        }
+    }
+}
+
+.addDate {
+    position: absolute;
+
+    top: 2em;
+    right: 3em;
+
+    font-weight: bold;
+}
+
+$horizontalRibbonColor: $menuColor;
+$horizontalRibbonSubColor: $menuFocusedColor;
+$horizontalRibbonWidth: 18vw;
+.horizontal-ribbon {
+    position: absolute;
+    
+    background-color: $horizontalRibbonColor;
+
+    // padding-top: 1%;
+    // padding-bottom: 1%;
+
+    width: $horizontalRibbonWidth;
+    // height: 100px;
+
+    top: 10px;
+    right: -15px;
+
+    &:before {
+        content: "";
+        position: absolute;
+
+        top: 0;
+        right: $horizontalRibbonWidth - 0.01vw;
+
+        border-left: 1.15vw solid transparent;
+        border-right: 1.15vw solid $horizontalRibbonColor;
+        border-top: 0.9vw solid $horizontalRibbonColor;
+        border-bottom: 0.9vw solid $horizontalRibbonColor;
+    }
+
+    &:after {
+        z-index: -2;
+
+        content: "";
+        position: absolute;
+                    
+        top: 99%;
+        right: 0px;
+
+        border-right: 1vw solid transparent;//1.15vw solid $horizontalRibbonSubColor;
+        border-top: 1vw solid $horizontalRibbonSubColor;//0.9vw solid $horizontalRibbonSubColor;
+    }
+}
+
+.news-links-block {
+    li {
+        margin-left: 10%;
+
+        list-style-type: disc;
+
+        transition: all ease 0.3s;
+
+        color: $menuColor;
+
+        a {
+            color: $menuColor !important;
+        }
+
+        &:hover {
+            // padding-left: 5%;
+            color: $menuFocusedColor;
+
+            a {
+                color: $menuFocusedColor !important;
+                text-decoration: underline !important;
+            }
+        }
+
+        
+    }
+}

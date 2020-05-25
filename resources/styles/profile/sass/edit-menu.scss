@@ -1,0 +1,109 @@
+body {
+    overflow-x: hidden;
+}
+
+// .admin-menu-elem-title {
+//     margin: 2%;
+
+//     text-align: center;
+
+//     font-size: 7vmin;
+// }
+
+.icons-wrapper {
+    position: absolute;
+
+    text-align: center;
+
+    top: 13vh;
+
+    height: 5vmin;
+    width: 100%;
+
+    img {
+        // flex: 1;
+
+        height: inherit;
+        // width: 100%;
+
+        cursor: pointer;
+
+        transition: all ease 0.3s;
+
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
+}
+
+// Меню сайта
+#MENU {
+    margin-top: 20vh; 
+    margin-left: 10%;
+    margin-right: 10%;
+
+
+    .drop-menu, .deep-drop-menu {
+        left: 100%;
+
+        transition: none;
+    }
+
+    li {
+        // min-width: 5vmin;
+
+        .icons-wrapper {
+            position: absolute;
+            // display: none;
+            display: flex;
+        
+            top: 0vmin;
+            right: 10vmin;
+        
+            @media screen and (min-width: 1920px) {
+                height: 5vmin;
+                width: 5vmin;
+            }
+
+            @media screen and (max-width: 1919px) {
+                height: 4vmin;
+                width: 4vmin;
+            }
+
+            opacity: 0;
+
+            transition: all ease 0.3s;
+        
+            img {
+                flex: 1;
+        
+                height: inherit;
+                width: 100%;
+        
+                cursor: pointer;
+
+                transition: all ease 0.3s;
+
+                &:hover {
+                    transform: scale(0.9);
+                }
+            }
+        }
+
+        &:hover {
+            > .icons-wrapper {
+                // display: flex;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}

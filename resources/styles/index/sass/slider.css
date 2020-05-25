@@ -1,0 +1,88 @@
+@charset "UTF-8";
+.slider-wrapper {
+  position: relative;
+  margin: auto;
+  height: 30vw;
+  overflow: hidden;
+  /* Для кнопок */
+}
+
+.slider-wrapper:hover .slider-button {
+  opacity: 1;
+}
+
+.slider-wrapper .slider {
+  width: 100%;
+  height: inherit;
+}
+
+.slider-wrapper .slider .slide {
+  position: absolute;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+
+.slider-wrapper .slider-button {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  top: 0;
+  width: 2%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+}
+
+.slider-wrapper .slider-button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-wrapper .slider-button img {
+  width: 100%;
+}
+
+.slider-wrapper .slider-button-left {
+  left: 0;
+}
+
+.slider-wrapper .slider-button-right {
+  right: 0;
+}
+
+/* Для точек */
+.points {
+  position: absolute;
+  top: 90%;
+  left: 44%;
+}
+
+.points .point {
+  display: inline-block;
+  background-color: #7b7b7b;
+  margin: 0.5vh;
+  width: 0.7vw;
+  height: 0.7vw;
+  border-radius: 10px;
+  border: 3px solid #383838;
+  cursor: pointer;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.points .point:hover {
+  background-color: #514f9d;
+}
+
+.points .active-point {
+  background-color: #0600ff !important;
+  border: 3px solid #0300c5 !important;
+}
+
+.visible {
+  visibility: visible !important;
+}
+/*# sourceMappingURL=slider.css.map */

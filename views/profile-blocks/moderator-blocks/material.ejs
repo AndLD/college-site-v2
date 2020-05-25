@@ -1,0 +1,43 @@
+<div class="materials-wrapper">
+    <div id="add-material" class="icons-wrapper">
+        <img src="/resources/images/profile/icons/add.png" alt="add-material">
+    </div>
+    <table class="materials">
+        <tr>
+            <td>№</td>
+            <td>Type</td>
+            <td>Title</td>
+            <td>Subject</td>
+            <td>Semester</td>
+            <td>Id</td>
+        </tr>
+        <% for(var i = 0; i < materials.length; i++) { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= materials[i].materialType %></td>
+                <td><%= materials[i].title %>
+                    <div class="icons-wrapper">
+                        <div>
+                            <div>
+                                <img src="/resources/images/profile/icons/edit.png" alt="edit-material">
+                            </div>
+                            <div>
+                                <img src="/resources/images/profile/icons/delete.png" alt="delete-material">
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <% for(let j = 0; j < subjects.length; j++) { %>
+                    <% if (materials[j].subjectId == subjects[j].id) { %>
+                        <td id=<%= subjects[i].id %>>
+                            <%= subjects[j].title %>
+                        </td>
+                        <% break %>
+                    <% } %>
+                <% } %>
+                <td><%= materials[i].id %></td>
+            </tr> 
+        <% } %>
+    </table>
+    <script src="/resources/scripts/profile/moderator/material.js"></script>
+</div>

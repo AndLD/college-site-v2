@@ -1,0 +1,40 @@
+<div class="users-wrapper">
+    <div id="add-user" class="icons-wrapper">
+        <img src="/resources/images/profile/icons/add.png" alt="add-user">
+    </div>
+    <table class="users">
+        <tr>
+            <td>№</td>
+            <td>Userrole</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>Id</td>
+            <td></td>
+        </tr>
+        <% for(var i = 0; i < users.length; i++) { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= users[i].userrole %></td>
+                <td><%= users[i].username %></td>
+                <td><%= (users[i].userrole != "group" ? "(hidden)" : users[i].pass) %></td>
+                <td><%= users[i].id %></td>
+                <td>
+                    <% if (user.id != users[i].id) { %>
+                        <div class="icons-wrapper">
+                            <div>
+                                <div>
+                                    <img src="/resources/images/profile/icons/edit.png" alt="edit-user">
+                                </div>
+                                <div>
+                                    <img src="/resources/images/profile/icons/delete.png" alt="delete-user">
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </td>
+            </tr> 
+        <% } %>
+    </table>
+
+    <script src="/resources/scripts/profile/moderator/user.js"></script>
+</div>
