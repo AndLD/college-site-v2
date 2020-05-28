@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+
+    font-family: Corbel;
+}
+
+body {
+    background-image: url(/resources/images/profile/background/2.jpg);
+
+    @media screen and (min-width: 1921px) {
+        background-size: cover;
+    }
+}
+
+// Модальная форма
+.auth-wrapper {
+    position: fixed;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    height: 100%;
+    width: 100%;
+
+    top: 0;
+    left: 0;
+
+    transition: all ease 0.5s;
+
+    .auth {
+        position: relative;
+
+        background-color: rgb(47, 45, 51);
+        
+        margin: 20vh auto;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+
+        @media screen and (min-width: 1920px) {
+            width: 50vw;
+        }
+
+        @media screen and (max-width: 1919px) {
+            width: 55vw;
+        }
+
+        text-align: center;
+
+        // height: 20vh;
+
+        color: white;
+
+        border-radius: 20px;
+
+        .auth-title {
+            padding-bottom: 2vh;
+
+            font-size: 4vh;
+        }
+
+        .message {
+            color: red;
+        }
+
+        form {
+            font-size: 2vh;
+
+            input[type="text"], input[type="password"] {
+                background-color: black;
+
+                padding: 1vh;
+                margin-top: 0.5vh;
+                margin-bottom: 1vh;
+
+                text-align: center;
+
+                width: 25%;
+
+                outline: none;
+                font-size: 2vh;
+                color: orange;
+                font-weight: bold;
+
+                border: 1px solid white;
+                border-radius: 20px;
+
+                transition: all ease 0.3s;
+
+                &:focus {
+                    border-color: orange;
+                    
+                    box-shadow: 0 0 5px orange;
+
+                    width: 30%;
+                }
+            }
+
+            input[type="submit"] {
+                background-color: black;
+
+                padding: 1vh 3vh 1vh 3vh;
+                margin: 2vh;
+
+                width: 20%;
+
+                color: white;
+                font-size: 2vh;
+
+                border: 2px solid black;
+                border-radius: 20px;
+
+                outline: 0;
+
+                cursor: pointer;
+
+                transition: all ease 0.3s;
+
+                &:hover {
+                    background-color: black;
+
+                    // width: 30%;
+
+                    color: orange;
+
+                    border-color: orange;
+
+                    // box-shadow: 0 0 10px orange;
+                }
+            }
+        }
+
+        a {
+            color: orange
+        }
+    }
+}

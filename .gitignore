@@ -2,3 +2,7 @@
 package-lock.json
 /node_modules/
 /resources/buffer/
+/db/SQLqueries
+settings.json
+debug.log
+readme.todo

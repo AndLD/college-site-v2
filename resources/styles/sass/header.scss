@@ -1,0 +1,123 @@
+@import 'variables.scss';
+
+header {
+    display: flex;
+
+    padding-top: 1%;
+    padding-bottom: 1%;
+    
+    height: 25%;
+
+    #logo {
+        flex: 1;
+    
+        padding: auto;
+        
+        text-align: center;
+
+        @media screen and(min-width: 481px){
+            width: 20%; // for Mozilla
+        }
+
+        img {
+            max-height: 100%;
+            height: 100%;
+        }
+    }
+
+    #title {
+        flex: 6;
+        
+        text-align: center;
+
+        min-height: inherit;
+        height: 100%;
+        @media screen and(min-width: 481px){
+            width: 80%; // for Mozilla
+        }
+        
+        font-family: $titleFont;
+        font-weight: bold;
+
+        text-transform: uppercase;
+
+        #td1 {
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        :nth-child(1) td {
+            background-color: $menuFocusedColor;
+
+            padding-left: 5%;
+            padding-right: 5%;
+            
+            text-align: left;
+        
+            height: 52%;
+            
+            // font-size: 5.2vh;
+            font-size: 3vw;
+            color: white;
+            letter-spacing: 0.5rem;
+        }
+
+        :nth-child(2) td {
+            background-color: rgb(252, 214, 5);
+
+            padding-left: 5%;
+            padding-right: 5%;
+
+            text-align: right;
+        
+            height: 48%;
+            
+            // font-size: 3.5vh;
+            font-size: 1.8vw;
+            color: black;
+            letter-spacing: 0.35rem;
+        }
+    }
+}
+@font-face {
+    font-family: exo2; /* Идентификатор шрифта */
+    src: url(../../fonts/exo2/exo2medium.ttf); /* Путь к файлу со шрифтом */
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        flex-direction: column;
+        #title {
+            max-height: 50%;
+
+            :nth-child(2) td {
+                font-size: 2vw;
+                letter-spacing: 2;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    header {
+        flex-direction: column;
+
+        height: 40%;
+        #logo {
+            min-height: 20vh;
+            max-height: 20vw;
+        }
+
+        #title {
+            max-height: 40%;
+
+            :nth-child(1) td {
+                letter-spacing: 0.3rem;
+            }
+
+            :nth-child(2) td {
+                font-size: 3vw;
+                letter-spacing: 0;
+            }
+        }
+    }
+}

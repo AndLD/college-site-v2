@@ -1,0 +1,107 @@
+.slider-wrapper {
+    position: relative;
+
+    margin: auto;
+
+    height: 30vw;
+    
+    overflow: hidden;
+    
+    &:hover .slider-button {
+        opacity: 1;
+    }
+
+    .slider {
+        width: 100%;
+        height: inherit;
+    
+        .slide {
+            position: absolute;
+            
+            left: 0;
+            
+            width: inherit;
+            height: inherit;
+        
+            transition: all ease 0.5s;
+        }
+    }
+
+    /* Для кнопок */
+
+    .slider-button {
+        position: absolute;
+
+        background-color: rgba(255, 255, 255, 0.3);
+
+        top: 0;
+
+        width: 2%;
+        height: 100%;
+
+        opacity: 0;
+        
+        cursor: pointer;
+
+        transition: all ease 0.2s;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        img {
+            width: 100%;
+        }
+    }
+
+    .slider-button-left {
+        left: 0;
+    }
+
+    .slider-button-right {
+        right: 0;
+    }
+
+}
+
+
+/* Для точек */
+
+.points {
+    position: absolute;
+    
+    top: 90%;
+    left: 44%;
+
+    .point {
+        display: inline-block;
+    
+        background-color: rgb(123, 123, 123);
+    
+        margin: 0.5vh;
+    
+        width: 0.7vw;
+        height: 0.7vw;
+    
+        border-radius: 10px;
+        border: 3px solid rgb(56, 56, 56);
+    
+        cursor: pointer;
+    
+        transition: all ease 0.3s;
+
+        &:hover {
+            background-color: rgb(81, 79, 157);
+        }
+    }
+
+    .active-point {
+        background-color: rgb(6, 0, 255) !important;
+    
+        border: 3px solid rgb(3, 0, 197) !important;
+    }
+}
+
+.visible {
+    visibility: visible !important;
+}

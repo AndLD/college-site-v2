@@ -113,7 +113,7 @@ const userControllers = require("./controllers/user")
 
 // Группируем запросы
 const userRoutes = express.Router()
-server.use("/", limiterGuard, userRoutes)
+server.use("/", userMiddlewares.ipGuard, limiterGuard, userRoutes)
 
 // Авторизоваться 1 фактор
 userRoutes.post("/login", userMiddlewares.isNotLogged, passportConfig.passport.authenticate("local", {

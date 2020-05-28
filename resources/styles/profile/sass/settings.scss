@@ -1,0 +1,48 @@
+.settings-wrapper {
+    display: none;
+
+    background-color: white;
+
+    margin-top: 20vh; 
+    margin-left: 10%;
+    margin-right: 10%;
+
+    padding-left: 10vmin;
+    padding-right: 10vmin;
+
+    padding-top: 2vmin;
+    padding-bottom: 2vmin;
+
+    border: 5px double black;
+    border-radius: 30px;
+    
+    .settings-title {
+        text-align: center;
+
+        font-size: 5vmin;
+        font-weight: bold;
+    }
+
+    .settings-list {
+        font-size: 20px;
+
+        .option-subtitle {
+            font-weight: bold;
+        }
+        .option-text {
+
+            .token2FA {
+                color: red;
+                font-weight: bold;
+
+                filter: blur(5px);
+
+                transition: all ease 0.3s;
+
+                &:hover {
+                    filter: none;
+                }
+            }
+        }
+    }
+}

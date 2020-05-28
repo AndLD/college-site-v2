@@ -1,0 +1,199 @@
+// Модальная форма
+.modal-wrapper {
+    // display: none;
+    visibility: hidden;
+    position: fixed;
+
+    background-color: rgba(0, 0, 0, 0.7);
+
+    height: 100%;
+    width: 100%;
+
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+
+    transition: all ease 0.5s;
+
+    .modal {
+        position: relative;
+
+        background-color: rgb(47, 45, 51);
+
+        margin: 20vh auto;
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+
+        text-align: center;
+
+        // height: 20vh;
+        width: 50vw;
+
+        color: white;
+
+        border-radius: 20px;
+
+        filter: blur(15px);
+
+        transition: all ease 0.3s;
+
+        .modal-title {
+            padding-bottom: 2vh;
+
+            font-size: 4vh;
+        }
+
+        form {
+            font-size: 2vh;
+
+            @mixin inputMix() {
+                background-color: black;
+
+                padding: 1vh;
+                margin-top: 0.5vh;
+                margin-bottom: 1vh;
+
+                text-align: center;
+
+                width: 25%;
+
+                outline: none;
+                font-size: 2vh;
+                color: orange;
+                font-weight: bold;
+
+                border: 1px solid white;
+                border-radius: 20px;
+
+                transition: all ease 0.3s;
+
+                // Убираем стрелочки у input[type="number"]
+                &::-webkit-inner-spin-button {
+                    display: none;
+                }
+
+                &::selection {
+                    background-color: rgba(255, 166, 0, 0.507);
+                }
+            }
+
+            input[type="text"], input[type="number"], input[type="password"] {
+                @include inputMix;
+
+                &:focus {
+                    border-color: orange;
+                    
+                    box-shadow: 0 0 5px orange;
+
+                    width: 50%;
+                }
+            }
+
+            input[type="date"] {
+                @include inputMix;
+            }
+
+            label.file {
+                text-decoration: underline;
+
+                cursor: pointer;
+
+                transition: all ease 0.3s;
+
+                &:hover {
+                    color: orange;
+                }
+            }
+
+            input[type="file"] {
+                width: 0.1px;
+	            height: 0.1px;
+	            opacity: 0;
+	            overflow: hidden;
+	            position: absolute;
+                z-index: -1;
+            }
+
+            input[type="checkbox"] {
+                height: 20px; 
+                width: 20px;
+            }
+
+            select {
+                @include inputMix;
+
+                &:focus {
+                    border-color: orange;
+                    
+                    box-shadow: 0 0 5px orange;
+                }
+            }
+
+            input[type="submit"], div.submit {
+                background-color: black;
+
+                padding: 1vh 3vh 1vh 3vh;
+                margin: 2vh auto;
+
+                width: 20%;
+
+                color: white;
+                font-size: 2vh;
+
+                border: 2px solid black;
+                border-radius: 20px;
+
+                outline: 0;
+
+                cursor: pointer;
+
+                transition: all ease 0.3s;
+
+                &:hover {
+                    background-color: black;
+
+                    // width: 30%;
+
+                    color: orange;
+
+                    border-color: orange;
+
+                    // box-shadow: 0 0 10px orange;
+                }
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+
+            background-image: url(/resources/images/close.png);
+            background-size: contain;
+
+            top: 5vmin;
+            right: 3vmin;
+
+            height: 5vmin;
+            width: 5vmin;
+
+            cursor: pointer;
+
+            transition: all ease 0.3s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.show-modal {
+    // display: block !important;
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    .modal {
+        filter: blur(0);
+    }
+}
