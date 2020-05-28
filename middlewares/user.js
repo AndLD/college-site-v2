@@ -41,8 +41,8 @@ exports.ipGuard = async (req, res, next) => {
         if (selectedResult.error == true) {
             return res.send(400)
         }
-    
-        if (selectedResult.data.userrole == "group") {
+
+        if (selectedResult.data != undefined && selectedResult.data.userrole == "group") {
             return next()
         }
     }
