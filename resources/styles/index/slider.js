@@ -135,3 +135,7 @@ init()
 
 sliderButtons[0].firstChild.style.marginTop = "750%"
 sliderButtons[1].firstChild.style.marginTop = "750%"
+
+setInterval(() => {
+    start(-1)
+}, 3000)

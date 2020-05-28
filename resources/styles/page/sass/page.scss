@@ -117,6 +117,7 @@ $horizontalRibbonWidth: 18vw;
     // padding-bottom: 1%;
 
     width: $horizontalRibbonWidth;
+    max-width: 280px;
     // height: 100px;
 
     top: 10px;
@@ -128,6 +129,9 @@ $horizontalRibbonWidth: 18vw;
 
         top: 0;
         right: $horizontalRibbonWidth - 0.01vw;
+        @media screen and (min-width: 1800px) {
+            right: 270px;
+        }
 
         border-left: 1.15vw solid transparent;
         border-right: 1.15vw solid $horizontalRibbonColor;

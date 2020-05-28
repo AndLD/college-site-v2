@@ -4,6 +4,9 @@
     margin: auto;
 
     height: 30vw;
+    @media screen and (min-width: 1600px) {
+        height: 27vw;
+    }
     
     overflow: hidden;
     

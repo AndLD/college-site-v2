@@ -7,6 +7,12 @@
   /* Для кнопок */
 }
 
+@media screen and (min-width: 1600px) {
+  .slider-wrapper {
+    height: 27vw;
+  }
+}
+
 .slider-wrapper:hover .slider-button {
   opacity: 1;
 }

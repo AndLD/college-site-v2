@@ -1,5 +1,10 @@
 @import '../../sass/variables.scss';
 
+#CONTAINER {
+    max-width: 1500px !important;
+    margin: auto;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,16 +15,15 @@
 }
 
 body {
-    background-color: rgb(208, 235, 255);
+    // background-color: rgb(208, 235, 255);
+    background-image: url(../../../images/index/sub_background.jpg);
+    background-attachment: fixed;
 
     font-family: $defaultFont;
 }
 
 /* На главной странице шапку, меню, слайдер, "Запрошуємо на навчання!" и кнопку обрамляет небесный фон */
 #sky-section {
-    background-image: url(../../../images/index/sub_background.jpg);
-    background-attachment: fixed;
-
     padding-bottom: 0.1%;
     padding-left: $defaultPaddingLeft;
     padding-right: $defaultPaddingRight;
