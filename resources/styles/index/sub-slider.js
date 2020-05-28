@@ -124,3 +124,7 @@ function closeModalImage() {
 
     closeModalButton.style.display = "none"
 }
+
+setInterval(() => {
+    subSliderStart(1)
+}, 5000)
