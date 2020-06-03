@@ -150,7 +150,7 @@
     transition: all ease 0.5s;
 
     .modal-image {
-        margin: 50% auto;
+        margin: 5% auto;
         
         min-height: 70%;
         max-height: 80%;
@@ -158,6 +158,8 @@
         max-width: 80%;
 
         @media screen and (max-width: 480px) {
+            margin: 50% auto;
+
             min-height: 10%;
             max-height: 30%;
             min-width: 10%;
