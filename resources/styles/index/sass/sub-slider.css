@@ -136,7 +136,7 @@
 }
 
 .modal-image-wrapper .modal-image {
-  margin: 5% auto;
+  margin: 50% auto;
   min-height: 70%;
   max-height: 80%;
   min-width: 10%;
@@ -151,7 +151,6 @@
 
 @media screen and (max-width: 480px) {
   .modal-image-wrapper .modal-image {
-    margin: 50% auto;
     min-height: 10%;
     max-height: 30%;
     min-width: 10%;
