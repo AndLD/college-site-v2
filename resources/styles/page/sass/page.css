@@ -28,9 +28,27 @@
   margin-bottom: 2vmax;
 }
 
+@media screen and (min-width: 1900px) {
+  .desk-wrapper > :last-child .desk {
+    margin-bottom: 1.2vmax;
+  }
+}
+
 .desk-wrapper > :last-child .desk .desk-title {
   color: white;
   font-size: 1.3vw;
+}
+
+@media screen and (min-width: 1900px) {
+  .desk-wrapper > :last-child .desk .desk-title {
+    font-size: 1vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .desk-wrapper > :last-child .desk .desk-title {
+    font-size: 5vw;
+  }
 }
 
 .desk-wrapper .desk .desk-text p {
@@ -84,10 +102,13 @@
   width: 55%;
 }
 
-.addDate {
-  position: absolute;
-  top: 2em;
-  right: 3em;
+@media screen and (max-width: 480px) {
+  .useful-links-block .userful-link a img {
+    width: 25%;
+  }
+}
+
+.add-date {
   font-weight: bold;
 }
 
@@ -95,25 +116,76 @@
   position: absolute;
   background-color: #0054a6;
   width: 18vw;
-  max-width: 280px;
+  max-width: 270px;
   top: 10px;
   right: -15px;
+}
+
+@media screen and (max-width: 480px) {
+  .horizontal-ribbon {
+    width: 90vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .horizontal-ribbon {
+    right: -10px;
+  }
 }
 
 .horizontal-ribbon:before {
   content: "";
   position: absolute;
   top: 0;
-  right: 17.99vw;
-  border-left: 1.15vw solid transparent;
-  border-right: 1.15vw solid #0054a6;
-  border-top: 0.9vw solid #0054a6;
-  border-bottom: 0.9vw solid #0054a6;
+  right: 17.4vw;
+  border-left: 20px solid transparent;
+  border-right: 20px solid #0054a6;
+  border-top: 13.5px solid #0054a6;
+  border-bottom: 13px solid #0054a6;
 }
 
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 1600px) {
   .horizontal-ribbon:before {
     right: 270px;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .horizontal-ribbon:before {
+    right: 270px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .horizontal-ribbon:before {
+    right: 65vw;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .horizontal-ribbon:before {
+    right: 70vw;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .horizontal-ribbon:before {
+    border-top: 16px solid #0054a6;
+    border-bottom: 17px solid #0054a6;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .horizontal-ribbon:before {
+    border-top: 17px solid #0054a6;
+    border-bottom: 17px solid #0054a6;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .horizontal-ribbon:before {
+    border-top: 12px solid #0054a6;
+    border-bottom: 12px solid #0054a6;
   }
 }
 
@@ -125,6 +197,13 @@
   right: 0px;
   border-right: 1vw solid transparent;
   border-top: 1vw solid #003e7b;
+}
+
+@media screen and (max-width: 480px) {
+  .horizontal-ribbon:after {
+    border-right: 5vw solid transparent;
+    border-top: 5vw solid #003e7b;
+  }
 }
 
 .news-links-block li {

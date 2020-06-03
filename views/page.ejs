@@ -23,11 +23,13 @@
     
                 <div class="desk-wrapper">
                     <div class="desk page-block">
-                        <% if (data.type == "news") { %>
-                            <div class="addDate"><%= data.addDate %></div>
-                        <% } %>
                         <div class="desk-title"><%= data.title %></div>
-                        <div class="desk-text"><%- data.html %></div>
+                        <div class="desk-text">
+                            <% if (data.type == "news") { %>
+                                <div class="add-date"><%= data.addDate %></div>
+                            <% } %>
+                            <%- data.html %>
+                        </div>
                         <div class="ribbon"></div>    
                     </div>
                     <div>

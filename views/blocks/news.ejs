@@ -24,6 +24,7 @@
 
                     <div class="single-new-description">
                         <p class="single-new-title"><%= news[i].title %></p>
+                        <p class="single-new-date-mobile"><%= news[i].addDate %></p>
                         <p class="single-new-text">
                             <% let indexOfTextEnd = news[i].html.indexOf(textEnd);%>
                             <%= news[i].html.slice(0, (indexOfTextEnd - textEnd.length + 4 < 300 ? indexOfTextEnd - textEnd.length + 4 : 300)) + "..." %>

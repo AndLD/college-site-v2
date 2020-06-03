@@ -7,9 +7,15 @@
   /* Для кнопок */
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1900px) {
   .slider-wrapper {
-    height: 27vw;
+    height: 23vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slider-wrapper {
+    height: 35vw;
   }
 }
 
@@ -66,6 +72,13 @@
   left: 44%;
 }
 
+@media screen and (max-width: 480px) {
+  .points {
+    top: 85%;
+    left: 36%;
+  }
+}
+
 .points .point {
   display: inline-block;
   background-color: #7b7b7b;
@@ -77,6 +90,13 @@
   cursor: pointer;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
+}
+
+@media screen and (max-width: 480px) {
+  .points .point {
+    width: 1vw;
+    height: 1vw;
+  }
 }
 
 .points .point:hover {

@@ -2,8 +2,17 @@
     position: relative;
 
     margin: 3% 2% 5% 2%;
+    @media screen and (max-width: 480px) {
+        margin: 3% 3% 5% 3%;
+    }
 
     height: 10vw;
+    @media screen and (min-width: 1900px) {
+        height: 6vw;
+    }
+    @media screen and (max-width: 480px) {
+        height: 12vw;
+    }
 
     .sub-slider {
         width: inherit;
@@ -82,6 +91,10 @@
 
         top: 110%;
         left: 48%;
+        @media screen and (max-width: 480px) {
+            top: 105%;
+            left: 44%;
+        }
 
         .sub-slider-point {
             display: inline-block;
@@ -92,6 +105,10 @@
     
             width: 0.7vw;
             height: 0.7vw;
+            @media screen and (max-width: 480px) {
+                width: 1vw;
+                height: 1vw;
+            }
     
             border-radius: 10px;
             border: 3px solid rgb(56, 56, 56);
@@ -133,12 +150,19 @@
     transition: all ease 0.5s;
 
     .modal-image {
-        margin: 5% auto;
+        margin: 50% auto;
         
         min-height: 70%;
         max-height: 80%;
         min-width: 10%;
         max-width: 80%;
+
+        @media screen and (max-width: 480px) {
+            min-height: 10%;
+            max-height: 30%;
+            min-width: 10%;
+            max-width: 80%;
+        }
 
         filter: blur(100px);
         transform: scale(0);
@@ -159,10 +183,11 @@
 }
 
 .close-modal-button {
+    display: none !important;
     position: absolute;
 
-    top: 5%;
-    left: 90%;
+    top: 80%;
+    left: 50%;
 
     height: 10%;
 

@@ -1,4 +1,4 @@
-const HOST = "http://localhost:3000"//"https://090b1b22.ngrok.io"
+const HOST = ""
 
 // ! modal
 var closeModalButton = document.querySelector(".close-modal")
