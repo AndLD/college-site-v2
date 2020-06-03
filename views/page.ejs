@@ -11,61 +11,65 @@
         <title><%= data.title %></title>
     </head>
     <body>
-        <section id="sky-section">
-            <%- include("blocks/header.ejs") %> 
+        <div id="CONTAINER">
+            <section id="sky-section">
+                <%- include("blocks/header.ejs") %> 
+                
+                <%- include("blocks/menu.ejs") %>
+            </section>
             
-            <%- include("blocks/menu.ejs") %>
-        </section>
-        
-        <!-- CONTENT -->
-        <section id="CONTENT">
-
-            <div class="desk-wrapper">
-                <div class="desk page-block">
-                    <% if (data.type == "news") { %>
-                        <div class="addDate"><%= data.addDate %></div>
-                    <% } %>
-                    <div class="desk-title"><%= data.title %></div>
-                    <div class="desk-text"><%- data.html %></div>
-                    <div class="ribbon"></div>    
-                </div>
-                <div>
-                    <% if(data.type == "article") { %>
-                        <div class="desk current-menu-links-block">
-                            <div class="horizontal-ribbon"><div class="desk-title"><%= currentMainMenu.title %></div></div>
-                            <!-- <div class="ribbon"></div>  -->
-                            <ul>
-                                <% for(let j = 0; j < menu.drop.length; j++) { %>
-                                    <% if (menu.drop[j].parentId == currentMainMenu.id) { %>
-                                        <li class="drop-menu-links"><a href=<%= menu.drop[j].link %>><%= menu.drop[j].title %></a></li>
-
-                                        <% for(let k = 0; k < menu.deepDrop.length; k++) { %>
-                                            <% if (menu.deepDrop[k].parentId == menu.drop[j].id) { %>
-                                                <li class="deep-drop-menu-links"><a href=<%= menu.deepDrop[k].link %>><%= menu.deepDrop[k].title %></a></li>
+            <!-- CONTENT -->
+            <section id="CONTENT">
+    
+                <div class="desk-wrapper">
+                    <div class="desk page-block">
+                        <div class="desk-title"><%= data.title %></div>
+                        <div class="desk-text">
+                            <% if (data.type == "news") { %>
+                                <div class="add-date"><%= data.addDate %></div>
+                            <% } %>
+                            <%- data.html %>
+                        </div>
+                        <div class="ribbon"></div>    
+                    </div>
+                    <div>
+                        <% if(data.type == "article") { %>
+                            <div class="desk current-menu-links-block">
+                                <div class="horizontal-ribbon"><div class="desk-title"><%= currentMainMenu.title %></div></div>
+                                <!-- <div class="ribbon"></div>  -->
+                                <ul>
+                                    <% for(let j = 0; j < menu.drop.length; j++) { %>
+                                        <% if (menu.drop[j].parentId == currentMainMenu.id) { %>
+                                            <li class="drop-menu-links"><a href=<%= menu.drop[j].link %>><%= menu.drop[j].title %></a></li>
+    
+                                            <% for(let k = 0; k < menu.deepDrop.length; k++) { %>
+                                                <% if (menu.deepDrop[k].parentId == menu.drop[j].id) { %>
+                                                    <li class="deep-drop-menu-links"><a href=<%= menu.deepDrop[k].link %>><%= menu.deepDrop[k].title %></a></li>
+                                                <% } %>
                                             <% } %>
                                         <% } %>
                                     <% } %>
+                                </ul>
+                            </div>
+                        <% } %>
+                        <div class="desk news-links-block">
+                            <div class="horizontal-ribbon"><div class="desk-title">Останні новини</div></div>
+                            <!-- <div class="ribbon"></div>  -->
+                            <ul>
+                                <% for(let i = 0; i < news.length; i++) { %>
+                                    <li class="news-link"><a href=<%= "/news/" + news[i].id %>><%= news[i].addDate + ". " + news[i].title %></a></li>
                                 <% } %>
                             </ul>
                         </div>
-                    <% } %>
-                    <div class="desk news-links-block">
-                        <div class="horizontal-ribbon"><div class="desk-title">Останні новини</div></div>
-                        <!-- <div class="ribbon"></div>  -->
-                        <ul>
-                            <% for(let i = 0; i < news.length; i++) { %>
-                                <li class="news-link"><a href=<%= "/news/" + news[i].id %>><%= news[i].addDate + ". " + news[i].title %></a></li>
-                            <% } %>
-                        </ul>
+                        <%- include("blocks/useful-links") %>
                     </div>
-                    <%- include("blocks/useful-links") %>
                 </div>
-            </div>
-
-        </section>
-
-        <%- include("blocks/footer.ejs") %>
-
+    
+            </section>
+    
+            <%- include("blocks/footer.ejs") %>
+    
+        </div>
     </body>
     <script src="/resources/styles/index/small-menu.js"></script>
     <script src="/resources/styles/page/fix-blocks.js"></script>

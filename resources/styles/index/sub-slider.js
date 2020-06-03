@@ -39,7 +39,8 @@ function init() {
 
     modalImg = document.querySelector(".modal-image")
     closeModalButton = document.querySelector(".close-modal-button")
-    closeModalButton.onclick = () => { closeModalImage() }
+    // closeModalButton.onclick = () => { closeModalImage() }
+    modalImg.parentElement.onclick = () => { closeModalImage() }
 }
 
 init()
@@ -124,3 +125,7 @@ function closeModalImage() {
 
     closeModalButton.style.display = "none"
 }
+
+setInterval(() => {
+    subSliderStart(1)
+}, 5000)

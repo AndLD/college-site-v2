@@ -4,6 +4,12 @@
     margin: auto;
 
     height: 30vw;
+    @media screen and (min-width: 1900px) {
+        height: 23vw;
+    }
+    @media screen and (max-width: 480px) {
+        height: 35vw;
+    }
     
     overflow: hidden;
     
@@ -73,6 +79,11 @@
     top: 90%;
     left: 44%;
 
+    @media screen and (max-width: 480px) {
+        top: 85%;
+        left: 36%;
+    }
+
     .point {
         display: inline-block;
     
@@ -82,6 +93,11 @@
     
         width: 0.7vw;
         height: 0.7vw;
+
+        @media screen and (max-width: 480px) {
+            width: 1vw;
+            height: 1vw;
+        }
     
         border-radius: 10px;
         border: 3px solid rgb(56, 56, 56);

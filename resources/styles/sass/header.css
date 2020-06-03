@@ -5,7 +5,6 @@ header {
   display: flex;
   padding-top: 1%;
   padding-bottom: 1%;
-  height: 25%;
 }
 
 header #logo {
@@ -25,6 +24,13 @@ header #logo {
 header #logo img {
   max-height: 100%;
   height: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  header #logo img {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 header #title {
@@ -49,26 +55,71 @@ header #title #td1 {
   border-radius: 1rem 1rem 0 0;
 }
 
-header #title :nth-child(1) td {
+header #title :nth-child(1) {
   background-color: #003e7b;
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: left;
-  height: 52%;
   font-size: 3vw;
   color: white;
   letter-spacing: 0.5rem;
 }
 
-header #title :nth-child(2) td {
+@media screen and (min-width: 1900px) {
+  header #title :nth-child(1) {
+    font-size: 2.5vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header #title :nth-child(1) {
+    font-size: 5vw;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  header #title :nth-child(1) {
+    letter-spacing: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header #title :nth-child(1) {
+    letter-spacing: 0.2rem;
+  }
+}
+
+header #title :nth-child(2) {
   background-color: #fcd605;
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 18px;
+  padding-bottom: 18px;
   text-align: right;
-  height: 48%;
   font-size: 1.8vw;
   color: black;
   letter-spacing: 0.35rem;
+}
+
+@media screen and (max-width: 480px) {
+  header #title :nth-child(2) {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  header #title :nth-child(2) {
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  header #title :nth-child(2) {
+    letter-spacing: 0.2rem;
+  }
 }
 
 @font-face {
@@ -88,9 +139,28 @@ header #title :nth-child(2) td {
   header #title {
     max-height: 50%;
   }
-  header #title :nth-child(2) td {
+  header #title :nth-child(2) {
     font-size: 2vw;
     letter-spacing: 2;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 1900px) {
+  header #title :nth-child(2) {
+    font-size: 1vw;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 1900px) {
+  header #title :nth-child(2) {
+    letter-spacing: 1;
+  }
+}
+
+@media screen and (max-width: 480px) and (max-width: 480px) {
+  header #title :nth-child(2) {
+    font-size: 3vw;
+    letter-spacing: 0.1rem;
   }
 }
 
@@ -109,12 +179,27 @@ header #title :nth-child(2) td {
   header #title {
     max-height: 40%;
   }
-  header #title :nth-child(1) td {
+  header #title :nth-child(1) {
     letter-spacing: 0.3rem;
   }
-  header #title :nth-child(2) td {
+}
+
+@media screen and (max-width: 320px) and (min-width: 1900px) {
+  header #title :nth-child(1) {
+    letter-spacing: 0.2rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  header #title :nth-child(2) {
     font-size: 3vw;
     letter-spacing: 0;
+  }
+}
+
+@media screen and (max-width: 320px) and (min-width: 1900px) {
+  header #title :nth-child(2) {
+    font-size: 2vw;
   }
 }
 /*# sourceMappingURL=header.css.map */

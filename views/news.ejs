@@ -11,25 +11,27 @@
         <title>Новини</title>
     </head>
     <body>
-        <section id="sky-section">
-            <%- include("blocks/header.ejs") %> 
+        <div id="CONTAINER">
+            <section id="sky-section">
+                <%- include("blocks/header.ejs") %> 
+                
+                <%- include("blocks/menu.ejs") %>
+            </section>
             
-            <%- include("blocks/menu.ejs") %>
-        </section>
-        
-        <!-- CONTENT -->
-        <section id="CONTENT">
-
-            <div class="desk-wrapper">
-                <%- include("blocks/news.ejs") %>
-                <div>
-                    <%- include("blocks/useful-links.ejs") %>
+            <!-- CONTENT -->
+            <section id="CONTENT">
+    
+                <div class="desk-wrapper">
+                    <%- include("blocks/news.ejs") %>
+                    <div>
+                        <%- include("blocks/useful-links.ejs") %>
+                    </div>
                 </div>
-            </div>
-
-        </section>
-
-        <%- include("blocks/footer.ejs") %>
+    
+            </section>
+    
+            <%- include("blocks/footer.ejs") %>
+        </div>
 
     </body>
     <script src="/resources/styles/index/small-menu.js"></script>

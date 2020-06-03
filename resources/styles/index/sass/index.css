@@ -1,8 +1,12 @@
 @charset "UTF-8";
+#CONTAINER {
+  max-width: 1500px !important;
+  margin: auto;
+}
+
 * {
   margin: 0;
   padding: 0;
-  max-width: 100%;
 }
 
 * a {
@@ -10,17 +14,24 @@
 }
 
 body {
-  background-color: #d0ebff;
+  background-image: url(../../../images/index/sub_background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
   font-family: Corbel;
 }
 
 /* На главной странице шапку, меню, слайдер, "Запрошуємо на навчання!" и кнопку обрамляет небесный фон */
 #sky-section {
-  background-image: url(../../../images/index/sub_background.jpg);
-  background-attachment: fixed;
   padding-bottom: 0.1%;
   padding-left: 2%;
   padding-right: 2%;
+}
+
+@media screen and (max-width: 480px) {
+  #sky-section {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 /* "Запрошуємо на навчання!" */
@@ -35,6 +46,30 @@ body {
   text-transform: uppercase;
 }
 
+@media screen and (min-width: 1900px) {
+  #offer {
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #offer {
+    font-size: 5vw;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  #offer {
+    letter-spacing: 0.3em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #offer {
+    letter-spacing: 0.1em;
+  }
+}
+
 .button {
   padding: 0.5vw;
   margin: 10px auto;
@@ -47,6 +82,19 @@ body {
   font-weight: bold;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
+}
+
+@media screen and (min-width: 1900px) {
+  .button {
+    font-size: 1.0vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .button {
+    font-size: 4vw;
+    width: 50%;
+  }
 }
 
 .button:hover {
@@ -73,6 +121,18 @@ body {
   text-transform: uppercase;
 }
 
+@media screen and (min-width: 1900px) {
+  #CONTENT table td {
+    font-size: 1.4vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #CONTENT table td {
+    font-size: 4vw;
+  }
+}
+
 /* DESKS */
 /* Оболочка дощечки */
 .desk-wrapper {
@@ -82,6 +142,13 @@ body {
   margin-left: 1%;
   margin-right: 1%;
   /* Убираем маркеры элементов списка внутри дощечек */
+}
+
+@media screen and (max-width: 480px) {
+  .desk-wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 .desk-wrapper li {
@@ -116,6 +183,26 @@ body {
           box-shadow: -0.7vw 0.7vw 0.7vw 0.35vw rgba(0, 0, 0, 0.7);
 }
 
+@media screen and (min-width: 1900px) {
+  .desk {
+    font-size: 0.9vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .desk {
+    margin-bottom: 4%;
+    font-size: 4vw;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .desk {
+    -webkit-box-shadow: -0.4vw 0.4vw 0.4vw 0.2vw rgba(0, 0, 0, 0.7);
+            box-shadow: -0.4vw 0.4vw 0.4vw 0.2vw rgba(0, 0, 0, 0.7);
+  }
+}
+
 .desk div {
   margin-bottom: 1%;
 }
@@ -133,6 +220,22 @@ body {
   height: 5.5vw;
 }
 
+@media screen and (min-width: 1900px) {
+  .ribbon {
+    left: 1.5vw;
+    width: 34px;
+    height: 4vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ribbon {
+    left: 2.2vw;
+    width: 18px;
+    height: 7vw;
+  }
+}
+
 .ribbon:before {
   content: "";
   position: absolute;
@@ -143,11 +246,53 @@ body {
   border-bottom: 1.15vw solid transparent;
 }
 
+@media screen and (min-width: 1900px) {
+  .ribbon:before {
+    top: 3.97vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ribbon:before {
+    top: 6.97vw;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .ribbon:before {
+    border-left: 17px solid #a60000;
+    border-right: 17px solid #a60000;
+    border-top: 17px solid #a60000;
+    border-bottom: 17px solid transparent;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ribbon:before {
+    border-left: 9px solid #a60000;
+    border-right: 9px solid #a60000;
+    border-top: 9px solid #a60000;
+    border-bottom: 9px solid transparent;
+  }
+}
+
 /* Заголовок дощечки */
 .desk-title {
   text-align: center;
   font-weight: bold;
   font-size: 1.5em;
+}
+
+@media screen and (min-width: 1900px) {
+  .desk-title {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .desk-title {
+    font-size: 5vw;
+  }
 }
 
 .desk-text {
@@ -205,10 +350,33 @@ body {
   font-weight: normal !important;
 }
 
+@media screen and (max-width: 480px) {
+  .single-new .single-new-description .single-new-text {
+    font-size: 3vw;
+  }
+}
+
 .single-new .single-new-date {
   position: absolute;
   top: 5%;
   left: 85%;
-  width: 200px;
+  width: 100px;
+}
+
+@media screen and (max-width: 480px) {
+  .single-new .single-new-date {
+    display: none;
+  }
+}
+
+.single-new .single-new-date-mobile {
+  display: none;
+  font-size: 3vw;
+}
+
+@media screen and (max-width: 480px) {
+  .single-new .single-new-date-mobile {
+    display: block;
+  }
 }
 /*# sourceMappingURL=index.css.map */

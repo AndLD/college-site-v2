@@ -1,28 +1,37 @@
 @import '../../sass/variables.scss';
 
+#CONTAINER {
+    max-width: 1500px !important;
+    margin: auto;
+}
+
 * {
     margin: 0;
     padding: 0;
-    max-width: 100%;
+    // max-width: 100%;
     a {
         text-decoration: none;
     }
 }
 
 body {
-    background-color: rgb(208, 235, 255);
+    // background-color: rgb(208, 235, 255);
+    background-image: url(../../../images/index/sub_background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
 
     font-family: $defaultFont;
 }
 
 /* На главной странице шапку, меню, слайдер, "Запрошуємо на навчання!" и кнопку обрамляет небесный фон */
 #sky-section {
-    background-image: url(../../../images/index/sub_background.jpg);
-    background-attachment: fixed;
-
     padding-bottom: 0.1%;
     padding-left: $defaultPaddingLeft;
     padding-right: $defaultPaddingRight;
+    @media screen and (max-width: 480px) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 /* "Запрошуємо на навчання!" */
@@ -34,9 +43,21 @@ body {
     text-align: center;
 
     font-size: 2.5vw;
+    @media screen and (min-width: 1900px) {
+        font-size: 2vw;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 5vw;
+    }
     color: white;
     font-weight: bold;
     letter-spacing: 0.5em;
+    @media screen and (min-width: 1900px) {
+        letter-spacing: 0.3em;
+    }
+    @media screen and (max-width: 480px) {
+        letter-spacing: 0.1em;
+    }
     
     text-transform: uppercase;
 }
@@ -54,6 +75,13 @@ body {
     border-radius: 30px;
 
     font-size: 1.5vw;
+    @media screen and (min-width: 1900px) {
+        font-size: 1.0vw;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 4vw;
+        width: 50%;
+    }
     color: $brightBlue;
     font-weight: bold;
     
@@ -81,6 +109,12 @@ body {
 
     td {
         font-size: 1.7vw;
+        @media screen and (min-width: 1900px) {
+            font-size: 1.4vw;
+        }
+        @media screen and (max-width: 480px) {
+            font-size: 4vw;
+        }
         font-weight: bold;
     
         text-transform: uppercase;
@@ -96,6 +130,10 @@ body {
 
     margin-left: $defaultPaddingLeft - 1;
     margin-right: $defaultPaddingRight - 1;
+    @media screen and (max-width: 480px) {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
     // margin-bottom: 2%;
 
     /* Убираем маркеры элементов списка внутри дощечек */
@@ -110,7 +148,8 @@ body {
 }
 
 /* Дощечка */
-$boxShadowSize: 0.7vw;
+$boxShadowSize1900px: 0.4vw;
+$boxShadowSize1600px: 0.7vw;
 .desk {
     flex: 1;
     position: relative;
@@ -127,8 +166,18 @@ $boxShadowSize: 0.7vw;
     margin-right: 1%;
 
     font-size: $dropMenuElem;
+    @media screen and (min-width: 1900px) {
+        font-size: 0.9vw;
+    }
+    @media screen and (max-width: 480px) {
+        margin-bottom: 4%;
+        font-size: 4vw;
+    }
 
-    box-shadow: -1 * $boxShadowSize $boxShadowSize $boxShadowSize 1/2 * $boxShadowSize rgba(0, 0, 0, 0.7);
+    box-shadow: -1 * $boxShadowSize1600px $boxShadowSize1600px $boxShadowSize1600px 1/2 * $boxShadowSize1600px rgba(0, 0, 0, 0.7);
+    @media screen and (min-width: 1900px) {
+        box-shadow: -1 * $boxShadowSize1900px $boxShadowSize1900px $boxShadowSize1900px 1/2 * $boxShadowSize1900px rgba(0, 0, 0, 0.7);
+    }
 
     div {
         margin-bottom: 1%;
@@ -139,7 +188,9 @@ $boxShadowSize: 0.7vw;
     }
 }
 
-$ribbonHeight: 5.5vw;
+$ribbonHeight1600px: 5.5vw;
+$ribbonHeight1900px: 4.0vw;
+$ribbonHeight480px: 7vw;
 $ribbonColor: rgb(166, 0, 0);
 .ribbon {
     position: absolute;
@@ -150,18 +201,49 @@ $ribbonColor: rgb(166, 0, 0);
     left: 2.5vw;
 
     width: 2.3vw;
-    height: $ribbonHeight;
+    
+    height: $ribbonHeight1600px;
+    @media screen and (min-width: 1900px) {
+        left: 1.5vw;
+        width: 34px;
+        height: $ribbonHeight1900px;
+    }
+
+    @media screen and (max-width: 480px) {
+        left: 2.2vw;
+        width: 18px;
+        height: $ribbonHeight480px;
+    }
 
     &:before {
         content: "";
         position: absolute;
     
-        top: $ribbonHeight - 0.01vw;
+        top: $ribbonHeight1600px - 0.01vw;
+        @media screen and (min-width: 1900px) {
+            top: $ribbonHeight1900px - 0.03vw;
+        }
+        @media screen and (max-width: 480px) {
+            top: $ribbonHeight480px - 0.03vw;
+        }
     
         border-left: 1.15vw solid $ribbonColor;
         border-right: 1.15vw solid $ribbonColor;
         border-top: 1.15vw solid $ribbonColor;
         border-bottom: 1.15vw solid transparent;
+        @media screen and (min-width: 1900px) {
+            border-left: 17px solid $ribbonColor;
+            border-right: 17px solid $ribbonColor;
+            border-top: 17px solid $ribbonColor;
+            border-bottom: 17px solid transparent;
+        }
+
+        @media screen and (max-width: 480px) {
+            border-left: 9px solid $ribbonColor;
+            border-right: 9px solid $ribbonColor;
+            border-top: 9px solid $ribbonColor;
+            border-bottom: 9px solid transparent;
+        }
     }
 }
 
@@ -171,10 +253,15 @@ $ribbonColor: rgb(166, 0, 0);
 
     font-weight: bold;
     font-size: 1.5em;
+    @media screen and (min-width: 1900px) {
+        font-size: 1em;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 5vw;
+    }
 }
 
 .desk-text {
-
     margin-left: 5%;
     // min-height: 80%;
 
@@ -228,6 +315,9 @@ $ribbonColor: rgb(166, 0, 0);
 
         .single-new-text {
             font-weight: normal !important;
+            @media screen and (max-width: 480px) {
+                font-size: 3vw;
+            }
         }
     }
 
@@ -237,6 +327,17 @@ $ribbonColor: rgb(166, 0, 0);
         top: 5%;
         left: 85%;
 
-        width: 200px;
+        width: 100px;
+
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
+    }
+    .single-new-date-mobile {
+        display: none;
+        font-size: 3vw;
+        @media screen and (max-width: 480px) {
+            display: block;
+        }
     }
 }
