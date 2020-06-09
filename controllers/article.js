@@ -47,12 +47,12 @@ exports.putArticle = async (req, res) => {
         id: req.params.id,
         title: req.body.title,
         html: req.body.updateFile == "true" ? await filesHelpers.convertDocxToHtml(req.file.filename) : null,
-        docx: req.body.updateFile == "true" ? new Buffer(fs.readFileSync(constants.DEFAULT_BUFFER_CATALOG + req.file.filename)) : null
+        docx: req.body.updateFile == "true" ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null
     }
 
     if (req.body.updateFile == "true") {
         // Удаление файла
-        fs.unlink(constants.DEFAULT_BUFFER_CATALOG + req.file.filename, (error) => {
+        fs.unlink(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename), (error) => {
             if (error) {
                 console.log("File deleting error: " + error.code)
             }
