@@ -99,7 +99,7 @@ exports.postDownloadArticle = async (req, res) => {
     var filename = "article" + req.params.id + ".docx"
 
     // Формируем файл
-    fs.writeFileSync(constants.DEFAULT_BUFFER_CATALOG + filename, article.docx, (error) => {
+    fs.writeFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), article.docx, (error) => {
         if (error) {
             console.log("File writing error: " + error.code)
             return res.sendStatus(400)
@@ -107,13 +107,13 @@ exports.postDownloadArticle = async (req, res) => {
     })
 
     // Отправляем файл на скачивание
-    res.download(dirname + constants.DEFAULT_BUFFER_CATALOG + filename, (error) => {
+    res.download(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), (error) => {
         if (error) {
             console.log("Send file to download error: " + error.message)
         }
 
         // Удаляем созданный файл
-        fs.unlinkSync(dirname + constants.DEFAULT_BUFFER_CATALOG + filename, (error) => {
+        fs.unlinkSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), (error) => {
             console.log("File deleting error: " + error.code)
             return res.sendStatus(400)
         })

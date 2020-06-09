@@ -1,7 +1,8 @@
-let os = require('os');
+const path = require('path')
 
 exports.files = {
-    DEFAULT_BUFFER_CATALOG: os.platform() == "win32" ? "\\resources\\buffer\\" : "/resources/buffer/"
+    DEFAULT_BUFFER_CATALOG: path.join("resources", "buffer"),
+    pathJoin: path.join
 }
 
 exports.common = {
