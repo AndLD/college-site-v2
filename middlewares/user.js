@@ -55,7 +55,7 @@ exports.ipGuard = async (req, res, next) => {
     }
 
     for(var i = 0; i < constants.ALLOWED_HOSTS.length; i++) {
-        if (ip == constants.ALLOWED_HOSTS[i] || ip == "::ffff:" + constants.ALLOWED_HOSTS[i]) {
+        if (ip == constants.ALLOWED_HOSTS[i] || ip == "::ffff:" + constants.ALLOWED_HOSTS[i] || ip == '') {
             return next()
         }
     }
