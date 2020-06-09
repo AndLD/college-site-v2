@@ -31,7 +31,7 @@ exports.is2FANotLogged = (req, res, next) => {
 
 // Сравнение ip клиента с массивом разрешенных адресов
 exports.ipGuard = async (req, res, next) => {
-    if (constants.ALLOWED_HOSTS.length == 0) {
+    if (constants.ALLOWED_HOSTS.length == 0 || constants.ALLOWED_HOSTS[0] == '') {
         return next()
     }
 
@@ -55,7 +55,7 @@ exports.ipGuard = async (req, res, next) => {
     }
 
     for(var i = 0; i < constants.ALLOWED_HOSTS.length; i++) {
-        if (ip == constants.ALLOWED_HOSTS[i] || ip == "::ffff:" + constants.ALLOWED_HOSTS[i] || ip == '') {
+        if (ip == constants.ALLOWED_HOSTS[i] || ip == "::ffff:" + constants.ALLOWED_HOSTS[i]) {
             return next()
         }
     }
