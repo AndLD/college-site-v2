@@ -13,11 +13,11 @@ exports.postNews = async (req, res) => {
         title: req.body.title,
         addDate: new Date(req.body.addDate),
         html: await filesHelpers.convertDocxToHtml(req.file.filename),
-        docx: new Buffer(fs.readFileSync(constants.DEFAULT_BUFFER_CATALOG + req.file.filename))
+        docx: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)))
     }
 
     // Удаляем полученный файл
-    fs.unlink(constants.DEFAULT_BUFFER_CATALOG + req.file.filename, (error) => {
+    fs.unlink(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename), (error) => {
         if (error) {
             console.log("File deleting error: " + error.code)
         }
@@ -44,12 +44,12 @@ exports.putNews = async (req, res) => {
         title: req.body.title,
         addDate: new Date(req.body.addDate),
         html: (req.body.updateFile == "true" ? await filesHelpers.convertDocxToHtml(req.file.filename) : null),
-        docx: (req.body.updateFile == "true" ? new Buffer(fs.readFileSync(constants.DEFAULT_BUFFER_CATALOG + req.file.filename)) : null)
+        docx: (req.body.updateFile == "true" ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null)
     }
 
     if (req.body.updateFile == "true") {
         // Удаление полученного файла
-        fs.unlink(constants.DEFAULT_BUFFER_CATALOG + req.file.filename, (error) => {
+        fs.unlink(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename), (error) => {
             if (error) {
                 console.log("File deleting error: " + error.code)
             }
@@ -99,19 +99,19 @@ exports.postDownloadNews = async (req, res) => {
     var filename = "news" + req.params.id + ".docx"
 
     // Формируем файл
-    fs.writeFileSync(constants.DEFAULT_BUFFER_CATALOG + filename, news.docx, (error) => {
+    fs.writeFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), news.docx, (error) => {
         if (error) {
             console.log("File writing error: " + error.code)
             return res.sendStatus(400)
         }
     })
 
-    res.download(dirname + constants.DEFAULT_BUFFER_CATALOG + filename, (error) => {
+    res.download(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), (error) => {
         if (error) {
             console.log("Send file to download error: " + error.message)
         }
 
-        fs.unlinkSync(dirname + constants.DEFAULT_BUFFER_CATALOG + filename, (error) => {
+        fs.unlinkSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), (error) => {
             console.log("File deleting error: " + error.code)
             return res.sendStatus(400)
         })

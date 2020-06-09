@@ -9,16 +9,16 @@ exports.postArticle = async (req, res) => {
     if (!req.body) return res.sendStatus(400)
 
     if (req.file == undefined || req.file == null) return res.sendStatus(400)
-
+    
     // Инициализируем статью
     var article = {
         title: req.body.title,
         html: await filesHelpers.convertDocxToHtml(req.file.filename),
-        docx: new Buffer(fs.readFileSync(constants.DEFAULT_BUFFER_CATALOG + req.file.filename))
+        docx: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)))
     }
 
     // Удаление файла
-    fs.unlink(constants.DEFAULT_BUFFER_CATALOG + req.file.filename, (error) => {
+    fs.unlink(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename), (error) => {
         if (error) {
             console.log("File deleting error: " + error.code)
         }
