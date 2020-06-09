@@ -1,3 +1,5 @@
+require(["/resources/styles/profile/show-menu.js"])
+
 // Элементы меню админки
 var menuElems = document.querySelectorAll(".menu li")
 // Элементы контента (меню, статьи, новости)
@@ -9,6 +11,7 @@ for(var i = 0; i < menuElems.length; i++) {
 
 // Показать элемент контента
 function showContentElem() {
+    closeMenu()
     localStorage.setItem("openedElem", event.target.getAttribute("href"))
 
     for(var i = 0; i < contentElems.length; i++) {
