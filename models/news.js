@@ -1,5 +1,17 @@
 const mysql = require("../db/mysql")
 
+/* SQL Table:
+
+id
+title
+addDate
+html
+docx
++ mainImage
++ subImages
+
+*/
+
 exports.insertNews = (news) => {
     return new Promise((resolve) => {
         var query = mysql.connection.query("INSERT INTO news (title, addDate, html, docx) VALUES (?, ?, ?, ?)",

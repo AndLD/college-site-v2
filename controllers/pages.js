@@ -2,6 +2,8 @@
 var menuModel = require("../models/menu")
 var articleModel = require("../models/article")
 var newsModel = require("../models/news")
+var sliderImgsModel = require("../models/sliderImg")
+var imageModel = require("../models/image")
 var userModel = require("../models/user")
 var subjectModel = require("../models/subject")
 var materialModel = require("../models/material")
@@ -208,6 +210,43 @@ exports.profileController = async (req, res) => {
         }
 
         var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
+
+        // ! Получение картинок для слайдеров
+
+        // Получаем информацию о картинках для слайдеров
+        let selectedSliderImgsResult = await sliderImgsModel.selectSliderImgs()
+        if (selectedSliderImgsResult.error) {
+            return res.sendStatus(400)
+        }
+
+        let sliderImgsInfo = selectedSliderImgsResult.data
+
+        let whereString = "WHERE"
+        for (let i = 0; i < sliderImgsInfo.length; i++) {
+            whereString += " id = " + sliderImgsInfo[i].imageId + " or"
+        }
+        
+        // Получение картинок для слайдеров
+        let selectedImagesResult = await imageModel.selectImages(whereString != "WHERE" ? whereString.slice(0, -3) : null) // slice - обрезаем " and" в конце строки
+        if (selectedImagesResult.error) {
+            return res.sendStatus(400)
+        }
+        
+        let sliderImgs = selectedImagesResult.data
+
+        var slider1Imgs = []
+        var slider2Imgs = []
+        for (let i = 0; i < sliderImgsInfo.length; i++) {
+            if (sliderImgsInfo[i].sliderId == 1) {
+                slider1Imgs.push(sliderImgs[i])
+            }
+
+            if (sliderImgsInfo[i].sliderId == 2) {
+                slider2Imgs.push(sliderImgs[i])
+            }
+        }
+        console.log(sliderImgsInfo.length + " imgsInfo")
+        console.log(sliderImgs.length + " imgs")
     }
 
     if (req.user.userrole == "admin" || req.user.userrole == "moderator") {
@@ -243,5 +282,5 @@ exports.profileController = async (req, res) => {
         var materials = selectedMaterialsResult.data
     }
 
-    res.render("profile", { user: req.user, menu: menu, articles: articles, news: news, users: users, subjects: subjects, materials: materials })
+    res.render("profile", { user: req.user, menu: menu, articles: articles, news: news, slider1Imgs: slider1Imgs, users: users, subjects: subjects, materials: materials })
 }

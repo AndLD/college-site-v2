@@ -13,6 +13,7 @@ header #logo {
           flex: 1;
   padding: auto;
   text-align: center;
+  max-height: 20vh;
 }
 
 @media screen and (min-width: 481px) {

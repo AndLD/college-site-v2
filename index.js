@@ -74,7 +74,7 @@ server.use(flash())
 const constants = require("./helpers/constants").files
 
 const multer = require("multer")
-server.use(multer({ dest: constants.DEFAULT_BUFFER_CATALOG }).single("docx"))
+const multerUpload = multer({ dest: constants.DEFAULT_BUFFER_CATALOG })
 
 const userMiddlewares = require("./middlewares/user")
 
@@ -163,6 +163,10 @@ const articleControllers = require("./controllers/article")
 
 // Группируем запросы
 const articleRoutes = express.Router()
+
+// Подключаем мидлвар для обработки посылаемых файлов
+articleRoutes.use(multerUpload.single("docx"))
+
 server.use("/article", userMiddlewares.ipGuard, limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, articleRoutes)
 
 // Добавить статью
@@ -181,6 +185,10 @@ const newsControllers = require("./controllers/news")
 
 // Группируемм запросы
 const newsRoutes = express.Router()
+
+// Подключаем мидлвар для обработки посылаемых файлов
+newsRoutes.use(multerUpload.single("docx"))
+
 server.use("/news", userMiddlewares.ipGuard, limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, newsRoutes)
 
 // Добавить новость
@@ -199,6 +207,10 @@ const subjectControllers = require("./controllers/subject")
 
 // Группируемм запросы
 const subjectRoutes = express.Router()
+
+// Подключаем мидлвар для обработки посылаемых файлов
+subjectRoutes.use(multerUpload.single("docx"))
+
 server.use("/subject", limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, userMiddlewares.isModerator, subjectRoutes)
 
 // Добавить предмет
@@ -215,6 +227,10 @@ const materialControllers = require("./controllers/material")
 
 // Группируемм запросы
 const materialRoutes = express.Router()
+
+// Подключаем мидлвар для обработки посылаемых файлов
+materialRoutes.use(multerUpload.single("docx"))
+
 server.use("/material", limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, userMiddlewares.isModerator, materialRoutes)
 
 // Добавить материал
@@ -225,6 +241,26 @@ materialRoutes.post("/:id", materialControllers.putMaterial)
 materialRoutes.delete("/:id", materialControllers.deleteMaterial)
 // Скачать материал
 materialRoutes.post("/:id", materialControllers.postDownloadMaterial)
+
+// ! СЛАЙДЕРЫ главной страницы
+
+// Подключаем контроллеры
+const sliderImgControllers = require("./controllers/sliderImg")
+
+// Группируемм запросы
+const sliderImgRoutes = express.Router()
+
+// Подключаем мидлвар для обработки посылаемых файлов
+sliderImgRoutes.use(multerUpload.single("image"))
+
+server.use("/slider/:sliderId", limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, userMiddlewares.isAdmin, sliderImgRoutes)
+
+// Добавить картинку в слайдер
+sliderImgRoutes.post("/", sliderImgControllers.postSliderImg)
+// Изменить картинку в слайдере
+// sliderImgRoutes.put("/:id", sliderImgControllers.putSliderImg)
+// Удалить картинку из слайдера
+// sliderImgRoutes.delete("/:id", sliderImgControllers.deleteSliderImg)
 
 // Запускаем сервер
 const PORT = 3000

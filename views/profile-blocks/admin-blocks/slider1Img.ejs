@@ -1,0 +1,31 @@
+<div class="slider1Img-wrapper">
+    <div id="add-sliderImg" class="icons-wrapper">
+        <img src="/resources/images/profile/icons/add.png" alt="add-sliderImg">
+    </div>
+    <table class="sliderImgs">
+        <tr>
+            <td>№</td>
+            <td>Image</td>
+            <td>Id</td>
+        </tr>
+        <% for(var i = 0; i < slider1Imgs.length; i++) { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><img src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>">
+                    <div class="icons-wrapper">
+                        <div>
+                            <div>
+                                <img src="/resources/images/profile/icons/edit.png" alt="edit-slider1Img">
+                            </div>
+                            <div>
+                                <img src="/resources/images/profile/icons/delete.png" alt="delete-slider1Img">
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td><%= slider1Imgs[i].id %></td>
+            </tr> 
+        <% } %>
+    </table>
+    <script src="/resources/scripts/profile/admin/sliderImg.js"></script>
+</div>

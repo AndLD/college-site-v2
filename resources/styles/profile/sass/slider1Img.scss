@@ -1,0 +1,120 @@
+.slider1Img-wrapper {
+    margin: 10vh auto;
+
+    margin-top: 20vh; 
+    margin-left: 10%;
+    margin-right: 10%;
+
+    // Исправление для иконки добавления статьи
+    #add-sliderImg {
+        left: 0%;
+    }
+
+    .icons-wrapper:not(#add-sliderImg) {
+        @media screen and (min-width: 1920px) {
+            left: 85%;
+        }
+
+        @media screen and (max-width: 1919px) {
+            left: 80%;
+        }
+
+        div {
+            display: flex;
+
+            div {
+                form {
+                    height: 45px;
+                
+                    button {
+                        background-color: transparent;
+                        border: none;
+                    
+                        height: inherit;
+                    
+                        outline: 0;
+                    }
+                }
+
+                img {
+                    background-color: transparent;
+                    border: none;
+
+                    @media screen and (min-width: 1920px) {
+                        height: 45px;
+                    }
+
+                    @media screen and (max-width: 1919px) {
+                        height: 42px;
+                    }
+                }
+            }
+        }
+    }
+
+    .sliderImgs {
+        width: 100%;
+        height: 100%;
+
+        tbody {
+            &>:first-child {
+                font-weight: bold;
+
+                td {
+                    padding-left: 0 !important;
+
+                    text-align: center;
+                }
+            }
+
+            tr {
+                &>:first-child, &>:last-child {
+                    text-align: center;
+
+                    width: 7%;
+                }
+
+                &>:nth-child(2) {
+                    padding-left: 2%;
+                }
+
+                &:hover {
+                    .icons-wrapper {
+                        opacity: 1;
+                    }
+                }
+    
+                td {
+                    position: relative;
+        
+                    background-color: white;
+
+                    padding-top: 0.5vw;
+                    padding-bottom: 0.5vw;
+        
+                    font-size: 25px;
+        
+                    border: 1px solid black;
+        
+                    .icons-wrapper {
+                        position: absolute;
+        
+                        top: 0;
+                        left: 40%;
+    
+                        height: 40px;
+    
+                        opacity: 0;
+    
+                        transition: all ease 0.3s;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
