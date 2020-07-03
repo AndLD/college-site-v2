@@ -213,7 +213,7 @@ body {
 
 .ribbon {
   position: absolute;
-  background-color: #a60000;
+  background-color: #0054a6;
   top: 0;
   left: 2.5vw;
   width: 2.3vw;
@@ -240,9 +240,9 @@ body {
   content: "";
   position: absolute;
   top: 5.49vw;
-  border-left: 1.15vw solid #a60000;
-  border-right: 1.15vw solid #a60000;
-  border-top: 1.15vw solid #a60000;
+  border-left: 1.15vw solid #0054a6;
+  border-right: 1.15vw solid #0054a6;
+  border-top: 1.15vw solid #0054a6;
   border-bottom: 1.15vw solid transparent;
 }
 
@@ -260,18 +260,18 @@ body {
 
 @media screen and (min-width: 1900px) {
   .ribbon:before {
-    border-left: 17px solid #a60000;
-    border-right: 17px solid #a60000;
-    border-top: 17px solid #a60000;
+    border-left: 17px solid #0054a6;
+    border-right: 17px solid #0054a6;
+    border-top: 17px solid #0054a6;
     border-bottom: 17px solid transparent;
   }
 }
 
 @media screen and (max-width: 480px) {
   .ribbon:before {
-    border-left: 9px solid #a60000;
-    border-right: 9px solid #a60000;
-    border-top: 9px solid #a60000;
+    border-left: 9px solid #0054a6;
+    border-right: 9px solid #0054a6;
+    border-top: 9px solid #0054a6;
     border-bottom: 9px solid transparent;
   }
 }

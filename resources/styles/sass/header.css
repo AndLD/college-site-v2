@@ -60,10 +60,10 @@ header #title :nth-child(1) {
   background-color: #003e7b;
   padding-left: 5%;
   padding-right: 5%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   text-align: left;
-  font-size: 3vw;
+  font-size: 2.5vw;
   color: white;
   letter-spacing: 0.5rem;
 }

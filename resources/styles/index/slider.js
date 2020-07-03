@@ -133,8 +133,10 @@ function pointClick() {
 // Инициализация
 init()
 
-sliderButtons[0].firstChild.style.marginTop = "750%"
-sliderButtons[1].firstChild.style.marginTop = "750%"
+// sliderButtons[0].firstChild.style.marginTop = "750%"
+// sliderButtons[1].firstChild.style.marginTop = "750%"
+sliderButtons[0].firstChild.style.marginTop = "875%"
+sliderButtons[1].firstChild.style.marginTop = "875%"
 
 setInterval(() => {
     start(-1)

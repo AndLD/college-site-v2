@@ -191,7 +191,9 @@ $boxShadowSize1600px: 0.7vw;
 $ribbonHeight1600px: 5.5vw;
 $ribbonHeight1900px: 4.0vw;
 $ribbonHeight480px: 7vw;
-$ribbonColor: rgb(166, 0, 0);
+// $ribbonColor: rgb(166, 0, 0);
+// $ribbonColor: rgb(252, 214, 5);
+$ribbonColor: $menuColor;
 .ribbon {
     position: absolute;
 
