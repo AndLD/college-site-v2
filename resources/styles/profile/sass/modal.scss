@@ -188,12 +188,14 @@
 }
 
 .show-modal {
+    z-index: 10;
     // display: block !important;
     visibility: visible !important;
 
     opacity: 1 !important;
 
     .modal {
-        filter: blur(0);
+        filter: blur(0px);
+
     }
 }

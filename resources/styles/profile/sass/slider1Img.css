@@ -78,6 +78,10 @@
   padding-left: 2%;
 }
 
+.slider1Img-wrapper .sliderImgs tbody tr > :nth-child(2) img {
+  max-width: 200px;
+}
+
 .slider1Img-wrapper .sliderImgs tbody tr:hover .icons-wrapper {
   opacity: 1;
 }

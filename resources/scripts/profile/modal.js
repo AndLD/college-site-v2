@@ -1,4 +1,4 @@
-const HOST = ""
+// const HOST = ""
 
 // ! modal
 var closeModalButton = document.querySelector(".close-modal")
@@ -14,7 +14,9 @@ function closeModal() {
     modalWrapper.classList.remove("show-modal")
 }
 
-var dropMenuElems = document.querySelectorAll(".drop-menu")
+if (!dropMenuElems) {
+    var dropMenuElems = document.querySelectorAll(".drop-menu")
+}
 
 function visibleDropMenuElems() {
     for(i = 0; i < dropMenuElems.length; i++) {

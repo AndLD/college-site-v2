@@ -201,12 +201,13 @@
 }
 
 .show-modal {
+  z-index: 10;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
 .show-modal .modal {
-  -webkit-filter: blur(0);
-          filter: blur(0);
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
 }
 /*# sourceMappingURL=modal.css.map */

@@ -1,4 +1,6 @@
 .slider1Img-wrapper {
+    z-index: 1;
+
     margin: 10vh auto;
 
     margin-top: 20vh; 
@@ -76,6 +78,10 @@
 
                 &>:nth-child(2) {
                     padding-left: 2%;
+
+                    img {
+                        max-width: 200px;
+                    }
                 }
 
                 &:hover {

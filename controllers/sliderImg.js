@@ -15,7 +15,6 @@ exports.postSliderImg = async (req, res) => {
         mimetype: req.file.mimetype,
         image: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)))
     }
-    console.log(req.file)
 
     // Сохранение картинки
     let imageInsertedResult = await imageModel.insertImage(image)
@@ -34,8 +33,6 @@ exports.postSliderImg = async (req, res) => {
         imageId: Object.values(imageInsertedResult.data[0])[0]
     }
 
-    console.log(sliderImg)
-
     // Сохранение информации о картинке в слайдере
     let error = await sliderImgModel.insertSliderImg(sliderImg)
     if (error) {
@@ -49,11 +46,5 @@ exports.postSliderImg = async (req, res) => {
         }
     })
 
-    // Сохранение связи картинки со слайдером
-    error = await sliderImgModel.insertSliderImg(sliderImg)
-    if (error) {
-        return res.sendStatus(400)
-    }
-    
     res.sendStatus(200)
 }

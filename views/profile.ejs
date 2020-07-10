@@ -30,6 +30,9 @@
 <body>
     <div class="content-wrapper">
 
+        <%- include("profile-blocks/modal.ejs") %> 
+        <script src="/resources/scripts/profile/modal.js"></script>
+
         <% if (user.userrole == "admin" || user.userrole == "moderator") { %>
             <%- include("profile-blocks/moderator-blocks/settings.ejs") %>
 
@@ -54,8 +57,6 @@
     </div>
 
     <%- include("profile-blocks/menu.ejs") %> 
-
-    <%- include("profile-blocks/modal.ejs") %> 
 
     <script src="/resources/styles/profile/show-menu.js"></script>
 

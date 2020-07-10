@@ -14,7 +14,7 @@ function showContentElem() {
     closeMenu()
     localStorage.setItem("openedElem", event.target.getAttribute("href"))
 
-    for(var i = 0; i < contentElems.length; i++) {
+    for(var i = 1; i < contentElems.length; i++) {
         contentElems[i].style.display = "none";
 
         if(contentElems[i].className == localStorage.getItem("openedElem")) {
@@ -25,7 +25,7 @@ function showContentElem() {
 
 if (localStorage.getItem("openedElem") == null) localStorage.setItem("openedElem", "menu-wrapper")
 
-for(var i = 0; i < contentElems.length; i++) {
+for(var i = 1; i < contentElems.length; i++) {
     contentElems[i].style.display = "none";
 
     if(contentElems[i].className == localStorage.getItem("openedElem")) {
