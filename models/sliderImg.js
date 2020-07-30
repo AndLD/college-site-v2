@@ -41,3 +41,100 @@ exports.selectSliderImgs = () => {
         })
     })
 }
+
+exports.selectSliderImgById = (id) => {
+    return new Promise((resolve) => {
+        let query = mysql.connection.query("SELECT * FROM sliderImgs WHERE id = '" + id + "'", (error, rows) => {
+            if (error) {
+                console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
+
+                resolve({ error: true, data: null })
+            } else {
+                console.log("MySQL query (" + query.sql + ") successfully done.")
+                
+                resolve({ error: false, data: rows[0] })
+            }
+        })
+    })
+}
+
+exports.updateSliderImg = (sliderImg) => {
+    return new Promise((resolve) => {
+        mysql.connection.beginTransaction((error) => {
+            if (error) resolve(true)
+            
+            // Запрос на обновление позиций всех остальных
+            let updatePositionsQuery = mysql.connection.query(
+                "UPDATE sliderImgs SET position = position " +
+                (sliderImg.position < sliderImg.oldPosition ? "+" : "-") + " 1 WHERE sliderId = '" + sliderImg.sliderId + "'", (error) => {
+                    if (error) {
+                        console.log("MySQL query (" + updatePositionsQuery.sql + ") finished with error: " + error.code)
+
+                        mysql.connection.rollback()
+
+                        resolve(true)
+                    } else {
+                        console.log("MySQL query (" + updatePositionsQuery.sql + ") successfully done.")
+
+                        let updateSliderImgQuery = mysql.connection.query(
+                            "UPDATE sliderImgs SET position = " + sliderImg.position + " WHERE id = '" + sliderImg.id + "'", (error) => {
+                                if (error) {
+                                    console.log("MySQL query (" + updatePositionsQuery.sql + ") finished with error: " + error.code)
+
+                                    mysql.connection.rollback()
+
+                                    resolve(true)
+                                } else {
+                                    console.log("MySQL query (" + updateSliderImgQuery.sql + ") successfully done.")
+
+                                    mysql.connection.commit()
+
+                                    resolve(false)
+                                }
+                            }
+                        )
+                    }
+                }
+            )
+        })
+    })
+}
+
+exports.deleteSliderImg = (sliderImg) => {
+    return new Promise((resolve) => {
+        mysql.connection.beginTransaction((error) => {
+            if (error) resolve(true)
+
+            let deleteSliderImgsQuery = mysql.connection.query("DELETE FROM sliderImgs WHERE id = '" + sliderImg.id + "'", (error) => {
+                if (error) {
+                    console.log("MySQL query (" + deleteSliderImgsQuery.sql + ") finished with error: " + error.code)
+    
+                    mysql.connection.rollback()
+
+                    resolve(true)
+                } else {
+                    console.log("MySQL query (" + deleteSliderImgsQuery.sql + ") successfully done.")
+    
+                    resolve(false)
+                }
+            })
+
+            let updatePositionsQuery = mysql.connection.query("UPDATE sliderImgs SET position = position - 1 WHERE sliderId = " +
+            sliderImg.sliderId + " AND position > " + sliderImg.position, (error) => {
+                if (error) {
+                    console.log("MySQL query (" + updatePositionsQuery.sql + ") finished with error: " + error.code)
+    
+                    mysql.connection.rollback()
+
+                    resolve(true)
+                } else {
+                    console.log("MySQL query (" + updatePositionsQuery.sql + ") successfully done.")
+    
+                    mysql.connection.commit()
+
+                    resolve(false)
+                }
+            })
+        })
+    })
+}

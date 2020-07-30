@@ -159,6 +159,9 @@ footer {
                         @media screen and (min-width: 1900px) {
                             font-size: 0.9vw;
                         }
+                        @media screen and (max-width: 480px) {
+                            font-size: 3vw;
+                        }
                     }
                 }
             }

@@ -1,4 +1,5 @@
 .slider1Img-wrapper {
+  z-index: 1;
   margin: 10vh auto;
   margin-top: 20vh;
   margin-left: 10%;

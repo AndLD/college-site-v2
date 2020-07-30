@@ -110,25 +110,25 @@ body {
 }
 
 /* CONTENT */
-#CONTENT table {
+#CONTENT .phrase-in-table {
   margin: auto;
   height: 8vw;
 }
 
-#CONTENT table td {
+#CONTENT .phrase-in-table td {
   font-size: 1.7vw;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 @media screen and (min-width: 1900px) {
-  #CONTENT table td {
+  #CONTENT .phrase-in-table td {
     font-size: 1.4vw;
   }
 }
 
 @media screen and (max-width: 480px) {
-  #CONTENT table td {
+  #CONTENT .phrase-in-table td {
     font-size: 4vw;
   }
 }

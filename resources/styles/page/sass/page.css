@@ -62,6 +62,22 @@
   margin-left: 7%;
 }
 
+.desk-wrapper .desk .desk-text table {
+  width: 100%;
+}
+
+.desk-wrapper .desk .desk-text table td {
+  margin-right: 50px;
+  min-width: 100px;
+  vertical-align: top;
+  border: 1px solid black;
+}
+
+p .desk-wrapper .desk .desk-text p strong {
+  text-align: center;
+  color: red;
+}
+
 .current-menu-links-block li {
   list-style-type: disc;
   -webkit-transition: all ease 0.3s;

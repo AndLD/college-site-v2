@@ -253,17 +253,17 @@ const sliderImgRoutes = express.Router()
 // Подключаем мидлвар для обработки посылаемых файлов
 sliderImgRoutes.use(multerUpload.single("image"))
 
-server.use("/slider/:sliderId", limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, userMiddlewares.isAdmin, sliderImgRoutes)
+server.use("/slider", limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, userMiddlewares.isAdmin, sliderImgRoutes)
 
 // Добавить картинку в слайдер
 sliderImgRoutes.post("/", sliderImgControllers.postSliderImg)
 // Изменить картинку в слайдере
-// sliderImgRoutes.put("/:id", sliderImgControllers.putSliderImg)
+sliderImgRoutes.put("/:sliderid/:id", sliderImgControllers.putSliderImg)
 // Удалить картинку из слайдера
-// sliderImgRoutes.delete("/:id", sliderImgControllers.deleteSliderImg)
+sliderImgRoutes.delete("/sliderImg/:id", sliderImgControllers.deleteSliderImg)
 
 // Запускаем сервер
-const PORT = 3000
+const PORT = process.env.PORT
 server.listen(PORT, () => {
     console.log("Server started at " + PORT + " port...")
 })

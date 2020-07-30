@@ -42,6 +42,10 @@ const putSliderImgFormHTML =
         <p>oldPosition</p>
         <input type="text" name="oldPosition">
     </label>
+    <label>
+        <p>Змінити зображення</p>
+        <input type="checkbox" name="updateFile">
+    </label>
     <label class="file">
         <p>Choose file *.jpg / *.jpeg / *.png</p>
         <input type="file" name="image">
@@ -56,16 +60,8 @@ const deleteSliderImgFormHTML =
 <div class="modal-title">Видалення зображення</div>
 <form>
     <label>
-        <p>SliderId</p>
-        <input type="text" name="sliderId">
-    </label>
-    <label>
         <p>Id</p>
         <input type="text" name="id">
-    </label>
-    <label>
-        <p>oldPosition</p>
-        <input type="text" name="oldPosition">
     </label>
     <div class="submit">Delete</div>
 </form>
@@ -119,19 +115,18 @@ function showEditSliderImgModalForm() {
     }
 
     let sliderImg = {
-        sliderId: 3,
-        id: 3,
-        position: 3,
-        oldPosition: 3
+        sliderId: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("sliderId"),
+        id: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.lastElementChild.textContent,
+        position: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.textContent
     }
 
     document.querySelector(".form-wrapper input[name='sliderId']").value = sliderImg.sliderId
     document.querySelector(".form-wrapper input[name='id']").value = sliderImg.id
     document.querySelector(".form-wrapper input[name='position']").value = sliderImg.position
-    document.querySelector(".form-wrapper input[name='oldPosition']").value = sliderImg.oldPosition
+    document.querySelector(".form-wrapper input[name='oldPosition']").value = sliderImg.position
 
     showModal()
-    document.querySelector("div.submit").onclick = () => { postSliderImgRequest() }
+    document.querySelector("div.submit").onclick = () => { putSliderImgRequest() }
 }
 
 // Показать форму для удаления картинки из слайдера
@@ -140,14 +135,12 @@ function showDeleteSliderImgModalForm() {
     modalWrapper.firstElementChild.lastElementChild.innerHTML = deleteSliderImgFormHTML
 
     let sliderImg = {
-        sliderId: 3,
-        id: 3,
-        oldPosition: 3
+        // sliderId: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("sliderId"),
+        id: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.lastElementChild.textContent
     }
 
-    document.querySelector(".form-wrapper input[name='sliderId']").value = sliderImg.sliderId
+    // document.querySelector(".form-wrapper input[name='sliderId']").value = sliderImg.sliderId
     document.querySelector(".form-wrapper input[name='id']").value = sliderImg.id
-    document.querySelector(".form-wrapper input[name='oldPosition']").value = sliderImg.oldPosition
 
     showModal()
     document.querySelector("div.submit").onclick = () => { deleteSliderImgRequest() }
@@ -188,7 +181,7 @@ function putSliderImgRequest() {
 
     var body = "position=" + document.querySelector("input[name='position']").value +
     "&" + "oldPosition=" + document.querySelector("input[name='oldPosition']").value +
-    "&" + "footer=" + document.querySelector("input[name='footer']").checked
+    "&" + "updateFile=" + document.querySelector("input[name='updateFile']").checked
 
     request.open(
         "PUT",
@@ -216,11 +209,10 @@ function putSliderImgRequest() {
 function deleteSliderImgRequest() {
     var request = new XMLHttpRequest()
 
-    var body = "oldPosition=" + document.querySelector("input[name='oldPosition']").value
-
     request.open(
         "DELETE",
-        HOST + "/slider/" + document.querySelector("input[name='sliderId']").value + "/" + document.querySelector("input[name='id']").value,
+        HOST + "/slider/sliderImg/" + 
+        document.querySelector("input[name='id']").value,
         false
     )
 
@@ -237,5 +229,5 @@ function deleteSliderImgRequest() {
         window.location.reload()
     }
 
-    request.send(body)
+    request.send()
 }

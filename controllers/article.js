@@ -37,7 +37,7 @@ exports.postArticle = async (req, res) => {
 exports.putArticle = async (req, res) => {
     if (!req.body) return res.sendStatus(400)
 
-    /* Если чекбокс req.body.updateFile не активен, то вместе html и docx подставляем null, 
+    /* Если чекбокс req.body.updateFile не активен, то вместо html и docx подставляем null, 
     чтобы не делать лишних операций обновления потенциально больших бинарных данных. */
 
     if (req.body.updateFile == "true" && (req.file == undefined || req.file == null)) return res.sendStatus(400)

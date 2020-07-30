@@ -57,6 +57,26 @@
                 list-style-type: disc;
                 margin-left: 7%;
             }
+            // 15.07.2020 - Написано при корректировке отображения "Фінансово-економічна діяльність"
+            table {
+                width: 100%;
+
+                td {
+                    margin-right: 50px;
+                    min-width: 100px;
+                    
+                    vertical-align: top;
+
+                    border: 1px solid black;
+                    
+                }
+            }
+            p strong {
+                p & {
+                    text-align: center;
+                    color: red;
+                }
+            }
         }
     }
 }

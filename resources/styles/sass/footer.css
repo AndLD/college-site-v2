@@ -191,6 +191,12 @@ footer > :nth-child(2) .footer-info-block .footer-info-block-text .footer-deep-d
   }
 }
 
+@media screen and (max-width: 480px) {
+  footer > :nth-child(2) .footer-info-block .footer-info-block-text .footer-deep-drop-menu a {
+    font-size: 3vw;
+  }
+}
+
 footer > :nth-child(2) .footer-social-block {
   -webkit-box-flex: 1;
       -ms-flex: 1;

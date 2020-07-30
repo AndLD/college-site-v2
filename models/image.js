@@ -50,3 +50,35 @@ exports.selectImages = (whereString = null) => {
         })
     })
 }
+
+exports.deleteImage = (id) => {
+    return new Promise((resolve) => {
+        let query = mysql.connection.query("DELETE FROM image WHERE id = '" + id + "'", (error) => {
+            if (error) {
+                console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
+
+                resolve(true)
+            } else {
+                console.log("MySQL query (" + query.sql + ") successfully done.")
+
+                resolve(false)
+            }
+        })
+    })
+}
+
+exports.updateImg = (image) => {
+    return new Promise((resolve) => {
+        let query = mysql.connection.query("UPDATE images SET image = " + image.image + " WHERE id = " + image.id, (error, result) => {
+            if (error) {
+                console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
+
+                resolve({ error: false, data: null})
+            } else {
+                console.log("MySQL query (" + query.sql + ") successfully done.")
+
+                resolve({ error: false, data: result.affectedRows})
+            }
+        })
+    })
+}

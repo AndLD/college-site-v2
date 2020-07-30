@@ -1,4 +1,6 @@
-// const HOST = ""
+if (!HOST) {
+    var HOST = ""
+}
 
 // ! modal
 var closeModalButton = document.querySelector(".close-modal")
