@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/resources/styles/sass/footer.css">
     <link rel="stylesheet" href="/resources/styles/profile/sass/article.css">
     <link rel="stylesheet" href="/resources/styles/profile/sass/news.css">
-    <link rel="stylesheet" href="/resources/styles/profile/sass/slider1Img.css">
+    <link rel="stylesheet" href="/resources/styles/profile/sass/sliderImg.css">
 
     <link rel="stylesheet" href="/resources/styles/profile/sass/user.css">
     <link rel="stylesheet" href="/resources/styles/profile/sass/subject.css">
@@ -47,6 +47,10 @@
             <%- include("profile-blocks/admin-blocks/news.ejs") %>
 
             <%- include("profile-blocks/admin-blocks/slider1Img.ejs") %>
+
+            <%- include("profile-blocks/admin-blocks/slider2Img.ejs") %>
+
+            <script src="/resources/scripts/profile/admin/sliderImg.js"></script>
         <% } %>
 
         <% if (user.userrole == "admin" || user.userrole == "moderator") { %>

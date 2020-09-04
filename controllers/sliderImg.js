@@ -1,17 +1,22 @@
-// const filesHelpers = require("../helpers/files")
 const fs = require("fs")
 const sliderImgModel = require("../models/sliderImg")
 const imageModel = require("../models/image")
 const constants = require("../helpers/constants").files
 const dirname = require("../index").dirname
+// Модуль для обработки изображений
+const sharp = require("sharp")
 
 // Добавление картинки в слайдер
 exports.postSliderImg = async (req, res) => {
     if (!req.body || !req.file) return res.sendStatus(400)
+
+    let buf = new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)))
     
     let image = {
         mimetype: req.file.mimetype,
-        image: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)))
+        image: await sharp(buf)
+            .resize(960, 540)
+            .toBuffer()
     }
 
     // Сохранение картинки
@@ -26,7 +31,7 @@ exports.postSliderImg = async (req, res) => {
     
     // Инициализируем картинку слайдера
     let sliderImg = {
-        sliderId: parseInt(req.body.sliderId),
+        sliderId: parseInt(req.params.sliderid),
         position: parseInt(req.body.position),
         imageId: Object.values(imageInsertedResult.data[0])[0]
     }
@@ -50,16 +55,14 @@ exports.postSliderImg = async (req, res) => {
 // Редактирование картинки в слайдере
 exports.putSliderImg = async (req, res) => {
     if (!req.body) return res.sendStatus(400)
-    console.log(req.file)
-    if (req.body.updateFile == "true" && (req.file == undefined || req.file == null)) return res.sendStatus(400)
 
     let sliderImg = {
         sliderId: req.params.sliderid,
-        id: req.params.id,
         position: req.body.position,
-        oldPosition: req.body.oldPosition
+        oldPosition: req.body.oldPosition,
+        imageId: req.params.imageid
     }
-    console.log("1.")
+    
     // Обновляем информацию о слайдере
     let updatedSliderImgResult = await sliderImgModel.updateSliderImg(sliderImg)
     if (updatedSliderImgResult.error) {
@@ -75,14 +78,15 @@ exports.putSliderImg = async (req, res) => {
     }
 
     // Получаем картинку слайдера по id, чтобы получить id картинки, на которую он ссылается
-    let selectedResult = await sliderImgModel.selectSliderImgById(sliderImg.id)
-    if (selectedResult.error) {
-        return res.sendStatus(400)
-    }
-    console.log("2.")
+    // let selectedResult = await sliderImgModel.selectSliderImgByImageId(sliderImg.imageid)
+    // if (selectedResult.error) {
+    //     return res.sendStatus(400)
+    // }
+
     let image = {
-        id: selectedResult.imageId,
-        image: req.body.updateFile == "true" ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null
+        id: sliderImg.imageId,
+        mimetype: req.file.mimetype,
+        image: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)))
     }
 
     // Удаление файла
@@ -100,20 +104,15 @@ exports.putSliderImg = async (req, res) => {
     if (updatedImageResult.data == 0) {
         return res.sendStatus(304)
     }
-    console.log("4.")
+    
     res.sendStatus(200)
 }
 
 exports.deleteSliderImg = async (req, res) => {
-    // if (!req.body) return res.sendStatus(400)
-    console.log(1)
-    console.log(req.params.id)
-    let selectedResult = await sliderImgModel.selectSliderImgById(req.params.id)
-    console.log(selectedResult.data)
+    let selectedResult = await sliderImgModel.selectSliderImgByImageId(req.params.imageid)
     if (selectedResult.error || selectedResult.data == null) {
         return res.sendStatus(400)
     }
-    console.log(2)
     let deleteSliderImg = selectedResult.data
     
     let error = await sliderImgModel.deleteSliderImg(deleteSliderImg)

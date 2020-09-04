@@ -28,7 +28,12 @@
                             <% if (data.type == "news") { %>
                                 <div class="add-date"><%= data.addDate %></div>
                             <% } %>
-                            <%- data.html %>
+                            <% if (data.viewMode == "google_docs") { %>
+                                <%- <iframe src="http://docs.google.com/viewer?url=" + data.filelink + "&amp;embedded=true" width="80%" height="800" style="border: none; "></iframe> %>
+                            <% } else { %>
+                                <%- data.html %>
+                            <% } %>
+                            
                         </div>
                         <div class="ribbon"></div>    
                     </div>

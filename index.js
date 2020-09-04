@@ -31,7 +31,7 @@ server.set("view engine", "ejs")
 server.use("/resources", express.static("resources"))
 
 // Для взятия элементов из тела запроса
-server.use(express.urlencoded({ extended: false }))
+server.use(express.urlencoded({ limit: "30mb", parameterLimit: 10000, extended: false }))
 
 // Подключаемся к MySQL
 const mysql = require("./db/mysql")
@@ -95,6 +95,8 @@ pagesRoutes.get("/article/:id", pagesControllers.articleController)
 pagesRoutes.get("/news/:id", pagesControllers.singleNewsController)
 // Страница новостей
 pagesRoutes.get("/news", pagesControllers.newsController)
+// Страница контактов
+pagesRoutes.get("/contacts", pagesControllers.contactsController)
 
 // Страница регистрации (закрыта)
 // pagesRoutes.get("/register", userMiddlewares.ipGuard, userMiddlewares.isNotLogged, pagesControllers.registerController)
@@ -256,11 +258,11 @@ sliderImgRoutes.use(multerUpload.single("image"))
 server.use("/slider", limiterGuard, userMiddlewares.isLogged, userMiddlewares.is2FALogged, userMiddlewares.isAdmin, sliderImgRoutes)
 
 // Добавить картинку в слайдер
-sliderImgRoutes.post("/", sliderImgControllers.postSliderImg)
+sliderImgRoutes.post("/:sliderid", sliderImgControllers.postSliderImg)
 // Изменить картинку в слайдере
-sliderImgRoutes.put("/:sliderid/:id", sliderImgControllers.putSliderImg)
+sliderImgRoutes.put("/:sliderid/:imageid", sliderImgControllers.putSliderImg)
 // Удалить картинку из слайдера
-sliderImgRoutes.delete("/sliderImg/:id", sliderImgControllers.deleteSliderImg)
+sliderImgRoutes.delete("/img/:imageid", sliderImgControllers.deleteSliderImg)
 
 // Запускаем сервер
 const PORT = process.env.PORT

@@ -85,7 +85,7 @@ exports.enableTwoFactor = (telegramId, telegramSecret) => {
     return new Promise((resolve) => {
         var query = mysql.connection.query(
             "UPDATE users SET twoFactor = true, telegramId = '" + telegramId + "' " +
-            "WHERE twoFactor = false AND telegramSecret = '" + telegramSecret + "'", (error, result) => {
+            "WHERE userrole != 'group' AND twoFactor = false AND telegramSecret = '" + telegramSecret + "'", (error, result) => {
                 if (error) {
                     console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 
@@ -104,7 +104,7 @@ exports.disableTwoFactor = (telegramSecret) => {
     return new Promise((resolve) => {
         var query = mysql.connection.query(
             "UPDATE users SET twoFactor = false, telegramId = null " +
-            "WHERE twoFactor = true AND telegramSecret = '" + telegramSecret + "'", (error, result) => {
+            "WHERE userrole != 'group' AND twoFactor = true AND telegramSecret = '" + telegramSecret + "'", (error, result) => {
                 if (error) {
                     console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 

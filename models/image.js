@@ -35,9 +35,9 @@ exports.insertImage = (image) => {
     })
 }
 
-exports.selectImages = (whereString = null) => {
+exports.selectImages = (whereString = null, ids = null) => {
     return new Promise((resolve) => {
-        var query = mysql.connection.query("SELECT * FROM images " + (whereString != null ? whereString : ""), (error, rows) => {
+        var query = mysql.connection.query("SELECT * FROM images " + (whereString != null && ids != null ? whereString + " ORDER BY FIELD(id, " + ids + ")" : ""), (error, rows) => {
             if (error) {
                 console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 
@@ -53,7 +53,7 @@ exports.selectImages = (whereString = null) => {
 
 exports.deleteImage = (id) => {
     return new Promise((resolve) => {
-        let query = mysql.connection.query("DELETE FROM image WHERE id = '" + id + "'", (error) => {
+        let query = mysql.connection.query("DELETE FROM images WHERE id = '" + id + "'", (error) => {
             if (error) {
                 console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 
@@ -69,13 +69,14 @@ exports.deleteImage = (id) => {
 
 exports.updateImg = (image) => {
     return new Promise((resolve) => {
-        let query = mysql.connection.query("UPDATE images SET image = " + image.image + " WHERE id = " + image.id, (error, result) => {
+        let query = mysql.connection.query("UPDATE images SET img = ?, mimetype = ? WHERE id = ?", 
+        [btoa(image.image), image.mimetype, image.id], (error, result) => {
             if (error) {
-                console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
+                console.log("MySQL query (" + "UPDATE images SET img = '...', mimetype = '" + image.mimetype + "' WHERE id = '" + image.id + "') finished with error: " + error.code)
 
                 resolve({ error: false, data: null})
             } else {
-                console.log("MySQL query (" + query.sql + ") successfully done.")
+                console.log("MySQL query (" + "UPDATE images SET img = '...', mimetype = '" + image.mimetype + "' WHERE id = '" + image.id + "') successfully done.")
 
                 resolve({ error: false, data: result.affectedRows})
             }

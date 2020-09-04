@@ -82,6 +82,15 @@
   .drop-menu li:hover, .deep-drop-menu li:hover {
     background-color: #003e7b !important;
   }
+  .drop-menu li {
+    position: relative;
+  }
+  .drop-menu li img {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    max-width: 20px;
+  }
   /* DEEP DROP MENU */
   .deep-drop-menu {
     position: absolute;
@@ -130,6 +139,7 @@
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
+    margin-bottom: 1px;
     background-color: #0054a6;
   }
   #MENU li {
@@ -167,6 +177,12 @@
   }
   .drop-menu > ul {
     margin-top: 10px;
+  }
+  .drop-menu li img {
+    display: none;
+  }
+  .deep-drop-menu li {
+    background-color: transparent !important;
   }
   .deep-drop-menu {
     text-align: left;

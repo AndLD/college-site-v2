@@ -14,7 +14,7 @@ bot.command("enable", async (ctx) => {
     }
 
     if (updatedResult.data == 0) {
-        return ctx.reply("User with that telegram secret key does not exist or 2FA is already enabled.")
+        return ctx.reply("User with that telegram secret key does not exist or 2FA is already enabled or user does not has right to manage 2FA.")
     }
     
     ctx.reply("Done!")
@@ -30,7 +30,7 @@ bot.command("disable", async (ctx) => {
     }
 
     if (updatedResult.data == 0) {
-        return ctx.reply("User with that telegram secret key does not exist or 2FA is already disabled.")
+        return ctx.reply("User with that telegram secret key does not exist or 2FA is already disabled or user does not has right to manage 2FA.")
     }
 
     ctx.reply("Done!")

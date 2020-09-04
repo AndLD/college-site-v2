@@ -1,15 +1,18 @@
 // Подключаем модели
-var menuModel = require("../models/menu")
-var articleModel = require("../models/article")
-var newsModel = require("../models/news")
-var sliderImgsModel = require("../models/sliderImg")
-var imageModel = require("../models/image")
-var userModel = require("../models/user")
-var subjectModel = require("../models/subject")
-var materialModel = require("../models/material")
+const menuModel = require("../models/menu")
+const articleModel = require("../models/article")
+const newsModel = require("../models/news")
+const sliderImgsModel = require("../models/sliderImg")
+const imageModel = require("../models/image")
+const userModel = require("../models/user")
+const subjectModel = require("../models/subject")
+const materialModel = require("../models/material")
 
 // Подключаем хелперы для страниц
 var pagesHelpers = require("../helpers/pages")
+
+const TokenGenerator = require("uuid-token-generator")
+const token = new TokenGenerator()
 
 // ! ОБЩИЕ СТРАНИЦЫ
 
@@ -31,7 +34,46 @@ exports.indexController = async (req, res) => {
 
     var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
 
-    res.render("index", { menu: menu, news: news })
+
+
+    // ! Получение картинок для слайдеров
+
+    // Получаем информацию о картинках для слайдеров
+    let selectedSliderImgsResult = await sliderImgsModel.selectSliderImgs()
+    if (selectedSliderImgsResult.error) {
+        return res.sendStatus(400)
+    }
+
+    let sliderImgsInfo = selectedSliderImgsResult.data
+
+    let whereString = "WHERE"
+    let ids = ""
+    for (let i = 0; i < sliderImgsInfo.length; i++) {
+        whereString += " id = " + sliderImgsInfo[i].imageId + " or"
+        ids += sliderImgsInfo[i].imageId + ","
+    }
+    
+    // Получение картинок для слайдеров
+    let selectedImagesResult = await imageModel.selectImages( (whereString != "WHERE" ? whereString.slice(0, -3) : null), (ids != "" ? ids.slice(0, -1) : null) ) // slice - обрезаем " and" в конце строки
+    if (selectedImagesResult.error) {
+        return res.sendStatus(400)
+    }
+    
+    let sliderImgs = selectedImagesResult.data
+
+    var slider1Imgs = []
+    var slider2Imgs = []
+    for (let i = 0; i < sliderImgsInfo.length; i++) {
+        if (sliderImgsInfo[i].sliderId == 1) {
+            slider1Imgs.push(sliderImgs[i])
+        }
+
+        if (sliderImgsInfo[i].sliderId == 2) {
+            slider2Imgs.push(sliderImgs[i])
+        }
+    }
+
+    res.render("index", { menu: menu, news: news, slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs })
 }
 
 // Страница статьи
@@ -63,6 +105,32 @@ exports.articleController = async (req, res) => {
 
     var article = selectedArticleResult.data
     article.type = "article"
+
+
+
+    if (article.viewMode == "google_docs") {
+        let filename = "article" + req.params.id + "_" + token.generate + ".docx"
+
+        let filelink = constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename)
+
+        // Формируем файл
+        fs.writeFileSync(filelink, article.docx, (error) => {
+            if (error) {
+                console.log("File writing error: " + error.code)
+                return res.sendStatus(400)
+            }
+        })
+
+        article.filelink = filelink
+
+        // Удаляем созданный файл
+        fs.unlinkSync(filelink, (error) => {
+            console.log("File deleting error: " + error.code)
+            return res.sendStatus(400)
+        })
+    }
+
+
 
     // Определение, к какому элементу главного меню относится данная статья
     var currentMainMenu
@@ -165,6 +233,18 @@ exports.newsController = async (req, res) => {
     res.render("news", { menu: menu, news: news })
 }
 
+exports.contactsController = async(req, res) => {
+    // Получаем меню
+    var selectedMenuResult = await menuModel.selectMenu()
+    if (selectedMenuResult.error) {
+        res.sendStatus(400)
+    }
+
+    var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
+
+    res.render("contacts", { menu: menu })
+}
+
 // ! РЕГИСТРАЦИЯ И АВТОРИЗАЦИЯ
 
 // Страница регистрации
@@ -222,12 +302,14 @@ exports.profileController = async (req, res) => {
         let sliderImgsInfo = selectedSliderImgsResult.data
 
         let whereString = "WHERE"
+        let ids = ""
         for (let i = 0; i < sliderImgsInfo.length; i++) {
             whereString += " id = " + sliderImgsInfo[i].imageId + " or"
+            ids += sliderImgsInfo[i].imageId + ","
         }
         
         // Получение картинок для слайдеров
-        let selectedImagesResult = await imageModel.selectImages(whereString != "WHERE" ? whereString.slice(0, -3) : null) // slice - обрезаем " and" в конце строки
+        let selectedImagesResult = await imageModel.selectImages( (whereString != "WHERE" ? whereString.slice(0, -3) : null), (ids != "" ? ids.slice(0, -1) : null) ) // slice - обрезаем " and" в конце строки
         if (selectedImagesResult.error) {
             return res.sendStatus(400)
         }
@@ -245,8 +327,6 @@ exports.profileController = async (req, res) => {
                 slider2Imgs.push(sliderImgs[i])
             }
         }
-        console.log(sliderImgsInfo.length + " imgsInfo")
-        console.log(sliderImgs.length + " imgs")
     }
 
     if (req.user.userrole == "admin" || req.user.userrole == "moderator") {
@@ -282,5 +362,5 @@ exports.profileController = async (req, res) => {
         var materials = selectedMaterialsResult.data
     }
 
-    res.render("profile", { user: req.user, menu: menu, articles: articles, news: news, slider1Imgs: slider1Imgs, users: users, subjects: subjects, materials: materials })
+    res.render("profile", { user: req.user, menu: menu, articles: articles, news: news, slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs, users: users, subjects: subjects, materials: materials })
 }

@@ -46,7 +46,7 @@ const putSliderImgFormHTML =
         <p>Змінити зображення</p>
         <input type="checkbox" name="updateFile">
     </label>
-    <label class="file">
+    <label class="file hidden">
         <p>Choose file *.jpg / *.jpeg / *.png</p>
         <input type="file" name="image">
     </label>
@@ -68,14 +68,16 @@ const deleteSliderImgFormHTML =
 `
 
 // ! edit slider images
-var addIcon = document.querySelector("img[alt='add-sliderImg']")
+var addIcon = document.querySelectorAll("img[alt='add-sliderImg']")
 
 var editIcons = document.querySelectorAll("img[alt='edit-slider-img']")
 var deleteIcons = document.querySelectorAll("img[alt='delete-slider-img']")
 
-addIcon.onclick = () => { showAddSliderImgModalForm() }
+for(let i = 0; i < addIcon.length; i++) {
+    addIcon[i].onclick = () => { showAddSliderImgModalForm() }
+}
 
-for(var i = 0; i < editIcons.length; i++) {
+for(let i = 0; i < editIcons.length; i++) {
     editIcons[i].onclick = () => { showEditSliderImgModalForm() }
     deleteIcons[i].onclick = () => { showDeleteSliderImgModalForm() }
 }
@@ -89,6 +91,16 @@ function showAddSliderImgModalForm() {
     document.querySelector("input[name='image']").onchange = () => {
         document.querySelector("label.file p").textContent = event.target.files[0].name
     }
+
+    let sliderImg = {
+        // sliderId: document.querySelector(".slider1Img-wrapper .sliderImgs").getAttribute("sliderId"),
+        sliderId: event.target.parentElement.parentElement.lastElementChild.getAttribute("sliderId"),
+        // position: document.querySelector(".slider1Img-wrapper .sliderImgs tbody").children.length,
+        position: event.target.parentElement.parentElement.lastElementChild.firstElementChild.children.length
+    }
+
+    document.querySelector(".form-wrapper input[name='sliderId']").value = sliderImg.sliderId
+    document.querySelector(".form-wrapper input[name='position']").value = sliderImg.position
 
     showModal()
     document.querySelector("div.submit").onclick = () => { postSliderImgRequest() }
@@ -113,9 +125,9 @@ function showEditSliderImgModalForm() {
     document.querySelector("input[name='image']").onchange = () => {
         document.querySelector("label.file p").textContent = event.target.files[0].name
     }
-
+    
     let sliderImg = {
-        sliderId: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("sliderId"),
+        sliderId: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("sliderId"),
         id: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.lastElementChild.textContent,
         position: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.textContent
     }
@@ -151,7 +163,6 @@ function postSliderImgRequest() {
     var request = new XMLHttpRequest()
     
     var form = new FormData()
-    form.append("sliderId", document.querySelector("input[name='sliderId']").value)
     form.append("position", document.querySelector("input[name='position']").value)
     form.append("image", document.querySelector("input[name='image']").files[0])
 
@@ -179,17 +190,17 @@ function postSliderImgRequest() {
 function putSliderImgRequest() {
     var request = new XMLHttpRequest()
 
-    var body = "position=" + document.querySelector("input[name='position']").value +
-    "&" + "oldPosition=" + document.querySelector("input[name='oldPosition']").value +
-    "&" + "updateFile=" + document.querySelector("input[name='updateFile']").checked
-
+    var form = new FormData()
+    form.append("position", document.querySelector("input[name='position']").value)
+    form.append("oldPosition", document.querySelector("input[name='oldPosition']").value)
+    form.append("updateFile", document.querySelector("input[name='updateFile']").checked)
+    form.append("image", document.querySelector("input[name='image']").files[0])
+    
     request.open(
         "PUT",
         HOST + "/slider/" + document.querySelector("input[name='sliderId']").value + "/" + document.querySelector("input[name='id']").value,
         false
     )
-
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
 
     request.onerror = () => {
         alert("Request error.")
@@ -202,7 +213,7 @@ function putSliderImgRequest() {
         window.location.reload()
     }
 
-    request.send(body)
+    request.send(form)
 }
 
 // Запрос на удаление картинки из слайдера
@@ -211,7 +222,7 @@ function deleteSliderImgRequest() {
 
     request.open(
         "DELETE",
-        HOST + "/slider/sliderImg/" + 
+        HOST + "/slider/img/" + 
         document.querySelector("input[name='id']").value,
         false
     )

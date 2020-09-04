@@ -16,8 +16,8 @@ function showContentElem() {
 
     for(var i = 1; i < contentElems.length; i++) {
         contentElems[i].style.display = "none";
-
-        if(contentElems[i].className == localStorage.getItem("openedElem")) {
+        
+        if(contentElems[i].className.split(" ")[0] == localStorage.getItem("openedElem")) {
             contentElems[i].style.display = "block";
         }
     }
@@ -28,7 +28,7 @@ if (localStorage.getItem("openedElem") == null) localStorage.setItem("openedElem
 for(var i = 1; i < contentElems.length; i++) {
     contentElems[i].style.display = "none";
 
-    if(contentElems[i].className == localStorage.getItem("openedElem")) {
+    if(contentElems[i].className.split(" ")[0] == localStorage.getItem("openedElem")) {
         contentElems[i].style.display = "block";
     }
 }

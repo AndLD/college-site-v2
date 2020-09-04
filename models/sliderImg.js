@@ -42,9 +42,9 @@ exports.selectSliderImgs = () => {
     })
 }
 
-exports.selectSliderImgById = (id) => {
+exports.selectSliderImgByImageId = (imageId) => {
     return new Promise((resolve) => {
-        let query = mysql.connection.query("SELECT * FROM sliderImgs WHERE id = '" + id + "'", (error, rows) => {
+        let query = mysql.connection.query("SELECT * FROM sliderImgs WHERE imageId = '" + imageId + "'", (error, rows) => {
             if (error) {
                 console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 
@@ -66,10 +66,15 @@ exports.updateSliderImg = (sliderImg) => {
             // Запрос на обновление позиций всех остальных
             let updatePositionsQuery = mysql.connection.query(
                 "UPDATE sliderImgs SET position = position " +
-                (sliderImg.position < sliderImg.oldPosition ? "+" : "-") + " 1 WHERE sliderId = '" + sliderImg.sliderId + "'", (error) => {
+                (sliderImg.position < sliderImg.oldPosition ? "+" : "-") + 
+                " 1 WHERE sliderId = '" + sliderImg.sliderId + "'" + 
+                (sliderImg.position < sliderImg.oldPosition ? 
+                    " AND position >= " + sliderImg.position + " AND position < " + sliderImg.oldPosition : 
+                    " AND position <= " + sliderImg.position + " AND position > " + sliderImg.oldPosition
+                ), (error) => {
                     if (error) {
                         console.log("MySQL query (" + updatePositionsQuery.sql + ") finished with error: " + error.code)
-
+                        
                         mysql.connection.rollback()
 
                         resolve(true)
@@ -77,9 +82,9 @@ exports.updateSliderImg = (sliderImg) => {
                         console.log("MySQL query (" + updatePositionsQuery.sql + ") successfully done.")
 
                         let updateSliderImgQuery = mysql.connection.query(
-                            "UPDATE sliderImgs SET position = " + sliderImg.position + " WHERE id = '" + sliderImg.id + "'", (error) => {
+                            "UPDATE sliderImgs SET position = " + sliderImg.position + " WHERE imageId = '" + sliderImg.imageId + "'", (error) => {
                                 if (error) {
-                                    console.log("MySQL query (" + updatePositionsQuery.sql + ") finished with error: " + error.code)
+                                    console.log("MySQL query (" + updateSliderImgQuery.sql + ") finished with error: " + error.code)
 
                                     mysql.connection.rollback()
 
@@ -115,26 +120,25 @@ exports.deleteSliderImg = (sliderImg) => {
                 } else {
                     console.log("MySQL query (" + deleteSliderImgsQuery.sql + ") successfully done.")
     
-                    resolve(false)
+                    let updatePositionsQuery = mysql.connection.query("UPDATE sliderImgs SET position = position - 1 WHERE sliderId = " +
+                    sliderImg.sliderId + " AND position > " + sliderImg.position, (error) => {
+                        if (error) {
+                            console.log("MySQL query (" + updatePositionsQuery.sql + ") finished with error: " + error.code)
+            
+                            mysql.connection.rollback()
+
+                            resolve(true)
+                        } else {
+                            console.log("MySQL query (" + updatePositionsQuery.sql + ") successfully done.")
+            
+                            mysql.connection.commit()
+
+                            resolve(false)
+                        }
+                    })
                 }
             })
 
-            let updatePositionsQuery = mysql.connection.query("UPDATE sliderImgs SET position = position - 1 WHERE sliderId = " +
-            sliderImg.sliderId + " AND position > " + sliderImg.position, (error) => {
-                if (error) {
-                    console.log("MySQL query (" + updatePositionsQuery.sql + ") finished with error: " + error.code)
-    
-                    mysql.connection.rollback()
-
-                    resolve(true)
-                } else {
-                    console.log("MySQL query (" + updatePositionsQuery.sql + ") successfully done.")
-    
-                    mysql.connection.commit()
-
-                    resolve(false)
-                }
-            })
         })
     })
 }

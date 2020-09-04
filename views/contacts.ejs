@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/resources/styles/index/sass/index.css">
+
+        <link rel="stylesheet" href="/resources/styles/contacts/sass/contacts.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+        <link rel="stylesheet" href="/resources/styles/sass/header.css">
+        <link rel="stylesheet" href="/resources/styles/sass/menu.css">
+        <link rel="stylesheet" href="/resources/styles/sass/footer.css">
+        <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon">
+        <title>Контакти</title>
+    </head>
+    <body>
+        <div id="CONTAINER">
+            <section id="sky-section">
+                <%- include("blocks/header.ejs") %> 
+                
+                <%- include("blocks/menu.ejs") %>
+            </section>
+            
+            <!-- CONTENT -->
+            <section id="CONTENT">
+                <div class="desk">
+                    <div class="desk-title">Контакти</div>
+                    <div class="contact-text">
+                        <div>
+                            <b>Поштова адреса</b>
+
+                            <p>Відокремлений структурний підрозділ "Криворізький фаховий коледж Національного Авіаційного Університету"</p>
+                            <p>вул. Туполєва 1</p>
+                            <p>Кривий Ріг, Україна</p>
+                            <p>50045</p>
+                        </div>
+                        <div>
+                            <b>Приймальна комісія</b>
+
+                            <p>Телефон: 000</p>
+                            <p>E-mail: aaa</p>
+                        </div>
+                        <div>
+                            <b>Приймальна коледжу</b>
+
+                            <p>Телефон: 000</p>
+                            <p>E-mail: aaa</p>
+                        </div>
+                        <div>
+                            <b>Навчальний відділ</b>
+
+                            <p>E-mail: aaa</p>
+                        </div>
+                        <div>
+                            <b>"Вступна кампанія 2020 року"</b>
+
+                            <p>(056) 770-68-21 - з питань вступу до закладів професійної (професійно-технічної) освіти;</p>
+                            <p>(056) 770-80-29 - з питань вступу до закладів фахової передвищої освіти;</p>
+                            <p>(056) 770-67-24 - з питань вступу до закладів вищої освіти.</p>
+                        </div>
+                    </div>
+                    <div class="map-wrapper">
+                        <div id="mapid"></div>
+                    </div>
+                    <div class="ribbon"></div>    
+                </div>
+                
+
+            </section>
+    
+            <%- include("blocks/footer.ejs") %>
+    
+        </div>
+    </body>
+    <script src="/resources/styles/index/small-menu.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="/resources/scripts/map.js"></script>
+</html>

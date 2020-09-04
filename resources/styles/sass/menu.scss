@@ -101,6 +101,16 @@
     .drop-menu li:hover, .deep-drop-menu li:hover {
         background-color: $menuFocusedColor !important;
     }
+
+    .drop-menu li {
+        position: relative;
+        img {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            max-width: 20px;
+        }
+    }
     
     /* DEEP DROP MENU */
     
@@ -186,7 +196,10 @@
 
         > li {
             flex: 1;
+
+            margin-bottom: 1px;
         
+            // border: none !important;
             background-color: $menuColor;
 
             // border: 1px solid $menuFocusedColorDark;
@@ -251,6 +264,16 @@
 
     .drop-menu > ul {
         margin-top: 10px;
+    }
+
+    .drop-menu li {
+        img {
+            display: none;
+        }
+    }
+
+    .deep-drop-menu li {
+        background-color: transparent !important;
     }
     
     // DEEP DROP MENU
