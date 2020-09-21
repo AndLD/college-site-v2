@@ -11,8 +11,14 @@ const materialModel = require("../models/material")
 // Подключаем хелперы для страниц
 var pagesHelpers = require("../helpers/pages")
 
+const fs = require("fs")
+const constants = require("../helpers/constants").files
+const dirname = require("../index").dirname
+
 const TokenGenerator = require("uuid-token-generator")
 const token = new TokenGenerator()
+
+const btoa = require("btoa")
 
 // ! ОБЩИЕ СТРАНИЦЫ
 
@@ -108,29 +114,9 @@ exports.articleController = async (req, res) => {
 
 
 
-    if (article.viewMode == "google_docs") {
-        let filename = "article" + req.params.id + "_" + token.generate + ".docx"
+    if (article.viewMode == "pdf" && article.fileFormat == "pdf") article.docx = btoa(article.docx)
 
-        let filelink = constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename)
-
-        // Формируем файл
-        fs.writeFileSync(filelink, article.docx, (error) => {
-            if (error) {
-                console.log("File writing error: " + error.code)
-                return res.sendStatus(400)
-            }
-        })
-
-        article.filelink = filelink
-
-        // Удаляем созданный файл
-        fs.unlinkSync(filelink, (error) => {
-            console.log("File deleting error: " + error.code)
-            return res.sendStatus(400)
-        })
-    }
-
-
+    
 
     // Определение, к какому элементу главного меню относится данная статья
     var currentMainMenu

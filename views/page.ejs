@@ -28,8 +28,8 @@
                             <% if (data.type == "news") { %>
                                 <div class="add-date"><%= data.addDate %></div>
                             <% } %>
-                            <% if (data.viewMode == "google_docs") { %>
-                                <%- <iframe src="http://docs.google.com/viewer?url=" + data.filelink + "&amp;embedded=true" width="80%" height="800" style="border: none; "></iframe> %>
+                            <% if (data.viewMode == "pdf") { %>
+                                <iframe src="data:application/<%= data.fileFormat %>;base64,<%= data.docx %>" frameborder="0" width="100%" height="700"></iframe>
                             <% } else { %>
                                 <%- data.html %>
                             <% } %>
@@ -38,7 +38,7 @@
                         <div class="ribbon"></div>    
                     </div>
                     <div>
-                        <% if(data.type == "article") { %>
+                        <% if(data.type == "article" && currentMainMenu != null) { %>
                             <div class="desk current-menu-links-block">
                                 <div class="horizontal-ribbon"><div class="desk-title"><%= currentMainMenu.title %></div></div>
                                 <!-- <div class="ribbon"></div>  -->

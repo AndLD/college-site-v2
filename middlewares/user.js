@@ -19,7 +19,6 @@ exports.is2FALogged = (req, res, next) => {
     if (req.user.twoFactor && !req.session.twoFactor) {
         return res.redirect("/login-otp")
     }
-    console.log("2FA is logged.")
     return next()
 }
 

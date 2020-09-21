@@ -74,7 +74,12 @@ server.use(flash())
 const constants = require("./helpers/constants").files
 
 const multer = require("multer")
-const multerUpload = multer({ dest: constants.DEFAULT_BUFFER_CATALOG })
+const multerUpload = multer({ 
+    dest: constants.DEFAULT_BUFFER_CATALOG, 
+    filename: function(req, file, callback) {
+        callback(null, file.originalname)
+    }
+})
 
 const userMiddlewares = require("./middlewares/user")
 

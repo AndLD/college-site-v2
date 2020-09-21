@@ -7,16 +7,28 @@ const dirname = require("../index").dirname
 // Добавление статьи
 exports.postArticle = async (req, res) => {
     if (!req.body) return res.sendStatus(400)
-
+    
     if (req.file == undefined || req.file == null) return res.sendStatus(400)
     
+    let mimetypeEnding = req.file.mimetype.split("/")[1]
+    let isDocx = mimetypeEnding == "vnd.openxmlformats-officedocument.wordprocessingml.document"
+    
+    // Если тип отображения страницы - конвертация docx в html, то принимаемым файлом должен быть только docx
+    if (req.body.viewMode != "docx_to_html" && isDocx || req.body.viewMode == "docx_to_html" && !isDocx) return res.sendStatus(400)
+    // Если тип отображения страницы - html, то принимаемым файлом должен быть только html
+    if (req.body.viewMode != "html" && mimetypeEnding == "html" || req.body.viewMode == "html" && mimetypeEnding != "html") return res.sendStatus(400)
+    // Если тип отображения страницы - pdf, то принимаемым файлом должен быть только pdf
+    if (req.body.viewMode != "pdf" && mimetypeEnding == "pdf" || req.body.viewMode == "pdf" && mimetypeEnding != "pdf") return res.sendStatus(400)
+
     // Инициализируем статью
     var article = {
         title: req.body.title,
-        html: await filesHelpers.convertDocxToHtml(req.file.filename),
-        docx: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)))
+        html: req.body.viewMode == "docx_to_html" ? await filesHelpers.convertDocxToHtml(req.file.filename) : ( req.body.viewMode == "html" ? fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)).toString("utf8") : null ),
+        docx: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))),
+        fileFormat: isDocx ? "docx" : mimetypeEnding,
+        viewMode: req.body.viewMode
     }
-
+    console.log(article.html)
     // Удаление файла
     fs.unlink(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename), (error) => {
         if (error) {
@@ -42,12 +54,27 @@ exports.putArticle = async (req, res) => {
 
     if (req.body.updateFile == "true" && (req.file == undefined || req.file == null)) return res.sendStatus(400)
 
+    let mimetypeEnding, isDocx
+    if (req.body.updateFile == "true") {
+        mimetypeEnding = req.file.mimetype.split("/")[1]
+        isDocx = mimetypeEnding == "vnd.openxmlformats-officedocument.wordprocessingml.document"
+    }
+
+    // Если тип отображения страницы - конвертация docx в html, то принимаемым файлом должен быть только docx
+    if (req.body.updateFile == "true" && (req.body.viewMode != "docx_to_html" && isDocx || req.body.viewMode == "docx_to_html" && !isDocx)) return res.sendStatus(400)
+    // Если тип отображения страницы - html, то принимаемым файлом должен быть только html
+    if (req.body.updateFile == "true" && (req.body.viewMode != "html" && mimetypeEnding == "html" || req.body.viewMode == "html" && mimetypeEnding != "html")) return res.sendStatus(400)
+    // Если тип отображения страницы - pdf, то принимаемым файлом должен быть только pdf
+    if (req.body.updateFile == "true" && (req.body.viewMode != "pdf" && mimetypeEnding == "pdf" || req.body.viewMode == "pdf" && mimetypeEnding != "pdf")) return res.sendStatus(400)
+
     // Инициализируем статью
     var article = {
         id: req.params.id,
         title: req.body.title,
-        html: req.body.updateFile == "true" ? await filesHelpers.convertDocxToHtml(req.file.filename) : null,
-        docx: req.body.updateFile == "true" ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null
+        html: req.body.updateFile == "true" && req.body.viewMode == "docx_to_html" ? await filesHelpers.convertDocxToHtml(req.file.filename) : ( req.body.updateFile == "true" && req.body.viewMode == "html" ? fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)).toString("utf8") : null ),
+        docx: req.body.updateFile == "true" && req.body.viewMode != "html" ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null,
+        fileFormat: req.body.updateFile == "true" ? (isDocx ? "docx" : mimetypeEnding) : null,
+        viewMode: req.body.updateFile == "true" ? req.body.viewMode : null
     }
 
     if (req.body.updateFile == "true") {
@@ -96,10 +123,10 @@ exports.postDownloadArticle = async (req, res) => {
 
     var article = selectedResult.data
 
-    var filename = "article" + req.params.id + ".docx"
+    var filename = "article" + req.params.id + "." + article.fileFormat
 
     // Формируем файл
-    fs.writeFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), article.docx, (error) => {
+    fs.writeFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), (article.viewMode == "docx_to_hmtl" || article.viewMode == "pdf" ? article.docx : article.html), (error) => {
         if (error) {
             console.log("File writing error: " + error.code)
             return res.sendStatus(400)

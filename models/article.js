@@ -2,16 +2,16 @@ const mysql = require("../db/mysql")
 
 exports.insertArticle = (article) => {
     return new Promise((resolve) => {
-        var query = mysql.connection.query("INSERT INTO articles (title, html, docx) VALUES (?, ?, ?)",
-        [article.title, article.html, article.docx], (error) => {
+        var query = mysql.connection.query("INSERT INTO articles (title, html, docx, fileFormat, viewMode) VALUES (?, ?, ?, ?, ?)",
+        [article.title, article.html, article.docx, article.fileFormat, article.viewMode], (error) => {
             if (error) {
-                console.log("MySQL query (INSERT INTO articles (title, html, docx) VALUES ('" + 
-                article.title + "', '...', '...')) finished with error: " + error.code)
+                console.log("MySQL query (INSERT INTO articles (title, html, docx, fileFormat, viewMode) VALUES ('" + 
+                article.title + "', '...', '...', '" + article.fileFormat + "', '" + article.viewMode + "')) finished with error: " + error.code)
 
                 resolve(true)
             } else {
-                console.log("MySQL query (INSERT INTO articles (title, html, docx) VALUES ('" + 
-                article.title + "', '...', '...')) successfully done.")
+                console.log("MySQL query (INSERT INTO articles (title, html, docx, fileFormat, viewMode) VALUES ('" + 
+                article.title + "', '...', '...', '" + article.fileFormat + "', '" + article.viewMode + "')) successfully done.")
 
                 resolve(false)
             }
@@ -53,21 +53,27 @@ exports.selectArticleById = (id) => {
 
 exports.updateArticle = (article) => {
     return new Promise((resolve) => {
-        var values = "title = '" + article.title + "'" +
-        (article.html == null ? "" : ", html = '" + article.html + "', ") + 
-        (article.docx == null ? "" : "docx = ?")
-
+        var values = "title = '" + article.title + "', " +
+        (article.html == null ? "" : "html = '" + article.html + "', ") + 
+        (article.docx == null ? "" : "docx = ?") +
+        (article.fileFormat == null ? " " : ", fileFormat = '" + article.fileFormat + "'") +
+        (article.viewMode == null ? "" : ", viewMode = '" + article.viewMode + "'")
         var query = mysql.connection.query("UPDATE articles SET " + values + " WHERE id = " + article.id, [article.docx], (error, result) => {
             if (error) {
                 console.log(
                     "MySQL query (UPDATE articles SET title = '" + article.title + 
-                    "', html = '...', docx = '...' WHERE id = " + article.id + ") finished with error: " + error.code
+                    "', html = '...', docx = '...', fileFormat = '..." +
+                    "', viewMode = '" + article.viewMode + "' WHERE id = " + article.id + ") finished with error: " + error.code
                 )
-
+                console.log(query.sql.substr(0, 200))
+                console.log(query.sql.substr(query.sql.length - 200, query.sql.length - 1))
                 resolve({ error: true, data: 0 })
             } else {
-                console.log("MySQL query (UPDATE articles SET title = '" + article.title + 
-                "', html = '...', docx = '...' WHERE id = " + article.id + ") successfully done.")
+                console.log(
+                    "MySQL query (UPDATE articles SET title = '" + article.title + 
+                    "', html = '...', docx = '...', fileFormat = '..." +
+                    "', viewMode = '" + article.viewMode + "' WHERE id = " + article.id + ")  successfully done."
+                )
 
                 resolve({ error: false, data: result.affectedRows })
             }

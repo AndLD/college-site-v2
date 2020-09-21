@@ -10,9 +10,15 @@ const postArticleFormHTML =
         <input type="text" name="title">
     </label>
     <label class="file">
-        <p>Choose file *.docx</p>
+        <p>Choose file *.html / *.docx / *.pdf</p>
         <input type="file" name="docx">
     </label>
+    <div>
+        <p>ViewMode</p>
+        <p><input type="radio" name="viewMode" value="html">html</p>
+        <p><input type="radio" name="viewMode" value="docx_to_html">docx to html</p>
+        <p><input type="radio" name="viewMode" value="pdf">pdf</p>
+    </div>
     <div class="submit">Add</div>
 </form>
 `
@@ -35,9 +41,15 @@ const putArticleFormHTML =
         <input type="checkbox" name="updateFile">
     </label>
     <label class="file hidden">
-        <p>Choose file *.docx</p>
+        <p>Choose file *.html / *.docx / *.pdf</p>
         <input type="file" name="docx">
     </label>
+    <div>
+        <p>ViewMode</p>
+        <p><input type="radio" name="viewMode" value="html">html</p>
+        <p><input type="radio" name="viewMode" value="docx_to_html">docx to html</p>
+        <p><input type="radio" name="viewMode" value="pdf">pdf</p>
+    </div>
     <div class="submit">Edit</div>
 </form>
 `
@@ -140,6 +152,7 @@ function postArticleRequest() {
     var form = new FormData()
     form.append("title", document.querySelector("input[name='title']").value)
     form.append("docx", document.querySelector("input[name='docx']").files[0])
+    form.append("viewMode", document.querySelector("input[name='viewMode']:checked").value)
 
     request.open(
         "POST",
@@ -169,6 +182,7 @@ function putArticleRequest() {
     form.append("title", document.querySelector("input[name='title']").value)
     form.append("updateFile", document.querySelector("input[name='updateFile']").checked)
     form.append("docx", document.querySelector("input[name='docx']").files[0])
+    form.append("viewMode", document.querySelector("input[name='viewMode']:checked").value)
 
     request.open(
         "PUT",
