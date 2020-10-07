@@ -28,7 +28,7 @@ exports.postArticle = async (req, res) => {
         fileFormat: isDocx ? "docx" : mimetypeEnding,
         viewMode: req.body.viewMode
     }
-    console.log(article.html)
+    
     // Удаление файла
     fs.unlink(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename), (error) => {
         if (error) {

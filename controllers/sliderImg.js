@@ -15,7 +15,7 @@ exports.postSliderImg = async (req, res) => {
     let image = {
         mimetype: req.file.mimetype,
         image: await sharp(buf)
-            .resize(1040, 520)
+            .resize(960, 540)
             .toBuffer()
     }
 
@@ -87,7 +87,7 @@ exports.putSliderImg = async (req, res) => {
         id: sliderImg.imageId,
         mimetype: req.file.mimetype,
         image: await sharp(new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))))
-            .resize(1040, 520)
+            .resize(960, 540)
             .toBuffer()
     }
 

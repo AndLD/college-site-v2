@@ -28,7 +28,7 @@
                         <img src="resources/images/index/main_slider/NewPack/5.jpg" alt="slide" class="slide">
                         <img src="resources/images/index/main_slider/NewPack/6.jpg" alt="slide" class="slide"> -->
                         <% for (let i = 0; i < slider1Imgs.length; i++) { %>
-                            <img src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>" alt="slide" class="slide">
+                            <img src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>" loading="lazy" alt="slide" class="slide">
                         <% } %>
                     </div>
                     <div class="slider-button slider-button-left"><img src="resources/images/index/main_slider/left_white.png"></div>
@@ -142,7 +142,7 @@
                                 <ul class="slides-list">
                             <% } %>
                             
-                            <li><img src="data:<%= slider2Imgs[i].mimetype %>;base64,<%= slider2Imgs[i].img %>" alt="slide" class="sub-slider-slide"></li>
+                            <li><img src="data:<%= slider2Imgs[i].mimetype %>;base64,<%= slider2Imgs[i].img %>" loading="lazy" alt="slide" class="sub-slider-slide"></li>
                             <% if ((i + 1) % 5 == 0 && i != 0) { %>
                                 </ul class="slides-list">
                                 <% if (i == slider2Imgs.length - 1) {break} %>

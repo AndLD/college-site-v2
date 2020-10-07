@@ -85,7 +85,7 @@
   .drop-menu li {
     position: relative;
   }
-  .drop-menu li img {
+  .drop-menu li .deep-drop-menu-pointer {
     position: absolute;
     top: 15px;
     right: 20px;

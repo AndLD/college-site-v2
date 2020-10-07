@@ -2,14 +2,14 @@
 .slider-wrapper {
   position: relative;
   margin: auto;
-  height: 35vw;
+  height: 47vw;
   overflow: hidden;
   /* Для кнопок */
 }
 
-@media screen and (min-width: 1900px) {
+@media screen and (min-width: 1850px) {
   .slider-wrapper {
-    height: 23vw;
+    height: 41vw;
   }
 }
 

@@ -30,7 +30,10 @@
 
                                 <% if(hasDeepDrop) { // Если имеет %> 
                                     <li>
-                                        <a id=<%= menu.drop[j].id %> position=<%= menu.drop[j].position %> footer=<%= menu.drop[j].footer %> href=<%= menu.drop[j].link %>><%= menu.drop[j].title %></a>
+                                        <a id=<%= menu.drop[j].id %> position=<%= menu.drop[j].position %> footer=<%= menu.drop[j].footer %> href=<%= menu.drop[j].link %> %>>
+                                            <%= menu.drop[j].title %>
+                                            <img class="deep-drop-menu-pointer" src="/resources/images/index/main_slider/right_white.png" alt="deep drop menu">
+                                        </a>
                                         <div class="icons-wrapper">
                                             <img src="/resources/images/profile/icons/add.png" alt="add-menu">
                                             <img src="/resources/images/profile/icons/edit.png" alt="edit-menu">

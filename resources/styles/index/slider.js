@@ -135,9 +135,9 @@ init()
 
 // sliderButtons[0].firstChild.style.marginTop = "750%"
 // sliderButtons[1].firstChild.style.marginTop = "750%"
-sliderButtons[0].firstChild.style.marginTop = "875%"
-sliderButtons[1].firstChild.style.marginTop = "875%"
+sliderButtons[0].firstChild.style.marginTop = "1200%"
+sliderButtons[1].firstChild.style.marginTop = "1200%"
 
 setInterval(() => {
     start(-1)
-}, 3000)
+}, 5000)

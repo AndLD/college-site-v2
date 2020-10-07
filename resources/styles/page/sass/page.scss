@@ -121,6 +121,7 @@
 
         a img {
             width: 55%;
+            // max-height: 5%;
             @media screen and (max-width: 480px) {
                 width: 25%;
             }
