@@ -9,9 +9,7 @@ header {
     // height: 22vh;
 
     #logo {
-        flex: 1;
-    
-        padding: auto;
+        // flex: 1; // закомментировано for Mozilla
         
         text-align: center;
 
@@ -32,7 +30,7 @@ header {
     }
 
     #title {
-        flex: 6;
+        // flex: 6; // закомментировано for Mozilla
         
         text-align: center;
 

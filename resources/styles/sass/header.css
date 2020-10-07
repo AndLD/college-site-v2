@@ -8,10 +8,6 @@ header {
 }
 
 header #logo {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  padding: auto;
   text-align: center;
   max-height: 20vh;
 }
@@ -35,9 +31,6 @@ header #logo img {
 }
 
 header #title {
-  -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6;
   text-align: center;
   min-height: inherit;
   height: 100%;

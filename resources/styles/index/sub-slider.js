@@ -41,6 +41,7 @@ function init() {
     closeModalButton = document.querySelector(".close-modal-button")
     // closeModalButton.onclick = () => { closeModalImage() }
     modalImg.parentElement.onclick = () => { closeModalImage() }
+    document.onkeydown = () => { event.key == "Escape" ? closeModalImage() : null }
 }
 
 init()
