@@ -120,7 +120,7 @@ header #title :nth-child(2) {
 @media screen and (max-width: 480px) {
   header #title :nth-child(2) {
     text-align: center;
-    font-size: 7vw;
+    font-size: 9vw;
   }
 }
 
