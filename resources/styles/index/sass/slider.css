@@ -13,6 +13,12 @@
   }
 }
 
+@media screen and (min-width: 2500px) {
+  .slider-wrapper {
+    height: 41vw;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .slider-wrapper {
     height: 35vw;
