@@ -100,6 +100,7 @@ exports.articleController = async (req, res) => {
     if (article.viewMode == "pdf" && article.fileFormat == "pdf") {
         res.contentType("application/pdf")
         res.send(article.docx)
+        return
     }
     
 
