@@ -84,6 +84,27 @@ exports.indexController = async (req, res) => {
 
 // Страница статьи
 exports.articleController = async (req, res) => {
+    // Получаем статью
+    var selectedArticleResult = await articleModel.selectArticleById(req.params.id)
+    if (selectedArticleResult.error) {
+        return res.sendStatus(400)
+    }
+    if (selectedArticleResult.data == null) {
+        return res.sendStatus(204)
+    }
+
+    var article = selectedArticleResult.data
+    article.type = "article"
+
+    // Если статья представлена в виде PDF, будем открывать ее в отдельной вкладке
+    if (article.viewMode == "pdf" && article.fileFormat == "pdf") {
+        res.contentType("application/pdf")
+        res.send(article.docx)
+    }
+    
+
+
+
     // Получаем меню
     var selectedMenuResult = await menuModel.selectMenu()
     if (selectedMenuResult.error) {
@@ -100,23 +121,8 @@ exports.articleController = async (req, res) => {
 
     var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
 
-    // Получаем статью
-    var selectedArticleResult = await articleModel.selectArticleById(req.params.id)
-    if (selectedArticleResult.error) {
-        return res.sendStatus(400)
-    }
-    if (selectedArticleResult.data == null) {
-        return res.sendStatus(204)
-    }
-
-    var article = selectedArticleResult.data
-    article.type = "article"
 
 
-
-    if (article.viewMode == "pdf" && article.fileFormat == "pdf") article.docx = btoa(article.docx)
-
-    
 
     // Определение, к какому элементу главного меню относится данная статья
     var currentMainMenu
@@ -160,7 +166,7 @@ exports.articleController = async (req, res) => {
             }
         }
     }
-
+    
     res.render("page", { menu: menu, currentMainMenu: currentMainMenu, data: article, news: news })
 }
 
