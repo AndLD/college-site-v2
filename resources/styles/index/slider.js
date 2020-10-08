@@ -135,8 +135,14 @@ init()
 
 // sliderButtons[0].firstChild.style.marginTop = "750%"
 // sliderButtons[1].firstChild.style.marginTop = "750%"
-sliderButtons[0].firstChild.style.marginTop = "1200%"
-sliderButtons[1].firstChild.style.marginTop = "1200%"
+
+if (document.body.clientWidth > 500) {
+    sliderButtons[0].firstChild.style.marginTop = "1200%"
+    sliderButtons[1].firstChild.style.marginTop = "1200%"
+} else {
+    sliderButtons[0].firstChild.style.marginTop = "800%"
+    sliderButtons[1].firstChild.style.marginTop = "800%"
+}
 
 setInterval(() => {
     start(-1)
