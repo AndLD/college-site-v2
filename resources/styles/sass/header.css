@@ -87,6 +87,12 @@ header #title :nth-child(1) {
   }
 }
 
+@media screen and (max-width: 480px) {
+  header #title :nth-child(1) {
+    letter-spacing: 0.2rem;
+  }
+}
+
 header #title :nth-child(2) {
   background-color: #fcd605;
   padding-left: 5%;
@@ -113,7 +119,8 @@ header #title :nth-child(2) {
 
 @media screen and (max-width: 480px) {
   header #title :nth-child(2) {
-    font-size: 5vw;
+    text-align: center;
+    font-size: 7vw;
   }
 }
 
@@ -125,7 +132,7 @@ header #title :nth-child(2) {
 
 @media screen and (max-width: 480px) {
   header #title :nth-child(2) {
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
   }
 }
 
