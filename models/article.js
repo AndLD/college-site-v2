@@ -6,7 +6,7 @@ exports.insertArticle = (article) => {
         [article.title, article.html, article.docx, article.fileFormat, article.viewMode], (error) => {
             if (error) {
                 console.log("MySQL query (INSERT INTO articles (title, html, docx, fileFormat, viewMode) VALUES ('" + 
-                article.title + "', '...', '...', '" + article.fileFormat + "', '" + article.viewMode + "')) finished with error: " + error.code)
+                article.title + "', '" + article.html + "', '" + article.docx + "', '" + article.fileFormat + "', '" + article.viewMode + "')) finished with error: " + error.code)
 
                 resolve(true)
             } else {
@@ -53,8 +53,8 @@ exports.selectArticleById = (id) => {
 
 exports.updateArticle = (article) => {
     return new Promise((resolve) => {
-        var values = "title = '" + article.title + "', " +
-        (article.html == null ? "" : "html = '" + article.html + "', ") + 
+        var values = "title = '" + article.title + "'" +
+        (article.html == null ? "" : ", html = '" + article.html + "', ") + 
         (article.docx == null ? "" : "docx = ?,") +
         (article.fileFormat == null ? " " : "fileFormat = '" + article.fileFormat + "'") +
         (article.viewMode == null ? "" : ", viewMode = '" + article.viewMode + "'")
@@ -66,6 +66,7 @@ exports.updateArticle = (article) => {
                     "', viewMode = '" + article.viewMode + "' WHERE id = " + article.id + ") finished with error: " + error.code
                 )
                 console.log(query.sql.substr(0, 200))
+                console.log("----------------------------")
                 console.log(query.sql.substr(query.sql.length - 200, query.sql.length - 1))
                 resolve({ error: true, data: 0 })
             } else {

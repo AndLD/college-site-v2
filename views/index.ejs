@@ -21,12 +21,6 @@
                 <!-- Main Slider -->
                 <section class="slider-wrapper">
                     <div class="slider">
-                        <!-- <img src="resources/images/index/main_slider/NewPack/1.jpg" alt="slide" class="slide">
-                        <img src="resources/images/index/main_slider/NewPack/2.jpg" alt="slide" class="slide">
-                        <img src="resources/images/index/main_slider/NewPack/3.jpg" alt="slide" class="slide">
-                        <img src="resources/images/index/main_slider/NewPack/4.jpg" alt="slide" class="slide">
-                        <img src="resources/images/index/main_slider/NewPack/5.jpg" alt="slide" class="slide">
-                        <img src="resources/images/index/main_slider/NewPack/6.jpg" alt="slide" class="slide"> -->
                         <% for (let i = 0; i < slider1Imgs.length; i++) { %>
                             <img src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>" loading="lazy" alt="slide" class="slide">
                         <% } %>
@@ -36,7 +30,7 @@
                     <div class="points"></div>
                 </section>
                 <div id="offer">Запрошуємо на навчання!</div>
-                <a href="#"><div class="button">Правила прийому</div></a>
+                <!-- <a href="#"><div class="button">Правила прийому</div></a> -->
             </section>
     
             <!-- CONTENT -->
@@ -104,9 +98,9 @@
                             <div>
                                 <div>Курсанти коледжу за власним бажанням мають можливість проходити військову підготовку за контрактом на факультеті підготовки офіцерів запасу Національного авіаційного університету.</div>
                             </div>
-                            <div>
+                            <!-- <div>
                                 <a href="#">Детальніше...</a>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="ribbon"></div>    
                     </div>
@@ -115,27 +109,6 @@
                 <!-- Sub Slider -->
                 <div class="sub-slider-wrapper">
                     <div class="sub-slider">
-                        <!-- <ul class="slides-list">
-                            <li><img src="resources/images/index/sub_slider/1.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/2.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/3.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/4.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/5.jpg" alt="slide" class="sub-slider-slide"></li>
-                        </ul>
-            
-                        <ul class="slides-list">
-                            <li><img src="resources/images/index/sub_slider/6.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/7.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/8.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/9.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/10.jpg" alt="slide" class="sub-slider-slide"></li>
-                        </ul class="slides-list">
-            
-                        <ul class="slides-list">
-                            <li><img src="resources/images/index/sub_slider/11.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/12.jpg" alt="slide" class="sub-slider-slide"></li>
-                            <li><img src="resources/images/index/sub_slider/13.jpg" alt="slide" class="sub-slider-slide"></li>
-                        </ul> -->
                         <% for (let i = 0; i < slider2Imgs.length; i++) { %>
                             
                             <% if (i == 0) { %>

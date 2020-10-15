@@ -14,7 +14,7 @@ const postNewsFormHTML =
         <input type="date" name="addDate">
     </label>
     <label class="file">
-        <p>Choose file *.docx</p>
+        <p>Choose file *.html / *.docx</p>
         <input type="file" name="docx">
     </label>
     <div class="submit">Add</div>
@@ -43,7 +43,7 @@ const putNewsFormHTML =
         <input type="checkbox" name="updateFile">
     </label>
     <label class="file hidden">
-        <p>Choose file *.docx</p>
+        <p>Choose file *.html / *.docx</p>
         <input type="file" name="docx">
     </label>
     <div class="submit">Edit</div>

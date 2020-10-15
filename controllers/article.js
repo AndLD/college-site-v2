@@ -24,7 +24,7 @@ exports.postArticle = async (req, res) => {
     var article = {
         title: req.body.title,
         html: req.body.viewMode == "docx_to_html" ? await filesHelpers.convertDocxToHtml(req.file.filename) : ( req.body.viewMode == "html" ? fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)).toString("utf8") : null ),
-        docx: new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))),
+        docx: req.body.viewMode == "docx_to_html" || req.body.viewMode == "pdf" ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null,
         fileFormat: isDocx ? "docx" : mimetypeEnding,
         viewMode: req.body.viewMode
     }
