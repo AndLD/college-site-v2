@@ -54,9 +54,9 @@ exports.selectArticleById = (id) => {
 exports.updateArticle = (article) => {
     return new Promise((resolve) => {
         var values = "title = '" + article.title + "'" +
-        (article.html == null ? "" : ", html = '" + article.html + "', ") + 
-        (article.docx == null ? "" : "docx = ?,") +
-        (article.fileFormat == null ? " " : "fileFormat = '" + article.fileFormat + "'") +
+        (article.html == null ? "" : ", html = '" + article.html + "'") + 
+        (article.docx == null ? "" : ", docx = ?") +
+        (article.fileFormat == null ? " " : ", fileFormat = '" + article.fileFormat + "'") +
         (article.viewMode == null ? "" : ", viewMode = '" + article.viewMode + "'")
         var query = mysql.connection.query("UPDATE articles SET " + values + " WHERE id = " + article.id, [article.docx], (error, result) => {
             if (error) {
