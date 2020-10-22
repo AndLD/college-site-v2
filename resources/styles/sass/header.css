@@ -33,7 +33,6 @@ header #logo img {
 header #title {
   text-align: center;
   min-height: inherit;
-  height: 100%;
   font-family: exo2;
   font-weight: bold;
   text-transform: uppercase;
@@ -185,10 +184,6 @@ header #title :nth-child(2) {
         -ms-flex-direction: column;
             flex-direction: column;
     height: 40%;
-  }
-  header #logo {
-    min-height: 20vh;
-    max-height: 20vw;
   }
   header #title {
     max-height: 40%;

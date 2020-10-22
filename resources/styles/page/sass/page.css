@@ -78,6 +78,10 @@ p .desk-wrapper .desk .desk-text p strong {
   color: red;
 }
 
+.desk-wrapper .desk .desk-text iframe {
+  max-width: 100% !important;
+}
+
 .current-menu-links-block li {
   list-style-type: disc;
   -webkit-transition: all ease 0.3s;
