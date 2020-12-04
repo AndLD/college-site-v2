@@ -311,7 +311,6 @@ body {
   position: relative;
   background-color: #e4e4e4;
   padding: 1%;
-  max-height: 200px;
   color: black;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
