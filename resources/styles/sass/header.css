@@ -98,15 +98,15 @@ header #title :nth-child(2) {
   padding-right: 5%;
   padding-top: 14px;
   padding-bottom: 14px;
-  text-align: right;
-  font-size: 2.5vw;
+  text-align: left;
+  font-size: 1.7vw;
   color: black;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.30rem;
 }
 
 @media screen and (min-width: 1800px) {
   header #title :nth-child(2) {
-    font-size: 2.4vw;
+    font-size: 1.4vw;
   }
 }
 
@@ -120,12 +120,6 @@ header #title :nth-child(2) {
   header #title :nth-child(2) {
     text-align: center;
     font-size: 9vw;
-  }
-}
-
-@media screen and (min-width: 1800px) {
-  header #title :nth-child(2) {
-    letter-spacing: 0.3rem;
   }
 }
 
