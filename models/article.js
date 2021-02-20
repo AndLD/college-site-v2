@@ -58,7 +58,7 @@ exports.updateArticle = (article) => {
         (article.docx == null ? "" : ", docx = ?") +
         (article.fileFormat == null ? " " : ", fileFormat = '" + article.fileFormat + "'") +
         (article.viewMode == null ? "" : ", viewMode = '" + article.viewMode + "'")
-        var query = mysql.connection.query("UPDATE articles SET " + values + " WHERE id = " + article.id, [article.docx], (error, result) => {
+        var query = mysql.connection.query("UPDATE articles SET " + values + " WHERE id = " + article.id, ['?', article.docx], (error, result) => {
             if (error) {
                 console.log(
                     "MySQL query (UPDATE articles SET title = '" + article.title + 
