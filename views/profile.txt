@@ -1,0 +1,24 @@
+Note 0
+
+<link rel="stylesheet" href="/resources/styles/profile/sass/subject.css">
+<link rel="stylesheet" href="/resources/styles/profile/sass/material.css">
+
+
+
+Note 1
+
+<%- include("profile-blocks/admin-blocks/slider1Img.ejs") %>
+
+<%- include("profile-blocks/admin-blocks/slider2Img.ejs") %>
+
+<script src="/resources/scripts/profile/admin/sliderImg.js"></script>
+
+
+
+Note 2
+
+<% if (user.userrole == "admin" || user.userrole == "moderator") { %>
+	<%- include("profile-blocks/moderator-blocks/subject.ejs") %>
+
+	<%- include("profile-blocks/moderator-blocks/material.ejs") %>
+<% } %>
