@@ -277,7 +277,7 @@ exports.profileController = async (req, res) => {
         var articles = selectedArticlesResult.data
 
         // Получаем новости
-        var selectedNewsResult = await newsModel.selectNews(200)
+        var selectedNewsResult = await newsModel.selectNewsWithoutImgs(200)
         if (selectedNewsResult.error) {
             return res.sendStatus(400)
         }

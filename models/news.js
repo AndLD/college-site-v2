@@ -47,6 +47,22 @@ exports.selectNews = (limit) => {
     })
 }
 
+exports.selectNewsWithoutImgs = (limit) => {
+    return new Promise((resolve) => {
+        var query = mysql.connection.query("SELECT id, title, addDate FROM news ORDER BY addDate DESC LIMIT " + limit, (error, rows) => {
+            if (error) {
+                console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
+
+                resolve({ error: true, data: null })
+            } else {
+                console.log("MySQL query (" + query.sql + ") successfully done.")
+
+                resolve({ error: false, data: rows })
+            }
+        })
+    })
+}
+
 exports.selectNewsById = (id) => {
     return new Promise((resolve) => {
         var query = mysql.connection.query("SELECT * FROM news WHERE id = " + id, (error, rows) => {
