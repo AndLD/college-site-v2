@@ -21,7 +21,7 @@ exports.insertArticle = (article) => {
 
 exports.selectArticles = () => {
     return new Promise((resolve) => {
-        var query = mysql.connection.query("SELECT * FROM articles", (error, rows) => {
+        var query = mysql.connection.query("SELECT title, id FROM articles", (error, rows) => {
             if (error) {
                 console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 

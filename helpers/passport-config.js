@@ -13,12 +13,12 @@ function init() {
         usernameField: "username",
         passwordField: "password"
     }, async (username, password, done) => {
-        var selectedResult = await userModels.selectUserByName(username)
+        const selectedResult = await userModels.selectUserByName(username)
         if (selectedResult.error) {
             return done(null, false, { message: "Internal error."})
         }
 
-        var user = selectedResult.data
+        const user = selectedResult.data
 
         if (user == null) {
             return done(null, false, { message: "User with that login does not exist." })
@@ -50,7 +50,7 @@ function init() {
 
     passport.serializeUser((user, done) => done(null, user.id))
     passport.deserializeUser(async (id, done) => {
-        var selectedResult = await userModels.selectUserById(id)
+        const selectedResult = await userModels.selectUserById(id)
         console.log("de-serialize user");
         if (selectedResult.error) {
             done(null, false, { messages: "Internal error." })

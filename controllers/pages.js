@@ -259,30 +259,33 @@ exports.loginOtpController = (req, res) => {
 
 // Профиль
 exports.profileController = async (req, res) => {
+    let articles
+    let menu
+    let news
     if (req.user.userrole == "admin") {
         // Получаем меню сайта
-        var selectedMenuResult = await menuModel.selectMenu()
+        const selectedMenuResult = await menuModel.selectMenu()
         if (selectedMenuResult.error) {
             res.sendStatus(400)
         }
 
-        var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
+        menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
 
         // Получаем статьи
-        var selectedArticlesResult = await articleModel.selectArticles()
+        const selectedArticlesResult = await articleModel.selectArticles()
         if (selectedArticlesResult.error) {
             return res.sendStatus(400)
         }
 
-        var articles = selectedArticlesResult.data
+        articles = selectedArticlesResult.data
 
         // Получаем новости
-        var selectedNewsResult = await newsModel.selectNewsWithoutImgs(200)
+        const selectedNewsResult = await newsModel.selectNewsWithoutImgs(200)
         if (selectedNewsResult.error) {
             return res.sendStatus(400)
         }
 
-        var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
+        news = pagesHelpers.adaptateNews(selectedNewsResult.data)
 
         // // ! Получение картинок для слайдеров
 
@@ -322,14 +325,15 @@ exports.profileController = async (req, res) => {
         // }
     }
 
+    let users
     if (req.user.userrole == "admin" || req.user.userrole == "moderator") {
         // Получаем пользователей
-        var selectedUsersResult = await userModel.selectUsers( (req.user.userrole == "admin" ? null : "group") )
+        const selectedUsersResult = await userModel.selectUsers( (req.user.userrole == "admin" ? null : "group") )
         if (selectedUsersResult.error) {
             return res.sendStatus(400)
         }
 
-        var users = selectedUsersResult.data
+        users = selectedUsersResult.data
 
         // // Получаем предметы
         // var selectedSubjectsResult = await subjectModel.selectSubjects()
