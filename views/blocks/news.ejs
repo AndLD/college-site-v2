@@ -14,24 +14,24 @@
             <a href=<%= "/news/" + news[i].id %>>
                 <div class="single-new">
                     <div class="single-new-image">
-                        <% if (news[i].html.indexOf(iframe) == -1) { %>
+                        <!-- <% if (news[i].html.indexOf(iframe) == -1) { %> -->
                             <% let indexOfImgBegin = news[i].html.indexOf(imgBegin) %>
                             <% let indexOfImgEnd =  news[i].html.indexOf(imgEnd) + imgEnd.length %>
                             <% let img = news[i].html.slice(indexOfImgBegin, indexOfImgEnd) %>
 
                             <%- img %>
                             <% news[i].html = news[i].html.slice(indexOfImgEnd + (img != "" && img != null ? imgEnd.length + textBegin.length : 0), news[i].html.length - 1) %>
-                        <% }%>
+                        <!-- <% }%> -->
                     </div>
 
                     <div class="single-new-description">
                         <p class="single-new-title"><%= news[i].title %></p>
                         <p class="single-new-date-mobile"><%= news[i].addDate %></p>
                         <p class="single-new-text">
-                            <% if (news[i].html.indexOf(iframe) == -1) { %>
+                            <!-- <% if (news[i].html.indexOf(iframe) == -1) { %> -->
                                 <% let indexOfTextEnd = news[i].html.indexOf(textEnd);%>
                                 <%= news[i].html.slice(0, (indexOfTextEnd - textEnd.length + 4 < 300 ? indexOfTextEnd - textEnd.length + 4 : 300)) + "..." %>
-                            <% } %>
+                            <!-- <% } %> -->
                         </p>
                         <div class="single-new-date"><%= news[i].addDate %></div>
                     </div>
