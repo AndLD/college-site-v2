@@ -102,6 +102,8 @@ pagesRoutes.get("/news/:id", pagesControllers.singleNewsController)
 pagesRoutes.get("/news", pagesControllers.newsController)
 // Страница контактов
 pagesRoutes.get("/contacts", pagesControllers.contactsController)
+// Страница конференции авиации и космонавтики
+pagesRoutes.get("/conf", pagesControllers.confController)
 
 // Страница регистрации (закрыта)
 // pagesRoutes.get("/register", userMiddlewares.ipGuard, userMiddlewares.isNotLogged, pagesControllers.registerController)

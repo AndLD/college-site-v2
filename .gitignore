@@ -6,3 +6,4 @@ package-lock.json
 settings.json
 debug.log
 readme.todo
+/resources/conf

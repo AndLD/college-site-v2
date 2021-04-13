@@ -11,8 +11,7 @@ const materialModel = require("../models/material")
 // Подключаем хелперы для страниц
 var pagesHelpers = require("../helpers/pages")
 
-const fs = require("fs")
-const constants = require("../helpers/constants").files
+const fs = require("fs");
 const dirname = require("../index").dirname
 
 const TokenGenerator = require("uuid-token-generator")
@@ -226,7 +225,7 @@ exports.newsController = async (req, res) => {
     res.render("news", { menu: menu, news: news })
 }
 
-exports.contactsController = async(req, res) => {
+exports.contactsController = async (req, res) => {
     // Получаем меню
     var selectedMenuResult = await menuModel.selectMenu()
     if (selectedMenuResult.error) {
@@ -236,6 +235,11 @@ exports.contactsController = async(req, res) => {
     var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
 
     res.render("contacts", { menu: menu })
+}
+
+exports.confController = (req, res) => {
+    const html = fs.readFileSync(dirname + "/resources/conf/index.html");
+    res.send(html.toString());
 }
 
 // ! РЕГИСТРАЦИЯ И АВТОРИЗАЦИЯ
