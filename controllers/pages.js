@@ -291,42 +291,42 @@ exports.profileController = async (req, res) => {
 
         news = pagesHelpers.adaptateNews(selectedNewsResult.data)
 
-        // // ! Получение картинок для слайдеров
+        // ! Получение картинок для слайдеров
 
-        // // Получаем информацию о картинках для слайдеров
-        // let selectedSliderImgsResult = await sliderImgsModel.selectSliderImgs()
-        // if (selectedSliderImgsResult.error) {
-        //     return res.sendStatus(400)
-        // }
+        // Получаем информацию о картинках для слайдеров
+        let selectedSliderImgsResult = await sliderImgsModel.selectSliderImgs()
+        if (selectedSliderImgsResult.error) {
+            return res.sendStatus(400)
+        }
 
-        // let sliderImgsInfo = selectedSliderImgsResult.data
+        let sliderImgsInfo = selectedSliderImgsResult.data
 
-        // let whereString = "WHERE"
-        // let ids = ""
-        // for (let i = 0; i < sliderImgsInfo.length; i++) {
-        //     whereString += " id = " + sliderImgsInfo[i].imageId + " or"
-        //     ids += sliderImgsInfo[i].imageId + ","
-        // }
+        let whereString = "WHERE"
+        let ids = ""
+        for (let i = 0; i < sliderImgsInfo.length; i++) {
+            whereString += " id = " + sliderImgsInfo[i].imageId + " or"
+            ids += sliderImgsInfo[i].imageId + ","
+        }
         
-        // // Получение картинок для слайдеров
-        // let selectedImagesResult = await imageModel.selectImages( (whereString != "WHERE" ? whereString.slice(0, -3) : null), (ids != "" ? ids.slice(0, -1) : null) ) // slice - обрезаем " and" в конце строки
-        // if (selectedImagesResult.error) {
-        //     return res.sendStatus(400)
-        // }
+        // Получение картинок для слайдеров
+        let selectedImagesResult = await imageModel.selectImages( (whereString != "WHERE" ? whereString.slice(0, -3) : null), (ids != "" ? ids.slice(0, -1) : null) ) // slice - обрезаем " and" в конце строки
+        if (selectedImagesResult.error) {
+            return res.sendStatus(400)
+        }
         
-        // let sliderImgs = selectedImagesResult.data
+        let sliderImgs = selectedImagesResult.data
 
-        // var slider1Imgs = []
-        // var slider2Imgs = []
-        // for (let i = 0; i < sliderImgsInfo.length; i++) {
-        //     if (sliderImgsInfo[i].sliderId == 1) {
-        //         slider1Imgs.push(sliderImgs[i])
-        //     }
+        var slider1Imgs = []
+        var slider2Imgs = []
+        for (let i = 0; i < sliderImgsInfo.length; i++) {
+            if (sliderImgsInfo[i].sliderId == 1) {
+                slider1Imgs.push(sliderImgs[i])
+            }
 
-        //     if (sliderImgsInfo[i].sliderId == 2) {
-        //         slider2Imgs.push(sliderImgs[i])
-        //     }
-        // }
+            if (sliderImgsInfo[i].sliderId == 2) {
+                slider2Imgs.push(sliderImgs[i])
+            }
+        }
     }
 
     let users
@@ -363,5 +363,5 @@ exports.profileController = async (req, res) => {
     //     var materials = selectedMaterialsResult.data
     // }
 
-    res.render("profile", { user: req.user, menu: menu, articles: articles, news: news, /*slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs,*/ users: users, /*subjects: subjects, materials: materials*/ })
+    res.render("profile", { user: req.user, menu: menu, articles: articles, news: news, slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs, users: users, /*subjects: subjects, materials: materials*/ })
 }
