@@ -4,6 +4,7 @@ const mysql = require("../db/mysql")
 
 id
 title
++ tags
 addDate
 html
 docx
@@ -82,7 +83,7 @@ exports.selectNewsById = (id) => {
 exports.updateNews = (news) => {
     return new Promise((resolve) => {
         var values = "title = '" + news.title +
-        (news.tags != null ? ", tags = '" + news.tags : "")
+        (news.tags != null ? "', tags = '" + news.tags : "")
         + "', addDate = ?" +
         (news.html != null ? ", html = '" + news.html + "'" : "") +
         (news.docx != null ? ", docx = ?" : "")
