@@ -14,16 +14,16 @@ docx
 
 exports.insertNews = (news) => {
     return new Promise((resolve) => {
-        var query = mysql.connection.query("INSERT INTO news (title, addDate, html, docx) VALUES (?, ?, ?, ?)",
+        var query = mysql.connection.query("INSERT INTO news (title, tags, addDate, html, docx) VALUES (?, ?, ?, ?, ?)",
         [news.title, news.addDate, news.html, news.docx], (error) => {
             if (error) {
-                console.log("MySQL query (INSERT INTO news (title, addDate, html, docx) VALUES ('" + 
-                news.title + "', '" + news.addDate + "', '...', '...') finished with error: " + error.code)
+                console.log("MySQL query (INSERT INTO news (title, tags, addDate, html, docx) VALUES ('" + 
+                news.title + "', '" + news.tags + "', '" + news.addDate + "', '...', '...') finished with error: " + error.code)
 
                 resolve(true)
             } else {
                 console.log("MySQL query (INSERT INTO news (title, addDate, html, docx) VALUES ('" + 
-                news.title + "', '" + news.addDate + "', '...', '...') successfully done.")
+                news.title + "', '" + news.tags + "', '" + news.addDate + "', '...', '...') successfully done.")
 
                 resolve(false)
             }
@@ -47,9 +47,9 @@ exports.selectNews = (limit, tags) => {
     })
 }
 
-exports.selectNewsWithoutImgs = (limit) => {
+exports.selectNewsWithoutImgs = (limit, tags) => {
     return new Promise((resolve) => {
-        var query = mysql.connection.query("SELECT id, title, addDate FROM news ORDER BY addDate DESC LIMIT " + limit, (error, rows) => {
+        var query = mysql.connection.query(`SELECT id, title, tags, addDate FROM news ${ tags ? `WHERE tags LIKE "%${tags}%" ` : '' }ORDER BY addDate DESC LIMIT ${limit}`, (error, rows) => {
             if (error) {
                 console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 
@@ -81,8 +81,9 @@ exports.selectNewsById = (id) => {
 
 exports.updateNews = (news) => {
     return new Promise((resolve) => {
-        var values = "title = '" + news.title + 
-        "', addDate = ?" +
+        var values = "title = '" + news.title +
+        (news.tags != null ? ", tags = '" + news.tags + "'" : "")
+        + "', addDate = ?" +
         (news.html != null ? ", html = '" + news.html + "'" : "") +
         (news.docx != null ? ", docx = ?" : "")
 
