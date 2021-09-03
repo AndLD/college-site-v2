@@ -206,6 +206,9 @@ exports.singleNewsController = async (req, res) => {
 
 // Страница новостей
 exports.newsController = async (req, res) => {
+    // Теги новостей
+    const tags = req.query.tags
+
     // Получаем меню
     var selectedMenuResult = await menuModel.selectMenu()
     if (selectedMenuResult.error) {
@@ -215,7 +218,7 @@ exports.newsController = async (req, res) => {
     var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
 
     // Получаем новости
-    var selectedNewsResult = await newsModel.selectNews(50)
+    var selectedNewsResult = await newsModel.selectNews(50, tags)
     if (selectedNewsResult.error) {
         return res.sendStatus(400)
     }

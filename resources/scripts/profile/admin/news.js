@@ -10,6 +10,10 @@ const postNewsFormHTML =
         <input type="text" name="title">
     </label>
     <label>
+        <p>Tags</p>
+        <input type="text" name="tags">
+    </label>
+    <label>
         <p>AddDate</p>
         <input type="date" name="addDate">
     </label>
@@ -33,6 +37,10 @@ const putNewsFormHTML =
     <label>
         <p>Title</p>
         <input type="text" name="title">
+    </label>
+    <label>
+        <p>Tags</p>
+        <input type="text" name="tags">
     </label>
     <label>
         <p>AddDate</p>
@@ -124,12 +132,14 @@ function showEditNewsModalForm() {
     var news = {
         id: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.lastElementChild.textContent,
         addDate: addDate,
-        title: event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.textContent
+        title: event.target.parentElement.parentElement.parentElement.parentElement.firstElementChild.textContent,
+        tags: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[3].textContent
     }
 
     document.querySelector("input[name='id']").value = news.id
     document.querySelector("input[name='addDate']").value = news.addDate
     document.querySelector("input[name='title']").value = news.title
+    document.querySelector("input[name='tags']").value = news.tags
 
     showModal()
     document.querySelector("div.submit").onclick = () => { putNewsRequest() }
@@ -157,6 +167,7 @@ function postNewsRequest() {
 
     var form = new FormData()
     form.append("title", document.querySelector("input[name='title']").value)
+    form.append("tags", document.querySelector("input[name='tags']").value)
     form.append("addDate", document.querySelector("input[name='addDate']").value)
     form.append("docx", document.querySelector("input[name='docx']").files[0])
 
@@ -186,6 +197,7 @@ function putNewsRequest() {
 
     var form = new FormData()
     form.append("title", document.querySelector("input[name='title']").value)
+    form.append("tags", document.querySelector("input[name='tags']").value)
     form.append("addDate", document.querySelector("input[name='addDate']").value)
     form.append("updateFile", document.querySelector("input[name='updateFile']").checked)
     form.append("docx", document.querySelector("input[name='docx']").files[0])

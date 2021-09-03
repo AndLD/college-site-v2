@@ -7,6 +7,7 @@
             <td>№</td>
             <td>AddDate</td>
             <td>Title</td>
+            <td>Tags</td>
             <td>Id</td>
         </tr>
         <% for(var i = 0; i < news.length; i++) { %>
@@ -28,6 +29,7 @@
                         </div>
                     </div>
                 </div></td>
+                <td><%= news[i].tags ? news[i].tags : '' %></td>
                 <td><%= news[i].id %></td>
             </tr> 
         <% } %>

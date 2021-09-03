@@ -31,9 +31,9 @@ exports.insertNews = (news) => {
     })
 }
 
-exports.selectNews = (limit) => {
+exports.selectNews = (limit, tags) => {
     return new Promise((resolve) => {
-        var query = mysql.connection.query("SELECT * FROM news ORDER BY addDate DESC LIMIT " + limit, (error, rows) => {
+        var query = mysql.connection.query(`SELECT * FROM news ${ tags ? `WHERE tags LIKE "%${tags}%" ` : '' }ORDER BY addDate DESC LIMIT ${limit}`, (error, rows) => {
             if (error) {
                 console.log("MySQL query (" + query.sql + ") finished with error: " + error.code)
 

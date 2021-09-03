@@ -19,6 +19,7 @@ exports.postNews = async (req, res) => {
     // Инициализируем новость
     var news = {
         title: req.body.title,
+        tags: req.body.tags,
         addDate: new Date(req.body.addDate),
         html: isDocx ? await filesHelpers.convertDocxToHtml(req.file.filename) : (isHtml ? fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)).toString("utf8") : null),
         docx: isDocx ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null
@@ -57,6 +58,7 @@ exports.putNews = async (req, res) => {
     var news = {
         id: req.params.id,
         title: req.body.title,
+        tags: req.body.tags,
         addDate: new Date(req.body.addDate),
         html: (req.body.updateFile == "true" && isDocx ? await filesHelpers.convertDocxToHtml(req.file.filename) : (req.body.updateFile == "true" && isHtml ? fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename)).toString("utf8") : null)),
         docx: (req.body.updateFile == "true" && isDocx ? new Buffer(fs.readFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, req.file.filename))) : null)
