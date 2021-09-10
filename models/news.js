@@ -17,7 +17,7 @@ exports.insertNews = (news) => {
     return new Promise((resolve) => {
         var query = mysql.connection.query(
             'INSERT INTO news (title, tags, addDate, html, docx) VALUES (?, ?, ?, ?, ?)',
-            [news.title, news.addDate, news.tags, news.html, news.docx],
+            [news.title, news.tags, news.addDate, news.html, news.docx],
             (error) => {
                 if (error) {
                     console.log(
