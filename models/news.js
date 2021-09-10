@@ -17,24 +17,24 @@ exports.insertNews = (news) => {
     return new Promise((resolve) => {
         var query = mysql.connection.query(
             'INSERT INTO news (title, tags, addDate, html, docx) VALUES (?, ?, ?, ?, ?)',
-            [news.title, news.addDate, news.html, news.docx],
+            [news.title, news.addDate, news.tags, news.html, news.docx],
             (error) => {
                 if (error) {
-                    // console.log(
-                    //     "MySQL query (INSERT INTO news (title, tags, addDate, html, docx) VALUES ('" +
-                    //         news.title +
-                    //         "', '" +
-                    //         news.tags +
-                    //         "', '" +
-                    //         news.addDate +
-                    //         "', '" +
-                    //         news.html
-                    //         ? news.html.slice(news.html.length - 100, news.html.length)
-                    //         : undefined + "', '" + news.docx
-                    //         ? news.docx.slice(news.docx.length - 100, news.docx.length)
-                    //         : undefined + "') finished with error: " + error.code
-                    // )
-                    console.log(`MySQL query (${query.sql}) finished with error: ${error.code}`)
+                    console.log(
+                        "MySQL query (INSERT INTO news (title, tags, addDate, html, docx) VALUES ('" +
+                            news.title +
+                            "', '" +
+                            news.tags +
+                            "', '" +
+                            news.addDate +
+                            "', '" +
+                            news.html
+                            ? news.html.slice(news.html.length - 100, news.html.length)
+                            : undefined + "', '" + news.docx
+                            ? news.docx.slice(news.docx.length - 100, news.docx.length)
+                            : undefined + "') finished with error: " + error.code
+                    )
+                    // console.log(`MySQL query (${query.sql}) finished with error: ${error.code}`)
 
                     resolve(true)
                 } else {
