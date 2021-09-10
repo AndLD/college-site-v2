@@ -28,7 +28,7 @@ exports.insertNews = (news) => {
                             "', '" +
                             news.addDate +
                             "', '" +
-                            html.slice(html.length - 100, html.length - 1) +
+                            html.slice(news.html.length - 100, news.html.length - 1) +
                             "', '...') finished with error: " +
                             error.code
                     )
