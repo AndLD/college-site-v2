@@ -28,9 +28,11 @@ exports.insertNews = (news) => {
                             "', '" +
                             news.addDate +
                             "', '" +
-                            news.html.slice(news.html.length - 100, news.html.length - 1) +
-                            "', '...') finished with error: " +
-                            error.code
+                            news.html
+                            ? news.html.slice(news.html.length - 100, news.html.length)
+                            : undefined + "', '" + news.docx
+                            ? news.docx.slice(news.docx.length - 100, news.docx.length)
+                            : undefined + "') finished with error: " + error.code
                     )
 
                     resolve(true)
