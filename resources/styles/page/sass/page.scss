@@ -1,12 +1,13 @@
-@import '../../sass/variables.scss';
+@import "../../sass/variables.scss";
 
 .desk-wrapper {
-    &>:first-child {
+    & > :first-child {
         flex: 3;
 
         img {
-            margin-top: 2%;
-            margin-bottom: 2%;
+            // margin-top: 2%;
+            // margin-bottom: 2%;
+            margin: 2% auto;
 
             max-width: 70%;
             max-height: 90vh;
@@ -16,7 +17,7 @@
             margin-left: 5%;
         }
     }
-    &>:last-child {
+    & > :last-child {
         flex: 1;
 
         padding: 0% 1% 0% 1%;
@@ -52,7 +53,7 @@
 
                 text-align: justify;
             }
-        
+
             li {
                 list-style-type: disc;
                 margin-left: 7%;
@@ -64,11 +65,10 @@
                 td {
                     margin-right: 50px;
                     min-width: 100px;
-                    
+
                     vertical-align: top;
 
                     border: 1px solid black;
-                    
                 }
             }
             p strong {
@@ -141,7 +141,7 @@ $horizontalRibbonSubColor: $menuFocusedColor;
 $horizontalRibbonWidth: 18vw;
 .horizontal-ribbon {
     position: absolute;
-    
+
     background-color: $horizontalRibbonColor;
 
     // padding-top: 1%;
@@ -204,12 +204,12 @@ $horizontalRibbonWidth: 18vw;
 
         content: "";
         position: absolute;
-                    
+
         top: 99%;
         right: 0px;
 
-        border-right: 1vw solid transparent;//1.15vw solid $horizontalRibbonSubColor;
-        border-top: 1vw solid $horizontalRibbonSubColor;//0.9vw solid $horizontalRibbonSubColor;
+        border-right: 1vw solid transparent; //1.15vw solid $horizontalRibbonSubColor;
+        border-top: 1vw solid $horizontalRibbonSubColor; //0.9vw solid $horizontalRibbonSubColor;
         @media screen and (max-width: 480px) {
             border-right: 5vw solid transparent;
             border-top: 5vw solid $horizontalRibbonSubColor;
@@ -240,7 +240,5 @@ $horizontalRibbonWidth: 18vw;
                 text-decoration: underline !important;
             }
         }
-
-        
     }
 }
