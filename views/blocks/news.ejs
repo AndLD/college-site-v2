@@ -27,14 +27,10 @@
                     <div class="single-new-description">
                         <p class="single-new-title"><%= news[i].title %></p>
                         <p class="single-new-date-mobile"><%= news[i].addDate %></p>
-                        <% let singleNewText = document.createElement('p') %>
-                        <% singleNewText.innerHTML = news[i].html %>
-                        <% let firstP = singleNewText.querySelector('p')%>
                         <p class="single-new-text">
                             <!-- <% if (news[i].html.indexOf(iframe) == -1) { %> -->
-                                <!-- <% let indexOfTextEnd = news[i].html.indexOf(textEnd);%> -->
-                                <!-- <%= news[i].html.slice(0, (indexOfTextEnd - textEnd.length + 4 < 300 ? indexOfTextEnd - textEnd.length + 4 : 300)) + "..." %> -->
-                                <%= firstP.innerHTML %>...
+                                <% let indexOfTextEnd = news[i].html.indexOf(textEnd);%>
+                                <%= news[i].html.slice(0, (indexOfTextEnd - textEnd.length + 4 < 300 ? indexOfTextEnd - textEnd.length + 4 : 300)) + "..." %>
                             <!-- <% } %> -->
                         </p>
                         <div class="single-new-date"><%= news[i].addDate %></div>
