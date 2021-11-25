@@ -55,17 +55,34 @@ exports.insertNews = (news) => {
     })
 }
 
-exports.selectNews = (limit, tags) => {
+exports.selectNewsTitles = (limit, tags) => {
     return new Promise((resolve) => {
         var query = mysql.connection.query(
-            `SELECT * FROM news ${
+            `SELECT title, addDate FROM news ${
                 tags ? `WHERE tags LIKE "%${tags}%" ` : ''
             }ORDER BY addDate DESC LIMIT ${limit}`,
             (error, rows) => {
                 if (error) {
-                    console.log(
-                        'MySQL query (' + query.sql + ') finished with error: ' + error.code
-                    )
+                    console.log('MySQL query (' + query.sql + ') finished with error: ' + error.code)
+
+                    resolve({ error: true, data: null })
+                } else {
+                    console.log('MySQL query (' + query.sql + ') successfully done.')
+
+                    resolve({ error: false, data: rows })
+                }
+            }
+        )
+    })
+}
+
+exports.selectNews = (limit, tags) => {
+    return new Promise((resolve) => {
+        var query = mysql.connection.query(
+            `SELECT * FROM news ${tags ? `WHERE tags LIKE "%${tags}%" ` : ''}ORDER BY addDate DESC LIMIT ${limit}`,
+            (error, rows) => {
+                if (error) {
+                    console.log('MySQL query (' + query.sql + ') finished with error: ' + error.code)
 
                     resolve({ error: true, data: null })
                 } else {
@@ -86,9 +103,7 @@ exports.selectNewsWithoutImgs = (limit, tags) => {
             }ORDER BY addDate DESC LIMIT ${limit}`,
             (error, rows) => {
                 if (error) {
-                    console.log(
-                        'MySQL query (' + query.sql + ') finished with error: ' + error.code
-                    )
+                    console.log('MySQL query (' + query.sql + ') finished with error: ' + error.code)
 
                     resolve({ error: true, data: null })
                 } else {
@@ -134,9 +149,7 @@ exports.updateNews = (news) => {
                 if (error) {
                     // console.log("MySQL query (UPDATE news SET title = '" +
                     // news.title + "', date = '" + news.addDate + "', html = '...', docx = '...' WHERE id = " + news.id + ") finished with error: " + error.code)
-                    console.log(
-                        'MySQL query (' + query.sql + ') finished with error: ' + error.code
-                    )
+                    console.log('MySQL query (' + query.sql + ') finished with error: ' + error.code)
 
                     resolve({ error: true, data: 0 })
                 } else {

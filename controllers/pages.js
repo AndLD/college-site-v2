@@ -1,23 +1,23 @@
 // Подключаем модели
-const menuModel = require("../models/menu")
-const articleModel = require("../models/article")
-const newsModel = require("../models/news")
-const sliderImgsModel = require("../models/sliderImg")
-const imageModel = require("../models/image")
-const userModel = require("../models/user")
-const subjectModel = require("../models/subject")
-const materialModel = require("../models/material")
+const menuModel = require('../models/menu')
+const articleModel = require('../models/article')
+const newsModel = require('../models/news')
+const sliderImgsModel = require('../models/sliderImg')
+const imageModel = require('../models/image')
+const userModel = require('../models/user')
+const subjectModel = require('../models/subject')
+const materialModel = require('../models/material')
 
 // Подключаем хелперы для страниц
-var pagesHelpers = require("../helpers/pages")
+var pagesHelpers = require('../helpers/pages')
 
-const fs = require("fs");
-const dirname = require("../index").dirname
+const fs = require('fs')
+const dirname = require('../index').dirname
 
-const TokenGenerator = require("uuid-token-generator")
+const TokenGenerator = require('uuid-token-generator')
 const token = new TokenGenerator()
 
-const btoa = require("btoa")
+const btoa = require('btoa')
 
 // ! ОБЩИЕ СТРАНИЦЫ
 
@@ -39,8 +39,6 @@ exports.indexController = async (req, res) => {
 
     var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
 
-
-
     // ! Получение картинок для слайдеров
 
     // Получаем информацию о картинках для слайдеров
@@ -51,19 +49,22 @@ exports.indexController = async (req, res) => {
 
     let sliderImgsInfo = selectedSliderImgsResult.data
 
-    let whereString = "WHERE"
-    let ids = ""
+    let whereString = 'WHERE'
+    let ids = ''
     for (let i = 0; i < sliderImgsInfo.length; i++) {
-        whereString += " id = " + sliderImgsInfo[i].imageId + " or"
-        ids += sliderImgsInfo[i].imageId + ","
+        whereString += ' id = ' + sliderImgsInfo[i].imageId + ' or'
+        ids += sliderImgsInfo[i].imageId + ','
     }
-    
+
     // Получение картинок для слайдеров
-    let selectedImagesResult = await imageModel.selectImages( (whereString != "WHERE" ? whereString.slice(0, -3) : null), (ids != "" ? ids.slice(0, -1) : null) ) // slice - обрезаем " and" в конце строки
+    let selectedImagesResult = await imageModel.selectImages(
+        whereString != 'WHERE' ? whereString.slice(0, -3) : null,
+        ids != '' ? ids.slice(0, -1) : null
+    ) // slice - обрезаем " and" в конце строки
     if (selectedImagesResult.error) {
         return res.sendStatus(400)
     }
-    
+
     let sliderImgs = selectedImagesResult.data
 
     var slider1Imgs = []
@@ -78,7 +79,7 @@ exports.indexController = async (req, res) => {
         }
     }
 
-    res.render("index", { menu: menu, news: news, slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs })
+    res.render('index', { menu: menu, news: news, slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs })
 }
 
 // Страница статьи
@@ -93,17 +94,14 @@ exports.articleController = async (req, res) => {
     }
 
     var article = selectedArticleResult.data
-    article.type = "article"
+    article.type = 'article'
 
     // Если статья представлена в виде PDF, будем открывать ее в отдельной вкладке
-    if (article.viewMode == "pdf" && article.fileFormat == "pdf") {
-        res.contentType("application/pdf")
+    if (article.viewMode == 'pdf' && article.fileFormat == 'pdf') {
+        res.contentType('application/pdf')
         res.send(article.docx)
         return
     }
-    
-
-
 
     // Получаем меню
     var selectedMenuResult = await menuModel.selectMenu()
@@ -121,53 +119,44 @@ exports.articleController = async (req, res) => {
 
     var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
 
-
-
-
     // Определение, к какому элементу главного меню относится данная статья
     var currentMainMenu
-    
-    for(var i = 0; i < menu.main.length; i++) {
 
+    for (var i = 0; i < menu.main.length; i++) {
         if (currentMainMenu != null) break
 
-        var splittedMainElem = menu.main[i].link.split("/")
+        var splittedMainElem = menu.main[i].link.split('/')
         if (splittedMainElem[splittedMainElem.length - 1] == article.id) {
             currentMainMenu = menu.main[i]
             break
         }
 
-        for(var j = 0; j < menu.drop.length; j++) {
-
+        for (var j = 0; j < menu.drop.length; j++) {
             if (menu.drop[j].parentId == menu.main[i].id) {
-
                 if (currentMainMenu != null) break
 
-                var splittedDropElem = menu.drop[j].link.split("/")
+                var splittedDropElem = menu.drop[j].link.split('/')
                 if (splittedDropElem[splittedDropElem.length - 1] == article.id) {
                     currentMainMenu = menu.main[i]
                     break
                 }
 
-                for(var k = 0; k < menu.deepDrop.length; k++) {
-
+                for (var k = 0; k < menu.deepDrop.length; k++) {
                     if (menu.deepDrop[k].parentId == menu.drop[j].id) {
-                        
                         if (currentMainMenu != null) break
-                    
-                        var splittedDeepDropElem = menu.deepDrop[k].link.split("/")
+
+                        var splittedDeepDropElem = menu.deepDrop[k].link.split('/')
                         if (splittedDeepDropElem[splittedDeepDropElem.length - 1] == article.id) {
                             currentMainMenu = menu.main[i]
                             break
                         }
                     }
-
                 }
             }
         }
     }
-    
-    res.render("page", { menu: menu, currentMainMenu: currentMainMenu, data: article, news: news })
+
+    res.render('page', { menu: menu, currentMainMenu: currentMainMenu, data: article, news: news })
 }
 
 // Страница новости
@@ -181,7 +170,7 @@ exports.singleNewsController = async (req, res) => {
     var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
 
     // Получаем последние новости
-    var selectedNewsResult = await newsModel.selectNews(8)
+    var selectedNewsResult = await newsModel.selectNewsTitles(8)
     if (selectedNewsResult.error) {
         res.sendStatus(400)
     }
@@ -199,9 +188,9 @@ exports.singleNewsController = async (req, res) => {
 
     var singleNews = selectedSingleNewsResult.data
     singleNews.addDate = pagesHelpers.adaptateDate(singleNews.addDate)
-    singleNews.type = "news"
+    singleNews.type = 'news'
 
-    res.render("page", { menu: menu, data: singleNews, news: news })
+    res.render('page', { menu: menu, data: singleNews, news: news })
 }
 
 // Страница новостей
@@ -225,7 +214,7 @@ exports.newsController = async (req, res) => {
 
     var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
 
-    res.render("news", { menu: menu, news: news })
+    res.render('news', { menu: menu, news: news })
 }
 
 exports.contactsController = async (req, res) => {
@@ -237,29 +226,29 @@ exports.contactsController = async (req, res) => {
 
     var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
 
-    res.render("contacts", { menu: menu })
+    res.render('contacts', { menu: menu })
 }
 
 exports.confController = (req, res) => {
-    const html = fs.readFileSync(dirname + "/resources/conf/index.html");
-    res.send(html.toString());
+    const html = fs.readFileSync(dirname + '/resources/conf/index.html')
+    res.send(html.toString())
 }
 
 // ! РЕГИСТРАЦИЯ И АВТОРИЗАЦИЯ
 
 // Страница регистрации
 exports.registerController = (req, res) => {
-    res.render("user/register", { message: null })
+    res.render('user/register', { message: null })
 }
 
 // Страница авторизации 1 фактор
 exports.loginController = (req, res) => {
-    res.render("user/login")
+    res.render('user/login')
 }
 
 // Страница авторизации 2 фактор
 exports.loginOtpController = (req, res) => {
-    res.render("user/login-otp")
+    res.render('user/login-otp')
 }
 
 // ! СЛУЖЕБНЫЕ СТРАНИЦЫ
@@ -269,7 +258,7 @@ exports.profileController = async (req, res) => {
     let articles
     let menu
     let news
-    if (req.user.userrole == "admin") {
+    if (req.user.userrole == 'admin') {
         // Получаем меню сайта
         const selectedMenuResult = await menuModel.selectMenu()
         if (selectedMenuResult.error) {
@@ -304,19 +293,22 @@ exports.profileController = async (req, res) => {
 
         let sliderImgsInfo = selectedSliderImgsResult.data
 
-        let whereString = "WHERE"
-        let ids = ""
+        let whereString = 'WHERE'
+        let ids = ''
         for (let i = 0; i < sliderImgsInfo.length; i++) {
-            whereString += " id = " + sliderImgsInfo[i].imageId + " or"
-            ids += sliderImgsInfo[i].imageId + ","
+            whereString += ' id = ' + sliderImgsInfo[i].imageId + ' or'
+            ids += sliderImgsInfo[i].imageId + ','
         }
-        
+
         // Получение картинок для слайдеров
-        let selectedImagesResult = await imageModel.selectImages( (whereString != "WHERE" ? whereString.slice(0, -3) : null), (ids != "" ? ids.slice(0, -1) : null) ) // slice - обрезаем " and" в конце строки
+        let selectedImagesResult = await imageModel.selectImages(
+            whereString != 'WHERE' ? whereString.slice(0, -3) : null,
+            ids != '' ? ids.slice(0, -1) : null
+        ) // slice - обрезаем " and" в конце строки
         if (selectedImagesResult.error) {
             return res.sendStatus(400)
         }
-        
+
         let sliderImgs = selectedImagesResult.data
 
         var slider1Imgs = []
@@ -333,9 +325,9 @@ exports.profileController = async (req, res) => {
     }
 
     let users
-    if (req.user.userrole == "admin" || req.user.userrole == "moderator") {
+    if (req.user.userrole == 'admin' || req.user.userrole == 'moderator') {
         // Получаем пользователей
-        const selectedUsersResult = await userModel.selectUsers( (req.user.userrole == "admin" ? null : "group") )
+        const selectedUsersResult = await userModel.selectUsers(req.user.userrole == 'admin' ? null : 'group')
         if (selectedUsersResult.error) {
             return res.sendStatus(400)
         }
@@ -366,5 +358,13 @@ exports.profileController = async (req, res) => {
     //     var materials = selectedMaterialsResult.data
     // }
 
-    res.render("profile", { user: req.user, menu: menu, articles: articles, news: news, slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs, users: users, /*subjects: subjects, materials: materials*/ })
+    res.render('profile', {
+        user: req.user,
+        menu: menu,
+        articles: articles,
+        news: news,
+        slider1Imgs: slider1Imgs,
+        slider2Imgs: slider2Imgs,
+        users: users /*subjects: subjects, materials: materials*/
+    })
 }
