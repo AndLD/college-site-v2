@@ -18,30 +18,34 @@
                 
                 <%- include("blocks/menu.ejs") %> 
     
-                <!-- Main Slider -->
-                <section class="slider-wrapper">
-                    <div class="slider">
-                        <% for (let i = 0; i < slider1Imgs.length; i++) { %>
-                            <img src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>" loading="lazy" alt="slide" class="slide">
-                        <% } %>
+                <div class="flex">
+                    <!-- Main Slider -->
+                    <section class="slider-wrapper flex-child-2">
+                        <div class="slider">
+                            <% for (let i = 0; i < slider1Imgs.length; i++) { %>
+                                <img src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>" loading="lazy" alt="slide" class="slide">
+                            <% } %>
+                        </div>
+                        <div class="slider-button slider-button-left"><img src="resources/images/index/main_slider/left_white.png"></div>
+                        <div class="slider-button slider-button-right"><img src="resources/images/index/main_slider/right_white.png"></div>
+                        <div class="points"></div>
+                    </section>
+                    <div class="flex-child-1 info-block" >
+                        <div id="offer">Запрошуємо на навчання!</div>
+                        <div class="desk-wrapper-info-block">
+                            <div class="desk">
+                                <div class="desk-title"><a href="/article/541">ПРЕЗЕНТАЦІЯ КОЛЕДЖУ ТА СПЕЦІАЛЬНОСТЕЙ</a></div>
+                                <div class="ribbon"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="slider-button slider-button-left"><img src="resources/images/index/main_slider/left_white.png"></div>
-                    <div class="slider-button slider-button-right"><img src="resources/images/index/main_slider/right_white.png"></div>
-                    <div class="points"></div>
-                </section>
-                <div id="offer">Запрошуємо на навчання!</div>
-                <!-- <a href="#"><div class="button">Правила прийому</div></a> -->
+                </div>
             </section>
     
             <!-- CONTENT -->
             <section id="CONTENT">
 
-                <div class="desk-wrapper">
-                    <div class="desk">
-                        <div class="desk-title"><a href="/article/541">ПРЕЗЕНТАЦІЯ КОЛЕДЖУ ТА СПЕЦІАЛЬНОСТЕЙ</a></div>
-                        <div class="ribbon"></div>
-                    </div>
-                </div>
+                
                 
                 <table class="phrase-in-table"><tr><td>На які спеціальності я можу поступити?</td></tr></table>
     

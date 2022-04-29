@@ -1,12 +1,13 @@
 .slider-wrapper {
+    z-index: 1;
     position: relative;
 
     margin: auto;
 
-    width: 80%;
-    height: 37.6vw;
+    // width: 50%;
+    height: 30vw;
     @media screen and (min-width: 1850px) {
-        height: 32.8vw;
+        height: 27vw;
     }
     @media screen and (min-width: 2500px) {
         height: 576px;
@@ -84,7 +85,6 @@
 
     @media screen and (max-width: 480px) {
         top: 85%;
-        left: 36%;
     }
 
     transform: translate(-50%, -50%);
@@ -100,8 +100,8 @@
         height: 0.7vw;
 
         @media screen and (max-width: 480px) {
-            width: 1vw;
-            height: 1vw;
+            width: 2vw;
+            height: 2vw;
         }
 
         border-radius: 10px;

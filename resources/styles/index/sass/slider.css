@@ -1,16 +1,16 @@
 @charset "UTF-8";
 .slider-wrapper {
+  z-index: 1;
   position: relative;
   margin: auto;
-  width: 80%;
-  height: 37.6vw;
+  height: 30vw;
   overflow: hidden;
   /* Для кнопок */
 }
 
 @media screen and (min-width: 1850px) {
   .slider-wrapper {
-    height: 32.8vw;
+    height: 27vw;
   }
 }
 
@@ -85,7 +85,6 @@
 @media screen and (max-width: 480px) {
   .points {
     top: 85%;
-    left: 36%;
   }
 }
 
@@ -104,8 +103,8 @@
 
 @media screen and (max-width: 480px) {
   .points .point {
-    width: 1vw;
-    height: 1vw;
+    width: 2vw;
+    height: 2vw;
   }
 }
 
