@@ -37,9 +37,9 @@ body {
 /* "Запрошуємо на навчання!" */
 #offer {
     background-color: $menuColor;
-    
+
     margin-top: 1%;
-    
+
     text-align: center;
 
     font-size: 2.5vw;
@@ -58,7 +58,7 @@ body {
     @media screen and (max-width: 480px) {
         letter-spacing: 0.1em;
     }
-    
+
     text-transform: uppercase;
 }
 
@@ -66,7 +66,7 @@ body {
 .button {
     padding: 0.5vw;
     margin: 10px auto;
-    
+
     text-align: center;
 
     width: 25%;
@@ -76,7 +76,7 @@ body {
 
     font-size: 1.5vw;
     @media screen and (min-width: 1900px) {
-        font-size: 1.0vw;
+        font-size: 1vw;
     }
     @media screen and (max-width: 480px) {
         font-size: 4vw;
@@ -84,17 +84,18 @@ body {
     }
     color: $brightBlue;
     font-weight: bold;
-    
+
     transition: all ease 0.3s;
 
     &:hover {
         box-shadow: 0 0 3px 2px $brightBlue;
-    
+
         transform: scale(1.1);
     }
 }
 
-#CONTENT a, a:visited {
+#CONTENT a,
+a:visited {
     color: rgb(6, 0, 255);
     text-decoration: none;
 }
@@ -102,7 +103,7 @@ body {
 /* CONTENT */
 
 // "На які спеціальності я можу поступити?"
-#CONTENT .phrase-in-table{
+#CONTENT .phrase-in-table {
     margin: auto;
 
     height: 8vw;
@@ -116,9 +117,9 @@ body {
             font-size: 4vw;
         }
         font-weight: bold;
-    
+
         text-transform: uppercase;
-    }    
+    }
 }
 
 /* DESKS */
@@ -142,7 +143,7 @@ body {
     }
 }
 @media screen and (max-width: 480px) {
-    .desk-wrapper {  
+    .desk-wrapper {
         flex-direction: column;
     }
 }
@@ -174,9 +175,11 @@ $boxShadowSize1600px: 0.7vw;
         font-size: 4vw;
     }
 
-    box-shadow: -1 * $boxShadowSize1600px $boxShadowSize1600px $boxShadowSize1600px 1/2 * $boxShadowSize1600px rgba(0, 0, 0, 0.7);
+    box-shadow: -1 * $boxShadowSize1600px $boxShadowSize1600px $boxShadowSize1600px 1/2 *
+        $boxShadowSize1600px rgba(0, 0, 0, 0.7);
     @media screen and (min-width: 1900px) {
-        box-shadow: -1 * $boxShadowSize1900px $boxShadowSize1900px $boxShadowSize1900px 1/2 * $boxShadowSize1900px rgba(0, 0, 0, 0.7);
+        box-shadow: -1 * $boxShadowSize1900px $boxShadowSize1900px $boxShadowSize1900px 1/2 *
+            $boxShadowSize1900px rgba(0, 0, 0, 0.7);
     }
 
     div {
@@ -189,7 +192,7 @@ $boxShadowSize1600px: 0.7vw;
 }
 
 $ribbonHeight1600px: 5.5vw;
-$ribbonHeight1900px: 4.0vw;
+$ribbonHeight1900px: 4vw;
 $ribbonHeight480px: 7vw;
 // $ribbonColor: rgb(166, 0, 0);
 // $ribbonColor: rgb(252, 214, 5);
@@ -198,12 +201,12 @@ $ribbonColor: $menuColor;
     position: absolute;
 
     background-color: $ribbonColor;
-    
+
     top: 0;
     left: 2.5vw;
 
     width: 2.3vw;
-    
+
     height: $ribbonHeight1600px;
     @media screen and (min-width: 1900px) {
         left: 1.5vw;
@@ -218,9 +221,9 @@ $ribbonColor: $menuColor;
     }
 
     &:before {
-        content: "";
+        content: '';
         position: absolute;
-    
+
         top: $ribbonHeight1600px - 0.01vw;
         @media screen and (min-width: 1900px) {
             top: $ribbonHeight1900px - 0.03vw;
@@ -228,7 +231,7 @@ $ribbonColor: $menuColor;
         @media screen and (max-width: 480px) {
             top: $ribbonHeight480px - 0.03vw;
         }
-    
+
         border-left: 1.15vw solid $ribbonColor;
         border-right: 1.15vw solid $ribbonColor;
         border-top: 1.15vw solid $ribbonColor;
@@ -250,7 +253,7 @@ $ribbonColor: $menuColor;
 }
 
 /* Заголовок дощечки */
-.desk-title{
+.desk-title {
     text-align: center;
 
     font-weight: bold;
@@ -289,14 +292,14 @@ $ribbonColor: $menuColor;
     transition: all ease 0.3s;
 
     &:hover {
-        background-color: rgb(190, 190, 190);;
+        background-color: rgb(190, 190, 190);
     }
 
     .single-new-image {
         flex: 1;
-    
+
         margin-right: 1%;
-    
+
         max-height: inherit;
 
         img {
@@ -314,7 +317,7 @@ $ribbonColor: $menuColor;
             margin-bottom: 2%;
 
             max-width: 80%;
-    
+
             font-weight: bold !important;
         }
 
@@ -328,7 +331,7 @@ $ribbonColor: $menuColor;
 
     .single-new-date {
         position: absolute;
-        
+
         top: 5%;
         left: 85%;
 

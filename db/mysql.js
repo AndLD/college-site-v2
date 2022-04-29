@@ -1,4 +1,4 @@
-const mysql = require("mysql")
+const mysql = require('mysql')
 
 connection = mysql.createConnection({
     host: process.env.MYSQL_HOST,
@@ -13,10 +13,10 @@ exports.connection = connection
 exports.init = () => {
     connection.connect((error) => {
         if (error != null) {
-            console.log("MySQL connection error:")
+            console.log('MySQL connection error:')
             console.log(error.code)
         } else {
-            console.log("MySQL successfully connected.")
+            console.log('MySQL successfully connected.')
         }
     })
 }

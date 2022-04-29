@@ -86,7 +86,7 @@ body {
 
 @media screen and (min-width: 1900px) {
   .button {
-    font-size: 1.0vw;
+    font-size: 1vw;
   }
 }
 
@@ -104,7 +104,8 @@ body {
           transform: scale(1.1);
 }
 
-#CONTENT a, a:visited {
+#CONTENT a,
+a:visited {
   color: #0600ff;
   text-decoration: none;
 }
@@ -237,7 +238,7 @@ body {
 }
 
 .ribbon:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 5.49vw;
   border-left: 1.15vw solid #0054a6;

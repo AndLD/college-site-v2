@@ -67,19 +67,7 @@ exports.indexController = async (req, res) => {
 
     let sliderImgs = selectedImagesResult.data
 
-    var slider1Imgs = []
-    var slider2Imgs = []
-    for (let i = 0; i < sliderImgsInfo.length; i++) {
-        if (sliderImgsInfo[i].sliderId == 1) {
-            slider1Imgs.push(sliderImgs[i])
-        }
-
-        if (sliderImgsInfo[i].sliderId == 2) {
-            slider2Imgs.push(sliderImgs[i])
-        }
-    }
-
-    res.render('index', { menu: menu, news: news, slider1Imgs: slider1Imgs, slider2Imgs: slider2Imgs })
+    res.render('index', { menu: menu, news: news, slider1Imgs: sliderImgs })
 }
 
 // Страница статьи
@@ -327,7 +315,9 @@ exports.profileController = async (req, res) => {
     let users
     if (req.user.userrole == 'admin' || req.user.userrole == 'moderator') {
         // Получаем пользователей
-        const selectedUsersResult = await userModel.selectUsers(req.user.userrole == 'admin' ? null : 'group')
+        const selectedUsersResult = await userModel.selectUsers(
+            req.user.userrole == 'admin' ? null : 'group'
+        )
         if (selectedUsersResult.error) {
             return res.sendStatus(400)
         }

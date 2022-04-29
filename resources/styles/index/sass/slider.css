@@ -2,25 +2,27 @@
 .slider-wrapper {
   position: relative;
   margin: auto;
-  height: 47vw;
+  width: 80%;
+  height: 37.6vw;
   overflow: hidden;
   /* Для кнопок */
 }
 
 @media screen and (min-width: 1850px) {
   .slider-wrapper {
-    height: 41vw;
+    height: 32.8vw;
   }
 }
 
 @media screen and (min-width: 2500px) {
   .slider-wrapper {
-    height: 720px;
+    height: 576px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .slider-wrapper {
+    width: 100%;
     height: 35vw;
   }
 }
@@ -75,7 +77,9 @@
 .points {
   position: absolute;
   top: 90%;
-  left: 47%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 @media screen and (max-width: 480px) {
