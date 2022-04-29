@@ -12,6 +12,18 @@ header #logo {
   max-height: 20vh;
 }
 
+@media screen and (min-width: 1600px) {
+  header #logo {
+    max-height: 30vh;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  header #logo {
+    max-height: 25vh;
+  }
+}
+
 @media screen and (min-width: 481px) {
   header #logo {
     width: 20%;
@@ -101,7 +113,7 @@ header #title :nth-child(2) {
   text-align: left;
   font-size: 1.7vw;
   color: black;
-  letter-spacing: 0.30rem;
+  letter-spacing: 0.3rem;
 }
 
 @media screen and (min-width: 1800px) {

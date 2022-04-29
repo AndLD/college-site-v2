@@ -1,6 +1,5 @@
 @charset "UTF-8";
 .slider-wrapper {
-  z-index: 1;
   position: relative;
   margin: auto;
   height: 30vw;

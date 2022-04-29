@@ -5,17 +5,25 @@ header {
 
     padding-top: 1%;
     padding-bottom: 1%;
-    
+
     // max-height: 22vh;
 
     #logo {
         // flex: 1; // закомментировано for Mozilla
-        
+
         text-align: center;
 
         max-height: 20vh; // for Mozilla
 
-        @media screen and(min-width: 481px){
+        @media screen and(min-width: 1600px) {
+            max-height: 30vh;
+        }
+
+        @media screen and(min-width: 1900px) {
+            max-height: 25vh;
+        }
+
+        @media screen and(min-width: 481px) {
             width: 20%; // for Mozilla
         }
 
@@ -31,15 +39,15 @@ header {
 
     #title {
         // flex: 6; // закомментировано for Mozilla
-        
+
         text-align: center;
 
         min-height: inherit;
         // height: 100%;
-        @media screen and(min-width: 481px){
+        @media screen and(min-width: 481px) {
             width: 80%; // for Mozilla
         }
-        
+
         font-family: $titleFont;
         font-weight: bold;
 
@@ -62,7 +70,7 @@ header {
             }
 
             text-align: left;
-        
+
             font-size: 1.8vw;
             @media screen and (min-width: 1900px) {
                 font-size: 1.5vw;
@@ -89,9 +97,9 @@ header {
 
             padding-top: 14px;
             padding-bottom: 14px;
-            
+
             text-align: left;
-        
+
             font-size: 1.7vw;
             @media screen and (min-width: 1800px) {
                 font-size: 1.4vw;
@@ -104,7 +112,7 @@ header {
                 font-size: 9vw;
             }
             color: black;
-            letter-spacing: 0.30rem;
+            letter-spacing: 0.3rem;
             // @media screen and (min-width: 1800px) {
             //     letter-spacing: 0.35rem;
             // }
