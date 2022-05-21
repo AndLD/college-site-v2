@@ -1,51 +1,68 @@
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="resources/styles/index/sass/index.css">
-        <link rel="stylesheet" href="resources/styles/sass/header.css">
-        <link rel="stylesheet" href="resources/styles/sass/menu.css">
-        <link rel="stylesheet" href="resources/styles/sass/footer.css">
-        <link rel="stylesheet" href="resources/styles/index/sass/slider.css">
-        <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="resources/styles/index/sass/index.css" />
+        <link rel="stylesheet" href="resources/styles/sass/header.css" />
+        <link rel="stylesheet" href="resources/styles/sass/menu.css" />
+        <link rel="stylesheet" href="resources/styles/sass/footer.css" />
+        <link rel="stylesheet" href="resources/styles/index/sass/slider.css" />
+        <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon" />
         <title>ВСП "КРФК НАУ"</title>
     </head>
     <body>
         <div id="CONTAINER">
             <section id="sky-section">
-                <%- include("blocks/header.ejs") %> 
-                
-                <%- include("blocks/menu.ejs") %> 
-    
+                <%- include("blocks/header.ejs") %> <%- include("blocks/menu.ejs") %>
+
                 <div class="flex">
                     <!-- Main Slider -->
                     <section class="slider-wrapper flex-child-2">
                         <div class="slider">
                             <% for (let i = 0; i < slider1Imgs.length; i++) { %>
-                                <img src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>" loading="lazy" alt="slide" class="slide">
+                            <img
+                                src="data:<%= slider1Imgs[i].mimetype %>;base64,<%= slider1Imgs[i].img %>"
+                                loading="lazy"
+                                alt="slide"
+                                class="slide"
+                            />
                             <% } %>
                         </div>
-                        <div class="slider-button slider-button-left"><img src="resources/images/index/main_slider/left_white.png"></div>
-                        <div class="slider-button slider-button-right"><img src="resources/images/index/main_slider/right_white.png"></div>
+                        <div class="slider-button slider-button-left">
+                            <img src="resources/images/index/main_slider/left_white.png" />
+                        </div>
+                        <div class="slider-button slider-button-right">
+                            <img src="resources/images/index/main_slider/right_white.png" />
+                        </div>
                         <div class="points"></div>
                     </section>
-                    <div class="flex-child-1 info-block" >
+                    <div class="flex-child-1 info-block">
                         <div id="offer">Запрошуємо на навчання!</div>
                         <div class="desk-wrapper-info-block">
                             <div class="desk">
-                                <div class="desk-title"><a href="/article/2446" style="color: red; font-weight: bold;"><h3>ОСОБЛИВОСТІ ВСТУПУ 2022</h3></a></div>
-                                <div class="desk-title"><a href="/article/541">ПРЕЗЕНТАЦІЯ КОЛЕДЖУ ТА СПЕЦІАЛЬНОСТЕЙ</a></div>
+                                <div class="desk-title">
+                                    <a href="/article/2446" style="color: red; font-weight: bold"
+                                        ><h3>ОСОБЛИВОСТІ ВСТУПУ 2022</h3></a
+                                    >
+                                </div>
+                                <div class="desk-title">
+                                    <a href="/article/541">ПРЕЗЕНТАЦІЯ КОЛЕДЖУ ТА СПЕЦІАЛЬНОСТЕЙ</a>
+                                </div>
                                 <div class="ribbon"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-    
+
             <!-- CONTENT -->
             <section id="CONTENT">
-                <table class="phrase-in-table"><tr><td>На які спеціальності я можу поступити?</td></tr></table>
-    
+                <table class="phrase-in-table">
+                    <tr>
+                        <td>На які спеціальності я можу поступити?</td>
+                    </tr>
+                </table>
+
                 <div class="desk-wrapper">
                     <div class="desk">
                         <div class="desk-title">Денна форма навчання</div>
@@ -53,13 +70,35 @@
                             <div>
                                 <p>Фаховий молодший бакалавр:</p>
                                 <ul>
-                                    <li><a href="/article/1981">121 Інженерія програмного забезпечення</a></li>
+                                    <li>
+                                        <a href="/article/1981"
+                                            >121 Інженерія програмного забезпечення</a
+                                        >
+                                    </li>
                                     <li><a href="/article/1983">123 Комп'ютерна інженерія</a></li>
-                                    <li><a href="/article/1971">141 Електроенергетика, електротехніка та електромеханіка</a></li>
-                                    <li><a href="/article/1985">151 Автоматизація та комп`ютерно-інтегровані технології</a></li>
-                                    <li><a href="/article/1977">172 Телекомунікації та радіотехніка</a></li>
+                                    <li>
+                                        <a href="/article/1971"
+                                            >141 Електроенергетика, електротехніка та
+                                            електромеханіка</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="/article/1985"
+                                            >151 Автоматизація та комп`ютерно-інтегровані
+                                            технології</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="/article/1977"
+                                            >172 Телекомунікації та радіотехніка</a
+                                        >
+                                    </li>
                                     <li><a href="/article/1972">173 Авіоніка</a></li>
-                                    <li><a href="/article/1976">275 Транспортні технології (повітряний транспорт)</a></li>
+                                    <li>
+                                        <a href="/article/1976"
+                                            >275 Транспортні технології (повітряний транспорт)</a
+                                        >
+                                    </li>
                                     <li><a href="/article/1973">272 Авіаційний транспорт</a></li>
                                 </ul>
                             </div>
@@ -67,8 +106,17 @@
                                 <p>Бакалавр:</p>
                                 <ul>
                                     <li><a href="/article/247">123 Комп'ютерна інженерія</a></li>
-                                    <li><a href="/article/251">141 Електроенергетика, електротехніка та електромеханіка</a></li>
-                                    <li><a href="/article/255">172 Телекомунікації та радіотехніка</a></li>
+                                    <li>
+                                        <a href="/article/251"
+                                            >141 Електроенергетика, електротехніка та
+                                            електромеханіка</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="/article/255"
+                                            >172 Телекомунікації та радіотехніка</a
+                                        >
+                                    </li>
                                     <li><a href="/article/259">272 Авіаційний транспорт</a></li>
                                     <li><a href="/article/170">073 Менеджмент</a></li>
                                 </ul>
@@ -76,7 +124,7 @@
                         </div>
                         <div class="ribbon"></div>
                     </div>
-                    
+
                     <div class="desk">
                         <div class="desk-title">Заочна форма навчання</div>
                         <div class="desk-text">
@@ -84,11 +132,29 @@
                                 <p>Фаховий молодший бакалавр:</p>
                                 <ul>
                                     <li><a href="/article/1983">123 Комп'ютерна інженерія</a></li>
-                                    <li><a href="/article/1971">141 Електроенергетика, електротехніка та електромеханіка</a></li>
-                                    <li><a href="/article/1985">151 Автоматизація та комп'ютерно-інтегровані технології</a></li>
-                                    <li><a href="/article/1977">172 Телекомунікації та радіотехніка</a></li>
+                                    <li>
+                                        <a href="/article/1971"
+                                            >141 Електроенергетика, електротехніка та
+                                            електромеханіка</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="/article/1985"
+                                            >151 Автоматизація та комп'ютерно-інтегровані
+                                            технології</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="/article/1977"
+                                            >172 Телекомунікації та радіотехніка</a
+                                        >
+                                    </li>
                                     <li><a href="/article/1972">173 Авіоніка</a></li>
-                                    <li><a href="/article/1976">275 Транспортні технології (повітряний транспорт)</a></li>
+                                    <li>
+                                        <a href="/article/1976"
+                                            >275 Транспортні технології (повітряний транспорт)</a
+                                        >
+                                    </li>
                                     <li><a href="/article/1973">272 Авіаційний транспорт</a></li>
                                 </ul>
                             </div>
@@ -96,8 +162,17 @@
                                 <p>Бакалавр:</p>
                                 <ul>
                                     <li><a href="/article/247">123 Комп'ютерна інженерія</a></li>
-                                    <li><a href="/article/251">141 Електроенергетика, електротехніка та електромеханіка</a></li>
-                                    <li><a href="/article/255">172 Телекомунікації та радіотехніка</a></li>
+                                    <li>
+                                        <a href="/article/251"
+                                            >141 Електроенергетика, електротехніка та
+                                            електромеханіка</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="/article/255"
+                                            >172 Телекомунікації та радіотехніка</a
+                                        >
+                                    </li>
                                     <li><a href="/article/259">272 Авіаційний транспорт</a></li>
                                 </ul>
                             </div>
@@ -105,23 +180,14 @@
                         <div class="ribbon"></div>
                     </div>
                 </div>
-                
-                <section id="NEWS">
-                    <div class="desk-wrapper">
-                        <%- include("blocks/news.ejs") %> 
-                    </div>
-                </section>
-                
-            </section>
-    
-            <%- include("blocks/footer.ejs") %> 
-    
-            <div class="modal-image-wrapper">
-                <img src="" class="modal-image">
-                <img src="resources/images/close.png" class="close-modal-button"></img>
-            </div>
-        </div>
 
+                <section id="NEWS">
+                    <div class="desk-wrapper"><%- include("blocks/news.ejs") %></div>
+                </section>
+            </section>
+
+            <%- include("blocks/footer.ejs") %>
+        </div>
     </body>
     <script src="resources/styles/index/slider.js"></script>
     <script src="resources/styles/index/small-menu.js"></script>
