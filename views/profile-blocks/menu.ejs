@@ -5,33 +5,29 @@
             <div class="line"></div>
         </div>
     </div>
-    <div class="opacity-wrapper">   
+    <div class="opacity-wrapper">
         <div class="profile-username"><%= user.username %></div>
         <div class="profile-userrole"><%= user.userrole %></div>
         <ul class="menu">
             <% if (user.userrole == "admin" || user.userrole == "moderator") { %>
-                <li href="settings-wrapper">Налаштування</li>
-            <% } %>
-            <% if (user.userrole == "admin") { %>
-                <li href="menu-wrapper">Меню</li>
-                <li href="articles-wrapper">Статті</li>
-                <li href="news-wrapper">Новини</li>
-                <li href="#">
-                    <p>Головна сторінка</p>
-                    <ul>
-                        <li href="slider1Img-wrapper">Слайдер 1</li>
-                        <li href="slider2Img-wrapper">Слайдер 2</li>
-                    </ul> 
-                </li>
-            <% } %>
-            <% if (user.userrole == "admin" || user.userrole == "moderator") { %>
-                <li href="users-wrapper"><%= (user.userrole == "admin" ? "Користувачі" : "Групи") %></li>
-                <!-- <li href="subjects-wrapper">Дисципліни</li>
+            <li href="settings-wrapper">Налаштування</li>
+            <% } %> <% if (user.userrole == "admin") { %>
+            <li href="menu-wrapper">Меню</li>
+            <li href="articles-wrapper">Статті</li>
+            <li href="news-wrapper">Новини</li>
+            <li href="slider1Img-wrapper">Головна сторінка (слайдер)</li>
+            <% } %> <% if (user.userrole == "admin" || user.userrole == "moderator") { %>
+            <li href="users-wrapper">
+                <%= (user.userrole == "admin" ? "Користувачі" : "Групи") %>
+            </li>
+            <!-- <li href="subjects-wrapper">Дисципліни</li>
                 <li href="materials-wrapper">Матеріали</li> -->
             <% } %>
         </ul>
         <form method="POST" action="/logout">
-            <button class="exit">Вийти<!--<img src="/resources/images/profile/logout.png" alt="вийти">--></button>
+            <button class="exit">
+                Вийти<!--<img src="/resources/images/profile/logout.png" alt="вийти">-->
+            </button>
         </form>
     </div>
     <script src="/resources/scripts/profile/profile-menu.js"></script>
