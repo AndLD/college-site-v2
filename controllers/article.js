@@ -126,7 +126,7 @@ exports.postDownloadArticle = async (req, res) => {
     var filename = "article" + req.params.id + "." + article.fileFormat
 
     // Формируем файл
-    fs.writeFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), (article.viewMode == "docx_to_hmtl" || article.viewMode == "pdf" ? article.docx : article.html), (error) => {
+    fs.writeFileSync(constants.pathJoin(dirname, constants.DEFAULT_BUFFER_CATALOG, filename), (article.viewMode == "docx_to_html" || article.viewMode == "pdf" ? article.docx : article.html), (error) => {
         if (error) {
             console.log("File writing error: " + error.code)
             return res.sendStatus(400)
