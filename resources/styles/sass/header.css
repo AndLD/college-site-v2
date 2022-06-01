@@ -60,7 +60,7 @@ header #title #td1 {
   border-radius: 1rem 1rem 0 0;
 }
 
-header #title :nth-child(1) {
+header #title > :nth-child(1) {
   background-color: #003e7b;
   padding-left: 5%;
   padding-right: 5%;
@@ -73,38 +73,38 @@ header #title :nth-child(1) {
 }
 
 @media screen and (max-width: 480px) {
-  header #title :nth-child(1) {
+  header #title > :nth-child(1) {
     padding-top: 13px;
     padding-bottom: 13px;
   }
 }
 
 @media screen and (min-width: 1900px) {
-  header #title :nth-child(1) {
+  header #title > :nth-child(1) {
     font-size: 1.5vw;
   }
 }
 
 @media screen and (max-width: 480px) {
-  header #title :nth-child(1) {
+  header #title > :nth-child(1) {
     text-align: center;
     font-size: 3vw;
   }
 }
 
 @media screen and (min-width: 1900px) {
-  header #title :nth-child(1) {
+  header #title > :nth-child(1) {
     letter-spacing: 0.2rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  header #title :nth-child(1) {
+  header #title > :nth-child(1) {
     letter-spacing: 0.2rem;
   }
 }
 
-header #title :nth-child(2) {
+header #title > :nth-child(2) {
   background-color: #fcd605;
   padding-left: 5%;
   padding-right: 5%;
@@ -117,26 +117,26 @@ header #title :nth-child(2) {
 }
 
 @media screen and (min-width: 1800px) {
-  header #title :nth-child(2) {
+  header #title > :nth-child(2) {
     font-size: 1.4vw;
   }
 }
 
 @media screen and (min-width: 2200px) {
-  header #title :nth-child(2) {
+  header #title > :nth-child(2) {
     font-size: 2.2vw;
   }
 }
 
 @media screen and (max-width: 480px) {
-  header #title :nth-child(2) {
+  header #title > :nth-child(2) {
     text-align: center;
     font-size: 9vw;
   }
 }
 
 @media screen and (max-width: 480px) {
-  header #title :nth-child(2) {
+  header #title > :nth-child(2) {
     letter-spacing: 0.1rem;
   }
 }
