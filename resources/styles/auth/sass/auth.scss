@@ -3,7 +3,7 @@
     padding: 0;
     outline: 0;
 
-    font-family: Corbel;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
         position: relative;
 
         background-color: rgb(47, 45, 51);
-        
+
         margin: 20vh auto;
         padding-top: 5vh;
         padding-bottom: 5vh;
@@ -66,7 +66,8 @@ body {
         form {
             font-size: 2vh;
 
-            input[type="text"], input[type="password"] {
+            input[type='text'],
+            input[type='password'] {
                 background-color: black;
 
                 padding: 1vh;
@@ -89,14 +90,14 @@ body {
 
                 &:focus {
                     border-color: orange;
-                    
+
                     box-shadow: 0 0 5px orange;
 
                     width: 30%;
                 }
             }
 
-            input[type="submit"] {
+            input[type='submit'] {
                 background-color: black;
 
                 padding: 1vh 3vh 1vh 3vh;
@@ -131,7 +132,7 @@ body {
         }
 
         a {
-            color: orange
+            color: orange;
         }
     }
 }

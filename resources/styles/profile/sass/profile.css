@@ -10,7 +10,7 @@
 body {
   background-image: url(/resources/images/profile/background/5.jpg);
   background-attachment: fixed;
-  font-family: corbel;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 @media screen and (min-width: 1921px) {
@@ -67,11 +67,13 @@ body {
   max-width: inherit;
 }
 
-.content-wrapper .chartis-wrapper .ct-perfect-fourth:before, .content-wrapper .chartis-wrapper .ct-perfect-fourth:after {
+.content-wrapper .chartis-wrapper .ct-perfect-fourth:before,
+.content-wrapper .chartis-wrapper .ct-perfect-fourth:after {
   display: none !important;
 }
 
-.content-wrapper .chartis-wrapper .ct-chart .ct-label.ct-horizontal, .content-wrapper .chartis-wrapper .ct-chart .ct-label.ct-vertical {
+.content-wrapper .chartis-wrapper .ct-chart .ct-label.ct-horizontal,
+.content-wrapper .chartis-wrapper .ct-chart .ct-label.ct-vertical {
   color: black;
   font-size: 2vh;
   font-family: Arial, Helvetica, sans-serif;

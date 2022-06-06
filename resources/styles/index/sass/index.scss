@@ -354,8 +354,10 @@ $ribbonColor: $menuColor;
         margin-right: 1%;
         margin-bottom: 0;
 
+        text-align: center;
+
         img {
-            max-width: 100%;
+            max-width: 70%;
             max-height: inherit;
         }
     }
