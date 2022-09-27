@@ -88,6 +88,11 @@ const multerUpload = multer({
 
 const userMiddlewares = require('./middlewares/user')
 
+server.get('/ZOOM_verify_B8R5mgq9ne5HXNNB0RMQQv', (_, res) => {
+    res.contentType = 'text/html'
+    res.send('ZOOM_verify_B8R5mgq9ne5HXNNB0RMQQv')
+})
+
 // ! РЕНДЕРИНГ СТРАНИЦ
 
 // Подключаем контроллеры
