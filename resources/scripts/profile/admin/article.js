@@ -247,6 +247,6 @@ function showUpdates() {
 function showMessage(text) {
     const message = document.createElement('p')
     message.textContent = text
-    message.style = 'padding: 20px; background: white; color: black; position: absolute; top: 30px; right: 30px; font-family: arial;'
+    message.style = 'padding: 20px; background: white; color: black; position: fixed; top: 30px; right: 30px; font-family: arial;'
     document.body.appendChild(message)
 }
