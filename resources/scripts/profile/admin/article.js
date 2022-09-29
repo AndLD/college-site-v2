@@ -1,5 +1,7 @@
 require(["/resources/scripts/profile/modal.js"])
 
+let updates = 0
+
 // HTML код для формы добавления статьи
 const postArticleFormHTML = 
 `
@@ -168,10 +170,22 @@ function postArticleRequest() {
         if (request.status == 400) {
             alert(request.response)
         }
-        window.location.reload()
+        showUpdates()
     }
 
     request.send(form)
+}
+
+function showUpdates() {
+    updates++
+    showMessage(`${updates} updates`)
+}
+
+function showMessage(text) {
+    const message = document.createElement('p')
+    message.textContent = text
+    message.style = 'padding: 20px; background: white; color: black; position: absolute; top: 30px; right: 30px'
+    document.body.appendChild(message)
 }
 
 // Запрос на редактирование статьи
@@ -198,7 +212,7 @@ function putArticleRequest() {
         if (request.status == 400) {
             alert(request.response)
         }
-        window.location.reload()
+        showUpdates()
     }
 
     request.send(form)
@@ -222,7 +236,7 @@ function deleteArticleRequest() {
         if (request.status == 400) {
             alert(request.response)
         }
-        window.location.reload()
+        showUpdates()
     }
 
     request.send()
