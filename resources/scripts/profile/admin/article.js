@@ -176,18 +176,6 @@ function postArticleRequest() {
     request.send(form)
 }
 
-function showUpdates() {
-    updates++
-    showMessage(`${updates} updates`)
-}
-
-function showMessage(text) {
-    const message = document.createElement('p')
-    message.textContent = text
-    message.style = 'padding: 20px; background: white; color: black; position: absolute; top: 30px; right: 30px'
-    document.body.appendChild(message)
-}
-
 // Запрос на редактирование статьи
 function putArticleRequest() {
     var request = new XMLHttpRequest()
@@ -248,4 +236,17 @@ function deleteArticleRequest() {
 function downloadArticleFormSetAction() {
     event.target.setAttribute("action", "/article/" + 
     event.target.parentElement.parentElement.parentElement.parentElement.parentElement.lastElementChild.textContent)
+}
+
+function showUpdates() {
+    closeModal()
+    updates++
+    showMessage(`${updates} updates`)
+}
+
+function showMessage(text) {
+    const message = document.createElement('p')
+    message.textContent = text
+    message.style = 'padding: 20px; background: white; color: black; position: absolute; top: 30px; right: 30px; font-family: arial;'
+    document.body.appendChild(message)
 }
