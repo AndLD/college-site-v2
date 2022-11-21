@@ -4,8 +4,7 @@
         <% const imgBegin = "<img" const imgEnd = '" />' const textBegin = "
         <p>" const textEnd = "</p>
         " const iframe = "<iframe" %> <% for(let i = 0; i < news.length; i++) { %>
-        <a href="<%" ="/news/" + news[i].id %
-            >>
+        <a href=<% ="/news/" + news[i].id %>>
             <div class="single-new">
                 <div class="single-new-image">
                     <!-- <% if (news[i].html.indexOf(iframe) == -1) { %> -->
