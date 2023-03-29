@@ -228,11 +228,11 @@ $boxShadowSize1600px: 0.6vw;
         font-size: 4vw;
     }
 
-    box-shadow: -1 * $boxShadowSize1600px $boxShadowSize1600px $boxShadowSize1600px 1/2 *
-        $boxShadowSize1600px rgba(0, 0, 0, 0.7);
+    box-shadow: -1 * $boxShadowSize1600px $boxShadowSize1600px $boxShadowSize1600px 1/2 * $boxShadowSize1600px
+        rgba(0, 0, 0, 0.7);
     @media screen and (min-width: 1900px) {
-        box-shadow: -1 * $boxShadowSize1900px $boxShadowSize1900px $boxShadowSize1900px 1/2 *
-            $boxShadowSize1900px rgba(0, 0, 0, 0.7);
+        box-shadow: -1 * $boxShadowSize1900px $boxShadowSize1900px $boxShadowSize1900px 1/2 * $boxShadowSize1900px
+            rgba(0, 0, 0, 0.7);
     }
 
     div {
@@ -401,5 +401,16 @@ $ribbonColor: $menuColor;
         @media screen and (max-width: 480px) {
             display: block;
         }
+    }
+}
+
+.zoomButton {
+    box-shadow: 5px 5px 5px rgba(70, 130, 180, 0.5);
+
+    &:hover {
+        transform: scale(0.9);
+        background-color: steelblue !important;
+        color: black !important;
+        box-shadow: 10px 10px 10px rgba(25, 25, 112, 0.5);
     }
 }
