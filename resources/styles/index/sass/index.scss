@@ -405,7 +405,7 @@ $ribbonColor: $menuColor;
 }
 
 .specializations-link-btn {
-    box-shadow: 5px 5px 5px rgba(70, 130, 180, 0.5);
+    // box-shadow: 5px 5px 5px rgba(70, 130, 180, 0.5);
 
     // width: 100%;
     background-color: midnightblue;
@@ -416,12 +416,13 @@ $ribbonColor: $menuColor;
     border-radius: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding: 0 40px;
     transition: all ease 0.3s;
 
     &:hover {
         transform: scale(0.9);
         background-color: steelblue !important;
         color: black !important;
-        box-shadow: 10px 10px 10px rgba(25, 25, 112, 0.5);
+        // box-shadow: 10px 10px 10px rgba(25, 25, 112, 0.5);
     }
 }

@@ -465,8 +465,6 @@ a:visited {
 }
 
 .specializations-link-btn {
-  -webkit-box-shadow: 5px 5px 5px rgba(70, 130, 180, 0.5);
-          box-shadow: 5px 5px 5px rgba(70, 130, 180, 0.5);
   background-color: midnightblue;
   color: white;
   font-size: 40px;
@@ -475,6 +473,7 @@ a:visited {
   border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 0 40px;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
@@ -484,7 +483,5 @@ a:visited {
           transform: scale(0.9);
   background-color: steelblue !important;
   color: black !important;
-  -webkit-box-shadow: 10px 10px 10px rgba(25, 25, 112, 0.5);
-          box-shadow: 10px 10px 10px rgba(25, 25, 112, 0.5);
 }
 /*# sourceMappingURL=index.css.map */
