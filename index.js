@@ -362,3 +362,11 @@ const PORT = process.env.PORT
 server.listen(PORT, () => {
     console.log('Server started at ' + PORT + ' port...')
 })
+window.addEventListener('scroll', function() {
+    var scrollButton = document.getElementById('scrollButton');
+    if (window.scrollY > 0) {
+      scrollButton.style.display = 'block'; // Показываем кнопку при прокрутке вниз
+    } else {
+      scrollButton.style.display = 'none'; // Скрываем кнопку, если прокрутка вверх
+    }
+  });

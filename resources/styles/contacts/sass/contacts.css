@@ -3,7 +3,6 @@
   margin-right: 1%;
   margin-bottom: 1%;
 }
-
 @media screen and (max-width: 480px) {
   #CONTENT {
     margin-left: 10px;
@@ -15,7 +14,6 @@
   margin: 5%;
   font-weight: none !important;
 }
-
 .contact-text p {
   margin-left: 30px;
 }
@@ -24,15 +22,12 @@
   padding-top: 1%;
   padding-bottom: 1%;
 }
-
 @media screen and (min-width: 481px) {
   .map-wrapper {
     margin: 0 20% 0 15%;
   }
 }
-
 .map-wrapper #mapid {
   z-index: 0;
   height: 300px;
-}
-/*# sourceMappingURL=contacts.css.map */
+}/*# sourceMappingURL=contacts.css.map */

@@ -7,13 +7,11 @@
   top: 0;
   left: 0;
   opacity: 0;
-  -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
 }
-
 .modal-wrapper .modal {
   position: relative;
-  background-color: #2f2d33;
+  background-color: rgb(47, 45, 51);
   margin: 20vh auto;
   padding-top: 5vh;
   padding-bottom: 5vh;
@@ -21,22 +19,17 @@
   width: 50vw;
   color: white;
   border-radius: 20px;
-  -webkit-filter: blur(15px);
-          filter: blur(15px);
-  -webkit-transition: all ease 0.3s;
+  filter: blur(15px);
   transition: all ease 0.3s;
 }
-
 .modal-wrapper .modal .modal-title {
   padding-bottom: 2vh;
   font-size: 4vh;
 }
-
 .modal-wrapper .modal form {
   font-size: 2vh;
 }
-
-.modal-wrapper .modal form input[type="text"], .modal-wrapper .modal form input[type="number"], .modal-wrapper .modal form input[type="password"] {
+.modal-wrapper .modal form input[type=text], .modal-wrapper .modal form input[type=number], .modal-wrapper .modal form input[type=password] {
   background-color: black;
   padding: 1vh;
   margin-top: 0.5vh;
@@ -49,30 +42,23 @@
   font-weight: bold;
   border: 1px solid white;
   border-radius: 20px;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
-.modal-wrapper .modal form input[type="text"]::-webkit-inner-spin-button, .modal-wrapper .modal form input[type="number"]::-webkit-inner-spin-button, .modal-wrapper .modal form input[type="password"]::-webkit-inner-spin-button {
+.modal-wrapper .modal form input[type=text]::-webkit-inner-spin-button, .modal-wrapper .modal form input[type=number]::-webkit-inner-spin-button, .modal-wrapper .modal form input[type=password]::-webkit-inner-spin-button {
   display: none;
 }
-
-.modal-wrapper .modal form input[type="text"]::-moz-selection, .modal-wrapper .modal form input[type="number"]::-moz-selection, .modal-wrapper .modal form input[type="password"]::-moz-selection {
+.modal-wrapper .modal form input[type=text]::-moz-selection, .modal-wrapper .modal form input[type=number]::-moz-selection, .modal-wrapper .modal form input[type=password]::-moz-selection {
   background-color: rgba(255, 166, 0, 0.507);
 }
-
-.modal-wrapper .modal form input[type="text"]::selection, .modal-wrapper .modal form input[type="number"]::selection, .modal-wrapper .modal form input[type="password"]::selection {
+.modal-wrapper .modal form input[type=text]::selection, .modal-wrapper .modal form input[type=number]::selection, .modal-wrapper .modal form input[type=password]::selection {
   background-color: rgba(255, 166, 0, 0.507);
 }
-
-.modal-wrapper .modal form input[type="text"]:focus, .modal-wrapper .modal form input[type="number"]:focus, .modal-wrapper .modal form input[type="password"]:focus {
+.modal-wrapper .modal form input[type=text]:focus, .modal-wrapper .modal form input[type=number]:focus, .modal-wrapper .modal form input[type=password]:focus {
   border-color: orange;
-  -webkit-box-shadow: 0 0 5px orange;
-          box-shadow: 0 0 5px orange;
+  box-shadow: 0 0 5px orange;
   width: 50%;
 }
-
-.modal-wrapper .modal form input[type="date"] {
+.modal-wrapper .modal form input[type=date] {
   background-color: black;
   padding: 1vh;
   margin-top: 0.5vh;
@@ -85,34 +71,26 @@
   font-weight: bold;
   border: 1px solid white;
   border-radius: 20px;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
-.modal-wrapper .modal form input[type="date"]::-webkit-inner-spin-button {
+.modal-wrapper .modal form input[type=date]::-webkit-inner-spin-button {
   display: none;
 }
-
-.modal-wrapper .modal form input[type="date"]::-moz-selection {
+.modal-wrapper .modal form input[type=date]::-moz-selection {
   background-color: rgba(255, 166, 0, 0.507);
 }
-
-.modal-wrapper .modal form input[type="date"]::selection {
+.modal-wrapper .modal form input[type=date]::selection {
   background-color: rgba(255, 166, 0, 0.507);
 }
-
 .modal-wrapper .modal form label.file {
   text-decoration: underline;
   cursor: pointer;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
 .modal-wrapper .modal form label.file:hover {
   color: orange;
 }
-
-.modal-wrapper .modal form input[type="file"] {
+.modal-wrapper .modal form input[type=file] {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -120,12 +98,10 @@
   position: absolute;
   z-index: -1;
 }
-
-.modal-wrapper .modal form input[type="checkbox"] {
+.modal-wrapper .modal form input[type=checkbox] {
   height: 20px;
   width: 20px;
 }
-
 .modal-wrapper .modal form select {
   background-color: black;
   padding: 1vh;
@@ -139,29 +115,22 @@
   font-weight: bold;
   border: 1px solid white;
   border-radius: 20px;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
 .modal-wrapper .modal form select::-webkit-inner-spin-button {
   display: none;
 }
-
 .modal-wrapper .modal form select::-moz-selection {
   background-color: rgba(255, 166, 0, 0.507);
 }
-
 .modal-wrapper .modal form select::selection {
   background-color: rgba(255, 166, 0, 0.507);
 }
-
 .modal-wrapper .modal form select:focus {
   border-color: orange;
-  -webkit-box-shadow: 0 0 5px orange;
-          box-shadow: 0 0 5px orange;
+  box-shadow: 0 0 5px orange;
 }
-
-.modal-wrapper .modal form input[type="submit"], .modal-wrapper .modal form div.submit {
+.modal-wrapper .modal form input[type=submit], .modal-wrapper .modal form div.submit {
   background-color: black;
   padding: 1vh 3vh 1vh 3vh;
   margin: 2vh auto;
@@ -172,16 +141,13 @@
   border-radius: 20px;
   outline: 0;
   cursor: pointer;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
-.modal-wrapper .modal form input[type="submit"]:hover, .modal-wrapper .modal form div.submit:hover {
+.modal-wrapper .modal form input[type=submit]:hover, .modal-wrapper .modal form div.submit:hover {
   background-color: black;
   color: orange;
   border-color: orange;
 }
-
 .modal-wrapper .modal .close-modal {
   position: absolute;
   background-image: url(/resources/images/close.png);
@@ -191,13 +157,10 @@
   height: 5vmin;
   width: 5vmin;
   cursor: pointer;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
 .modal-wrapper .modal .close-modal:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .show-modal {
@@ -205,9 +168,6 @@
   visibility: visible !important;
   opacity: 1 !important;
 }
-
 .show-modal .modal {
-  -webkit-filter: blur(0px);
-          filter: blur(0px);
-}
-/*# sourceMappingURL=modal.css.map */
+  filter: blur(0px);
+}/*# sourceMappingURL=modal.css.map */

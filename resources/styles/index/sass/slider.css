@@ -6,74 +6,57 @@
   overflow: hidden;
   /* Для кнопок */
 }
-
 @media screen and (min-width: 1850px) {
   .slider-wrapper {
     height: 27vw;
   }
 }
-
 @media screen and (min-width: 2500px) {
   .slider-wrapper {
     height: 576px;
   }
 }
-
 @media screen and (max-width: 480px) {
   .slider-wrapper {
     width: 100%;
     height: 35vw;
   }
 }
-
 .slider-wrapper:hover .slider-button {
   opacity: 1;
 }
-
 .slider-wrapper .slider {
   width: 100%;
   height: inherit;
 }
-
 .slider-wrapper .slider .slide {
   position: absolute;
   left: 0;
   width: inherit;
   height: inherit;
-  -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
 }
-
 .slider-wrapper .slider-button {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.3);
   top: 0;
   width: 2%;
   height: 100%;
   opacity: 0;
   cursor: pointer;
-  -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s;
 }
-
 .slider-wrapper .slider-button:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
-
 .slider-wrapper .slider-button img {
   width: 100%;
 }
-
 .slider-wrapper .slider-button-left {
   left: 0;
 }
-
 .slider-wrapper .slider-button-right {
   right: 0;
 }
@@ -83,46 +66,38 @@
   position: absolute;
   top: 90%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-
 @media screen and (max-width: 480px) {
   .points {
     top: 85%;
   }
 }
-
 .points .point {
   display: inline-block;
-  background-color: #7b7b7b;
+  background-color: rgb(123, 123, 123);
   margin: 0.5vh;
   width: 0.7vw;
   height: 0.7vw;
   border-radius: 10px;
-  border: 3px solid #383838;
+  border: 3px solid rgb(56, 56, 56);
   cursor: pointer;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
 @media screen and (max-width: 480px) {
   .points .point {
     width: 2vw;
     height: 2vw;
   }
 }
-
 .points .point:hover {
-  background-color: #514f9d;
+  background-color: rgb(81, 79, 157);
 }
-
 .points .active-point {
-  background-color: #0600ff !important;
-  border: 3px solid #0300c5 !important;
+  background-color: rgb(6, 0, 255) !important;
+  border: 3px solid rgb(3, 0, 197) !important;
 }
 
 .visible {
   visibility: visible !important;
-}
-/*# sourceMappingURL=slider.css.map */
+}/*# sourceMappingURL=slider.css.map */

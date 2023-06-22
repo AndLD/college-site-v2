@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
 }
-
 * a {
   text-decoration: none;
 }
@@ -10,9 +9,8 @@
 body {
   background-image: url(/resources/images/profile/background/5.jpg);
   background-attachment: fixed;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
-
 @media screen and (min-width: 1921px) {
   body {
     background-size: cover;
@@ -32,7 +30,7 @@ body {
 .profile-userrole {
   margin: 0.5vmax 0vmax 0vmax 2vmax;
   padding-left: 5%;
-  color: #646464;
+  color: rgb(100, 100, 100);
   font-size: 1.5em;
   font-weight: none;
 }
@@ -42,7 +40,6 @@ body {
   height: 100%;
   width: 100%;
 }
-
 .content-wrapper .chartis-wrapper {
   background-color: rgba(255, 255, 255, 0.7);
   padding-top: 2%;
@@ -54,28 +51,23 @@ body {
   border-radius: 10px;
   color: black;
 }
-
 .content-wrapper .chartis-wrapper .chartis-title {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 3vmin;
 }
-
 .content-wrapper .chartis-wrapper .ct-chart {
   max-height: 100%;
   height: inherit;
   max-width: inherit;
 }
-
 .content-wrapper .chartis-wrapper .ct-perfect-fourth:before,
 .content-wrapper .chartis-wrapper .ct-perfect-fourth:after {
   display: none !important;
 }
-
 .content-wrapper .chartis-wrapper .ct-chart .ct-label.ct-horizontal,
 .content-wrapper .chartis-wrapper .ct-chart .ct-label.ct-vertical {
   color: black;
   font-size: 2vh;
   font-family: Arial, Helvetica, sans-serif;
-}
-/*# sourceMappingURL=profile.css.map */
+}/*# sourceMappingURL=profile.css.map */

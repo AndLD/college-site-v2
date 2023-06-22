@@ -4,102 +4,81 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-
 .news-wrapper #add-news {
   left: 0%;
 }
-
 @media screen and (min-width: 1920px) {
   .news-wrapper .icons-wrapper:not(#add-news) {
     left: 85%;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .news-wrapper .icons-wrapper:not(#add-news) {
     left: 80%;
   }
 }
-
 .news-wrapper .icons-wrapper:not(#add-news) div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .news-wrapper .icons-wrapper:not(#add-news) div div form {
   height: 45px;
 }
-
 .news-wrapper .icons-wrapper:not(#add-news) div div form button {
   background-color: transparent;
   border: none;
   height: inherit;
   outline: 0;
 }
-
 .news-wrapper .icons-wrapper:not(#add-news) div div img {
   background-color: transparent;
   border: none;
   margin: 0 !important;
   padding: 0 !important;
 }
-
 @media screen and (min-width: 1920px) {
   .news-wrapper .icons-wrapper:not(#add-news) div div img {
     height: 45px;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .news-wrapper .icons-wrapper:not(#add-news) div div img {
     height: 42px;
   }
 }
-
 .news-wrapper .news {
   width: 100%;
   height: 100%;
 }
-
 .news-wrapper .news tbody > :first-child {
   font-weight: bold;
 }
-
 .news-wrapper .news tbody > :first-child td {
   padding-left: 0 !important;
   text-align: center;
 }
-
 .news-wrapper .news tbody tr > :first-child, .news-wrapper .news tbody tr > :last-child {
   text-align: center;
   width: 7%;
 }
-
 .news-wrapper .news tbody tr > :nth-child(2) {
   text-align: center;
 }
-
 @media screen and (min-width: 1920px) {
   .news-wrapper .news tbody tr > :nth-child(2) {
     width: 10%;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .news-wrapper .news tbody tr > :nth-child(2) {
     width: 15%;
   }
 }
-
 .news-wrapper .news tbody tr > :nth-child(3), .news-wrapper .news tbody tr > :nth-child(4) {
   padding-left: 2%;
 }
-
 .news-wrapper .news tbody tr:hover .icons-wrapper {
   opacity: 1;
 }
-
 .news-wrapper .news tbody tr td {
   position: relative;
   background-color: white;
@@ -108,18 +87,15 @@
   font-size: 25px;
   border: 1px solid black;
 }
-
 .news-wrapper .news tbody tr td .icons-wrapper {
   position: absolute;
   top: 0;
   left: 40%;
   height: 40px;
   opacity: 0;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
 
 .hidden {
   visibility: hidden;
-}
-/*# sourceMappingURL=news.css.map */
+}/*# sourceMappingURL=news.css.map */

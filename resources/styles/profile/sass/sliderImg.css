@@ -5,88 +5,69 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-
 .sliderImg-wrapper #add-sliderImg {
   left: 0%;
 }
-
 @media screen and (min-width: 1920px) {
   .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) {
     left: 85%;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) {
     left: 80%;
   }
 }
-
 .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) div div form {
   height: 45px;
 }
-
 .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) div div form button {
   background-color: transparent;
   border: none;
   height: inherit;
   outline: 0;
 }
-
 .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) div div img {
   background-color: transparent;
   border: none;
 }
-
 @media screen and (min-width: 1920px) {
   .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) div div img {
     height: 45px;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .sliderImg-wrapper .icons-wrapper:not(#add-sliderImg) div div img {
     height: 42px;
   }
 }
-
 .sliderImg-wrapper .sliderImgs {
   width: 100%;
   height: 100%;
 }
-
 .sliderImg-wrapper .sliderImgs tbody > :first-child {
   font-weight: bold;
 }
-
 .sliderImg-wrapper .sliderImgs tbody > :first-child td {
   padding-left: 0 !important;
   text-align: center;
 }
-
 .sliderImg-wrapper .sliderImgs tbody tr > :first-child, .sliderImg-wrapper .sliderImgs tbody tr > :last-child {
   text-align: center;
   width: 7%;
 }
-
 .sliderImg-wrapper .sliderImgs tbody tr > :nth-child(2) {
   padding-left: 2%;
 }
-
 .sliderImg-wrapper .sliderImgs tbody tr > :nth-child(2) img {
   max-width: 200px;
 }
-
 .sliderImg-wrapper .sliderImgs tbody tr:hover .icons-wrapper {
   opacity: 1;
 }
-
 .sliderImg-wrapper .sliderImgs tbody tr td {
   position: relative;
   background-color: white;
@@ -95,18 +76,15 @@
   font-size: 25px;
   border: 1px solid black;
 }
-
 .sliderImg-wrapper .sliderImgs tbody tr td .icons-wrapper {
   position: absolute;
   top: 0;
   left: 40%;
   height: 40px;
   opacity: 0;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
 
 .hidden {
   visibility: hidden;
-}
-/*# sourceMappingURL=sliderImg.css.map */
+}/*# sourceMappingURL=sliderImg.css.map */
