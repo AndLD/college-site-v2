@@ -4,89 +4,70 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-
 .materials-wrapper #add-material {
   left: 0%;
 }
-
 @media screen and (min-width: 1920px) {
   .materials-wrapper .icons-wrapper:not(#add-material) {
     left: 85%;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .materials-wrapper .icons-wrapper:not(#add-material) {
     left: 80%;
   }
 }
-
 .materials-wrapper .icons-wrapper:not(#add-material) div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .materials-wrapper .icons-wrapper:not(#add-material) div div form {
   height: 45px;
 }
-
 .materials-wrapper .icons-wrapper:not(#add-material) div div form button {
   background-color: transparent;
   border: none;
   height: inherit;
   outline: 0;
 }
-
 .materials-wrapper .icons-wrapper:not(#add-material) div div img {
   background-color: transparent;
   border: none;
 }
-
 @media screen and (min-width: 1920px) {
   .materials-wrapper .icons-wrapper:not(#add-material) div div img {
     height: 45px;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .materials-wrapper .icons-wrapper:not(#add-material) div div img {
     height: 42px;
   }
 }
-
 .materials-wrapper .materials {
   width: 100%;
   height: 100%;
 }
-
 .materials-wrapper .materials tbody > :first-child {
   font-weight: bold;
 }
-
 .materials-wrapper .materials tbody > :first-child td {
   padding-left: 0 !important;
   text-align: center;
 }
-
 .materials-wrapper .materials tbody tr > :first-child, .materials-wrapper .materials tbody tr > :last-child {
   text-align: center;
   width: 7%;
 }
-
 .materials-wrapper .materials tbody tr > :nth-child(5) {
   text-align: center;
   width: 10%;
 }
-
 .materials-wrapper .materials tbody tr > :nth-child(2), .materials-wrapper .materials tbody tr > :nth-child(3), .materials-wrapper .materials tbody tr > :nth-child(4) {
   padding-left: 2%;
 }
-
 .materials-wrapper .materials tbody tr:hover .icons-wrapper {
   opacity: 1;
 }
-
 .materials-wrapper .materials tbody tr td {
   position: relative;
   background-color: white;
@@ -95,18 +76,15 @@
   font-size: 25px;
   border: 1px solid black;
 }
-
 .materials-wrapper .materials tbody tr td .icons-wrapper {
   position: absolute;
   top: 0;
   left: 40%;
   height: 40px;
   opacity: 0;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
 
 .hidden {
   visibility: hidden;
-}
-/*# sourceMappingURL=material.css.map */
+}/*# sourceMappingURL=material.css.map */

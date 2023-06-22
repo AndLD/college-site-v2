@@ -4,71 +4,56 @@
   background-color: rgba(0, 0, 0, 0.7);
   top: 0;
   height: 100vh;
-  -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
 }
-
 @media screen and (min-width: 1920px) {
   .profile-menu-wrapper {
     left: -25%;
     width: 25%;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .profile-menu-wrapper {
     left: -30%;
     width: 30%;
   }
 }
-
 .profile-menu-wrapper .opacity-wrapper {
   opacity: 0;
-  -webkit-transition: all ease 1.7s;
   transition: all ease 1.7s;
 }
-
 .profile-menu-wrapper .opacity-wrapper ::-webkit-scrollbar {
   width: 10px;
 }
-
 .profile-menu-wrapper .opacity-wrapper ::-webkit-scrollbar-track {
-  background-color: #363636;
+  background-color: rgb(54, 54, 54);
   border-radius: 10px;
 }
-
 .profile-menu-wrapper .opacity-wrapper ::-webkit-scrollbar-track-piece {
   background-color: transparent;
 }
-
 .profile-menu-wrapper .opacity-wrapper ::-webkit-scrollbar-thumb {
   height: 25px;
-  background-color: #242424;
+  background-color: rgb(36, 36, 36);
   border-radius: 10px;
 }
-
 .profile-menu-wrapper .opacity-wrapper ::-webkit-scrollbar-corner {
-  background-color: #363636;
+  background-color: rgb(54, 54, 54);
 }
-
 .profile-menu-wrapper .burger-wrapper {
   position: absolute;
   top: 5%;
   left: 105%;
   width: 50px;
   cursor: pointer;
-  -webkit-transition: all ease 1s;
   transition: all ease 1s;
 }
-
 .profile-menu-wrapper .burger-wrapper .burger {
   position: relative;
   height: 5px;
   width: 50px;
-  -webkit-transition: all linear 0.3s;
   transition: all linear 0.3s;
 }
-
 .profile-menu-wrapper .burger-wrapper .burger .line {
   position: absolute;
   background-color: black;
@@ -77,43 +62,33 @@
   height: 5px;
   width: 50px;
   border: 1px solid white;
-  -webkit-transition: background-color linear 1s, -webkit-transform ease 0.5s;
-  transition: background-color linear 1s, -webkit-transform ease 0.5s;
   transition: transform ease 0.5s, background-color linear 1s;
-  transition: transform ease 0.5s, background-color linear 1s, -webkit-transform ease 0.5s;
 }
-
 .profile-menu-wrapper .burger-wrapper .burger:before, .profile-menu-wrapper .burger-wrapper .burger:after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: black;
   left: 0;
   height: 5px;
   width: 50px;
   border: 1px solid white;
-  -webkit-transition: top ease 0.2s, background-color linear 1s;
   transition: top ease 0.2s, background-color linear 1s;
 }
-
 .profile-menu-wrapper .burger-wrapper .burger:before {
   top: -300%;
 }
-
 .profile-menu-wrapper .burger-wrapper .burger:after {
   top: 300%;
 }
-
 .profile-menu-wrapper .menu {
   margin: 4vmax 2vmax 2vmax 2vmax;
   max-height: 60vh;
   overflow-y: scroll;
 }
-
 .profile-menu-wrapper .menu a {
   color: white;
   text-decoration: none;
 }
-
 .profile-menu-wrapper .menu li {
   padding-top: 5%;
   padding-bottom: 5%;
@@ -123,35 +98,25 @@
   color: white;
   overflow: hidden;
   cursor: pointer;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
 .profile-menu-wrapper .menu li:hover {
-  background-color: #3d3d3d;
+  background-color: rgb(61, 61, 61);
 }
-
 .profile-menu-wrapper .menu li:active {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
+  transform: scale(0.95);
 }
-
 .profile-menu-wrapper .menu li ul {
-  -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
 }
-
 .profile-menu-wrapper .menu li ul li {
   margin-left: 20%;
   font-size: 1em !important;
-  -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
 }
-
 .profile-menu-wrapper .menu li ul li:hover {
   text-decoration: underline;
 }
-
 .profile-menu-wrapper .exit {
   position: absolute;
   background-color: black;
@@ -168,75 +133,48 @@
   border: 1px solid white;
   border-radius: 10px;
   cursor: pointer;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
 .profile-menu-wrapper .exit:hover {
   border-color: orange;
   color: orange;
-  -webkit-box-shadow: 0px 0px 10px orange;
-          box-shadow: 0px 0px 10px orange;
+  box-shadow: 0px 0px 10px orange;
 }
-
 .profile-menu-wrapper .exit:active {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .open {
   left: 0;
 }
-
 .open .opacity-wrapper {
   opacity: 1;
 }
-
 .open .burger-wrapper {
   left: 85% !important;
-  -webkit-animation: rotation 1s;
-          animation: rotation 1s;
+  animation: rotation 1s;
 }
-
 .open .burger-wrapper .burger > :nth-child(1) {
   background-color: white;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   border: none;
 }
-
 .open .burger-wrapper .burger > :nth-child(2) {
   background-color: white;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   border: none;
 }
-
 .open .burger-wrapper .burger:before, .open .burger-wrapper .burger:after {
   background-color: white;
   top: 0;
   opacity: 0;
 }
 
-@-webkit-keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-  }
-}
-
 @keyframes rotation {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
-}
-/*# sourceMappingURL=menu.css.map */
+}/*# sourceMappingURL=menu.css.map */

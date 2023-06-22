@@ -2,13 +2,12 @@
   margin: 0;
   padding: 0;
   outline: 0;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 body {
   background-image: url(/resources/images/profile/background/4.jpg);
 }
-
 @media screen and (min-width: 1921px) {
   body {
     background-size: cover;
@@ -22,13 +21,11 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
 }
-
 .auth-wrapper .auth {
   position: relative;
-  background-color: #2f2d33;
+  background-color: rgb(47, 45, 51);
   margin: 20vh auto;
   padding-top: 5vh;
   padding-bottom: 5vh;
@@ -36,34 +33,28 @@ body {
   color: white;
   border-radius: 20px;
 }
-
 @media screen and (min-width: 1920px) {
   .auth-wrapper .auth {
     width: 50vw;
   }
 }
-
 @media screen and (max-width: 1919px) {
   .auth-wrapper .auth {
     width: 55vw;
   }
 }
-
 .auth-wrapper .auth .auth-title {
   padding-bottom: 2vh;
   font-size: 4vh;
 }
-
 .auth-wrapper .auth .message {
   color: red;
 }
-
 .auth-wrapper .auth form {
   font-size: 2vh;
 }
-
-.auth-wrapper .auth form input[type='text'],
-.auth-wrapper .auth form input[type='password'] {
+.auth-wrapper .auth form input[type=text],
+.auth-wrapper .auth form input[type=password] {
   background-color: black;
   padding: 1vh;
   margin-top: 0.5vh;
@@ -76,19 +67,15 @@ body {
   font-weight: bold;
   border: 1px solid white;
   border-radius: 20px;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
-.auth-wrapper .auth form input[type='text']:focus,
-.auth-wrapper .auth form input[type='password']:focus {
+.auth-wrapper .auth form input[type=text]:focus,
+.auth-wrapper .auth form input[type=password]:focus {
   border-color: orange;
-  -webkit-box-shadow: 0 0 5px orange;
-          box-shadow: 0 0 5px orange;
+  box-shadow: 0 0 5px orange;
   width: 30%;
 }
-
-.auth-wrapper .auth form input[type='submit'] {
+.auth-wrapper .auth form input[type=submit] {
   background-color: black;
   padding: 1vh 3vh 1vh 3vh;
   margin: 2vh;
@@ -99,17 +86,13 @@ body {
   border-radius: 20px;
   outline: 0;
   cursor: pointer;
-  -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
-
-.auth-wrapper .auth form input[type='submit']:hover {
+.auth-wrapper .auth form input[type=submit]:hover {
   background-color: black;
   color: orange;
   border-color: orange;
 }
-
 .auth-wrapper .auth a {
   color: orange;
-}
-/*# sourceMappingURL=auth.css.map */
+}/*# sourceMappingURL=auth.css.map */
