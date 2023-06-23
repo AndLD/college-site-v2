@@ -39,11 +39,30 @@
           window.requestAnimationFrame(scrollStep);
         } else {
           scrollButton.classList.remove("flight");
-          scrollButton.classList.add("hide");
+          scrollButton.classList.remove("show");
           scrollButton.style.pointerEvents = "auto";
         }
       }
     }
   }
+  
+  scrollButton.addEventListener("click", function() {
+    scrollButton.style.pointerEvents = "none";
+    var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    scrollButton.classList.add("flight");
+    window.requestAnimationFrame(scrollStep);
+  
+    function scrollStep() {
+      if (currentPosition > 0) {
+        currentPosition -= currentPosition / 10;
+        window.scrollTo(0, currentPosition);
+        window.requestAnimationFrame(scrollStep);
+      } else {
+        scrollButton.classList.remove("flight");
+        scrollButton.classList.remove("show");
+        scrollButton.style.pointerEvents = "auto";
+      }
+    }
+  });
   
  
