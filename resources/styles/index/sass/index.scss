@@ -429,10 +429,32 @@ $ribbonColor: $menuColor;
     position: fixed;
     bottom: 50px;
     right: 10px;
-    cursor: pointer;
-}
-
-#scrollButton img {
-    width: 50px;
-    height: 50px;
-}
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  #scrollButton img {
+      width: 50px;
+      height: 50px;
+  }
+  
+  #scrollButton.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  #scrollButton.flight {
+    animation: buttonFlight 0.3s ease-in-out;
+  }
+  #scrollButton.hide {
+    display: none;
+  }
+  @keyframes buttonFlight {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
