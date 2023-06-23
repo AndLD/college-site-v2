@@ -44,9 +44,14 @@ function scrollToTop() {
 
   function preventScroll(event) {
     event.preventDefault();
+    event.stopPropagation();
   }
 
   window.addEventListener("wheel", preventScroll, { passive: false });
+  
+  setTimeout(function() {
+    window.removeEventListener("wheel", preventScroll);
+  }, 400); // Позволяет прокрутке возобновиться через 400 миллисекунд
 }
   
  
