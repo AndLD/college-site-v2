@@ -39,44 +39,15 @@
           window.requestAnimationFrame(scrollStep);
         } else {
           scrollButton.classList.remove("flight");
-          scrollButton.classList.remove("show");
+          scrollButton.classList.add("hide");
           scrollButton.style.pointerEvents = "auto";
-          window.removeEventListener("wheel", preventScroll);
+          window.addEventListener("scroll", scrollFunction);
         }
       }
-  
-      function preventScroll(event) {
-        event.preventDefault();
-      }
-  
-      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.removeEventListener("scroll", scrollFunction);
     }
   }
   
-  scrollButton.addEventListener("click", function() {
-    scrollButton.style.pointerEvents = "none";
-    var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
-    scrollButton.classList.add("flight");
-    window.requestAnimationFrame(scrollStep);
-  
-    function scrollStep() {
-      if (currentPosition > 0) {
-        currentPosition -= currentPosition / 10;
-        window.scrollTo(0, currentPosition);
-        window.requestAnimationFrame(scrollStep);
-      } else {
-        scrollButton.classList.remove("flight");
-        scrollButton.classList.remove("show");
-        scrollButton.style.pointerEvents = "auto";
-        window.removeEventListener("wheel", preventScroll);
-      }
-    }
-  
-    function preventScroll(event) {
-      event.preventDefault();
-    }
-  
-    window.addEventListener("wheel", preventScroll, { passive: false });
-  });
+  scrollButton.addEventListener("click", scrollToTop);
   
  
