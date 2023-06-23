@@ -3,11 +3,10 @@
   var scrollButton = document.getElementById("scrollButton")
   scrollButton.onclick = scrollToTop
 
-  var isScrolling = false;
-var canScroll = true;
+var isScrolling = false;
 
 window.addEventListener("scroll", function(event) {
-  if (!isScrolling && canScroll) {
+  if (!isScrolling) {
     window.requestAnimationFrame(function() {
       scrollFunction();
       isScrolling = false;
@@ -26,12 +25,8 @@ function scrollFunction() {
 
 function scrollToTop() {
   var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
-
-  if (currentPosition > 0) {
-    scrollButton.classList.add("flight");
-    canScroll = false;
-    window.requestAnimationFrame(scrollStep);
-  }
+  scrollButton.classList.add("flight");
+  window.requestAnimationFrame(scrollStep);
 
   function scrollStep() {
     if (currentPosition > 0) {
@@ -40,9 +35,18 @@ function scrollToTop() {
       window.requestAnimationFrame(scrollStep);
     } else {
       scrollButton.classList.remove("flight");
-      canScroll = true;
+      if (document.documentElement.scrollTop === 0) {
+        scrollButton.classList.add("hide");
+        window.removeEventListener("wheel", preventScroll);
+      }
     }
   }
+
+  function preventScroll(event) {
+    event.preventDefault();
+  }
+
+  window.addEventListener("wheel", preventScroll, { passive: false });
 }
   
  
