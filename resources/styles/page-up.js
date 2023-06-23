@@ -4,32 +4,34 @@
   scrollButton.onclick = scrollToTop
 
   var isScrolling = false;
-  var isAnimating = false;
-  
-  window.addEventListener("scroll", function(event) {
-    if (!isScrolling && !isAnimating) {
-      window.requestAnimationFrame(function() {
-        scrollFunction();
-        isScrolling = false;
-      });
-      isScrolling = true;
-    }
-  });
-  
-  function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      scrollButton.classList.add("show");
-    } else {
-      scrollButton.classList.remove("show");
-    }
+
+window.addEventListener("scroll", function(event) {
+  if (!isScrolling) {
+    window.requestAnimationFrame(function() {
+      scrollFunction();
+      isScrolling = false;
+    });
+    isScrolling = true;
   }
-  
-  function scrollToTop() {
+});
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollButton.classList.add("show");
+  } else {
+    scrollButton.classList.remove("show");
+  }
+}
+
+function scrollToTop() {
+  if (document.documentElement.scrollTop === 0) {
+    scrollButton.classList.add("hide");
+  } else {
+    scrollButton.style.pointerEvents = "none";
     var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
     scrollButton.classList.add("flight");
-    isAnimating = true;
     window.requestAnimationFrame(scrollStep);
-  
+
     function scrollStep() {
       if (currentPosition > 0) {
         currentPosition -= currentPosition / 10;
@@ -37,19 +39,11 @@
         window.requestAnimationFrame(scrollStep);
       } else {
         scrollButton.classList.remove("flight");
-        if (document.documentElement.scrollTop === 0) {
-          scrollButton.classList.add("hide");
-          isAnimating = false;
-          window.removeEventListener("wheel", preventScroll);
-        }
+        scrollButton.classList.remove("show");
+        scrollButton.style.pointerEvents = "auto";
       }
     }
-  
-    function preventScroll(event) {
-      event.preventDefault();
-    }
-  
-    window.addEventListener("wheel", preventScroll, { passive: false });
   }
+}
   
  
