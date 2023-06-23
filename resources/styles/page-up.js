@@ -41,8 +41,15 @@
           scrollButton.classList.remove("flight");
           scrollButton.classList.remove("show");
           scrollButton.style.pointerEvents = "auto";
+          window.removeEventListener("wheel", preventScroll);
         }
       }
+  
+      function preventScroll(event) {
+        event.preventDefault();
+      }
+  
+      window.addEventListener("wheel", preventScroll, { passive: false });
     }
   }
   
@@ -61,8 +68,15 @@
         scrollButton.classList.remove("flight");
         scrollButton.classList.remove("show");
         scrollButton.style.pointerEvents = "auto";
+        window.removeEventListener("wheel", preventScroll);
       }
     }
+  
+    function preventScroll(event) {
+      event.preventDefault();
+    }
+  
+    window.addEventListener("wheel", preventScroll, { passive: false });
   });
   
  
