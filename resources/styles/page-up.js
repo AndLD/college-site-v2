@@ -1,25 +1,3 @@
-/*window.addEventListener('scroll', function() {
-    var scrollButton = document.getElementById('scrollButton');
-    if (window.scrollY > 0) {
-      scrollButton.style.display = 'block'; // Показываем кнопку при прокрутке вниз
-    } else {
-      scrollButton.style.display = 'none'; // Скрываем кнопку, если прокрутка вверх
-    }
-  });
-  window.onscroll = function() {scrollFunction()};
-
-  var isScrolling = false;
-
-  window.addEventListener("scroll", function(event) {
-    if (!isScrolling) {
-      window.requestAnimationFrame(function() {
-        scrollFunction();
-        isScrolling = false;
-      });
-      isScrolling = true;
-    }
-  });
- */ 
   function scrollFunction() {
     var scrollButton = document.getElementById("scrollButton");
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
