@@ -1,5 +1,9 @@
+  window.onscroll = scrollFunction
+  
+  var scrollButton = document.getElementById("scrollButton")
+  scrollButton.onclick = scrollToTop
+  
   function scrollFunction() {
-    var scrollButton = document.getElementById("scrollButton");
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       scrollButton.classList.add("show");
     } else {
@@ -8,7 +12,6 @@
   }
   
   function scrollToTop() {
-    var scrollButton = document.getElementById("scrollButton");
     var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
     scrollButton.classList.add("flight");
     window.requestAnimationFrame(scrollStep);
