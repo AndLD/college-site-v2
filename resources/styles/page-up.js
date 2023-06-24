@@ -5,49 +5,24 @@
 
   var isScrolling = false;
 
-  window.addEventListener("scroll", function(event) {
-    if (!isScrolling) {
-      window.requestAnimationFrame(function() {
-        scrollFunction();
-        isScrolling = false;
-      });
-      isScrolling = true;
-    }
-  });
-  
-  function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  window.addEventListener("scroll", function() {
+    if (window.pageYOffset > 100) {
       scrollButton.classList.add("show");
     } else {
       scrollButton.classList.remove("show");
     }
-  }
+  });
   
   function scrollToTop() {
-    if (document.documentElement.scrollTop === 0) {
-      scrollButton.classList.add("hide");
-    } else {
-      scrollButton.style.pointerEvents = "none";
-      var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
-      scrollButton.classList.add("flight");
-      window.requestAnimationFrame(scrollStep);
+    scrollButton.classList.add("flight");
+    setTimeout(function() {
+      scrollButton.classList.remove("flight");
+    }, 500);
   
-      function scrollStep() {
-        if (currentPosition > 0) {
-          currentPosition -= currentPosition / 10;
-          window.scrollTo(0, currentPosition);
-          window.requestAnimationFrame(scrollStep);
-        } else {
-          scrollButton.classList.remove("flight");
-          scrollButton.classList.add("hide");
-          scrollButton.style.pointerEvents = "auto";
-          window.addEventListener("scroll", scrollFunction);
-        }
-      }
-      window.removeEventListener("scroll", scrollFunction);
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
-  
-  scrollButton.addEventListener("click", scrollToTop);
   
  
