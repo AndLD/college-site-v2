@@ -441,20 +441,18 @@ $ribbonColor: $menuColor;
   #scrollButton.show {
     display: block;
     opacity: 1;
-    transform: translateY(0);
+
   }
   
   #scrollButton.flight {
-    animation: buttonFlight 0.3s ease-in-out;
+    animation: flyUp 0.5s forwards;
   }
-  #scrollButton.hide {
-    display: none;
-  }
-  @keyframes buttonFlight {
+  
+  @keyframes flyUp {
     0% {
-      transform: translateY(100%);
+      transform: translateY(0);
     }
     100% {
-      transform: translateY(0);
+      transform: translateY(-100%);
     }
   }
