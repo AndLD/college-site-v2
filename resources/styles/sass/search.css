@@ -1,0 +1,40 @@
+.small-button {
+    padding: 5px; /* Регулируйте размеры кнопки здесь */
+    background-color: #003e7b;
+    border: none;
+    float: right; /* Перемещаем кнопку в правый угол */
+}
+
+.icon {
+    width: 30px; /* Регулируйте размер иконки здесь */
+    height: 30px;
+}
+
+
+/* Добавьте другие стили по необходимости */
+.hidden {
+    display: none;
+}
+
+#searchContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#searchInput {
+    padding: 10px; /* Регулируйте внутренний отступ для текстового поля */
+    border: 2px solid #ccc; /* Стиль рамки */
+    border-radius: 12px; /* Скругление углов */
+    font-size: 16px; /* Размер шрифта */
+    width: 70%; /* Установите ширину строки поиска в 70% от родительского контейнера */
+    outline: none; /* Убрать рамку при фокусе */
+    vertical-align: middle; /* Вертикальное выравнивание по центру */
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle; /* Вертикальное выравнивание по центру */
+}
