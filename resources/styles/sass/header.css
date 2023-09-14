@@ -238,14 +238,13 @@ header #title > :nth-child(2) {
 }
 
 #searchContainer {
-  position: relative;
   text-align: center;
   margin-top: 20px;
-  justify-content: center; /* Выравнивание по горизонтали */
-  align-items: center; /* Выравнивание по вертикали */
+  position: fixed; top: 25px;
 }
 
 #searchInput {
+  position: fixed; top: 25px;
   padding: 10px; /* Регулируйте внутренний отступ для текстового поля */
   border: 2px solid #ccc; /* Стиль рамки */
   border-radius: 12px; /* Скругление углов */
@@ -263,36 +262,4 @@ header #title > :nth-child(2) {
   cursor: pointer;
   display: inline-block;
   vertical-align: middle; /* Вертикальное выравнивание по центру */
-}
-
-/* Стили для результатов поиска */
-#searchResults {
-  position: relative;
-  top: calc(100% + 10px); /* Размещаем результаты под строкой поиска с отступом */
-  left: 50%; /* Центрируем результаты относительно родительского элемента */
-  transform: translateX(-50%); /* Смещаем результаты на половину их ширины влево */
-  width: auto; /* Ширина автоматически подстраивается под содержимое */
-  background-color: white; /* Белый фон для результатов */
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Тень для результатов */
-  width: 75%; /* Установите ширину строки поиска в 70% от родительского контейнера */
-  
-  
-}
-
-#searchResults ul {
-  list-style: none; /* Убираем маркеры списка */
-  padding: 0;
-  margin: 0;
-}
-
-#searchResults li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc; /* Разделительные линии между результатами */
-}
-
-/* Показываем результаты по нажатию на кнопку или при вводе текста */
-#searchResults.active {
-  display: block;
 }
