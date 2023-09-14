@@ -222,6 +222,7 @@ header #title > :nth-child(2) {
 .small-button {
   padding: 5px; /* Регулируйте размеры кнопки здесь */
   border: none;
+  background-color: #003e7b;
   position:absolute; top: 18px; right: 5%;
 }
 
