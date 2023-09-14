@@ -240,11 +240,11 @@ header #title > :nth-child(2) {
 #searchContainer {
   text-align: center;
   margin-top: 20px;
-  position: fixed; top: 25px;
+  justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
 }
 
 #searchInput {
-  position: fixed; top: 25px;
   padding: 10px; /* Регулируйте внутренний отступ для текстового поля */
   border: 2px solid #ccc; /* Стиль рамки */
   border-radius: 12px; /* Скругление углов */
