@@ -227,8 +227,8 @@ header #title > :nth-child(2) {
 }
 
 .icon {
-  width: 30px; /* Регулируйте размер иконки здесь */
-  height: 30px;
+  width: 40px; /* Регулируйте размер иконки здесь */
+  height: 40px;
 }
 
 
