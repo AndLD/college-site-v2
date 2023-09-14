@@ -25,7 +25,7 @@ searchButton.addEventListener('click', () => {
 });
 
 function displaySearchResults(results) {
-    searchResults.innerHTML = `Результаты поиска по ключевым словам: ${results}`;
+    searchResults.innerHTML = `Результати пошуку: ${results}`;
     searchResults.classList.remove('hidden'); // Показываем результаты
     searchInput.value = '';
 }
