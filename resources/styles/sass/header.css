@@ -240,8 +240,7 @@ header #title > :nth-child(2) {
 #searchContainer {
   text-align: center;
   margin-top: 20px;
-  justify-content: center; /* Выравнивание по горизонтали */
-    align-items: center; /* Выравнивание по вертикали */
+  
 }
 
 #searchInput {
@@ -252,8 +251,7 @@ header #title > :nth-child(2) {
   font-size: 16px; /* Размер шрифта */
   width: 70%; /* Установите ширину строки поиска в 70% от родительского контейнера */
   outline: none; /* Убрать рамку при фокусе */
-  justify-content: center; /* Выравнивание по горизонтали */
-  align-items: center; /* Выравнивание по вертикали */
+  
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Добавляем тень */
 }
 
