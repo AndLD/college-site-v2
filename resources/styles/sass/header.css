@@ -240,7 +240,7 @@ header #title > :nth-child(2) {
 #searchContainer {
   text-align: center;
   margin-top: 20px;
-  
+  position: relative;
 }
 
 #searchInput {
