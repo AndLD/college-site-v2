@@ -15,43 +15,39 @@ searchInput.addEventListener('keyup', event => {
     }
 });
 
-function performSearch() {
-    const keywords = searchInput.value;
-    displaySearchResults(keywords);
-}
-
-searchButton.addEventListener('click', () => {
-    performSearch();
-});
-
-// Функция для выполнения поиска и открытия результатов в новой вкладке
-function performSearch() {
+// Функция для выполнения поискового запроса на бэкенд
+async function performSearch() {
     const query = searchInput.value.trim();
     if (query === '') {
-        return; // Ничего не делаем, если строка поиска пуста
+        searchResults.innerHTML = ''; // Очистите результаты, если строка поиска пуста
+        return;
     }
 
-    // Ваш код для выполнения фактического поиска и получения результатов
-    // Замените следующую строку на код, который выполняет поиск
-    const searchResults = ['Результат 1', 'Результат 2', 'Результат 3'];
+    try {
+        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        if (!response.ok) {
+            throw new Error('Помилка виконання пошуку');
+        }
 
-    // Создаем HTML-содержимое для результатов
-    let resultsHTML = '<ul>';
-    for (const result of searchResults) {
-        resultsHTML += `<li>${result}</li>`;
+        const data = await response.json();
+        const articles = data.results;
+
+        // Отображение результатов в виде ссылок
+        const resultsHTML = articles.map((article) => {
+            return `<a href="/articles/${article._id}">${article.title}</a>`;
+        }).join('');
+
+        searchResults.innerHTML = resultsHTML;
+    } catch (error) {
+        console.error(error);
+        searchResults.innerHTML = 'Сталася помилка під час пошуку';
     }
-    resultsHTML += '</ul>';
-
-    // Открываем новую вкладку и отображаем результаты
-    const searchResultsWindow = window.open('', '_blank');
-    searchResultsWindow.document.body.innerHTML = resultsHTML;
-
-     // Очищаем строку поиска
-     searchInput.value = '';
 }
 
-// Обработчик события для кнопки поиска
+// Обработчики событий для кнопки и поля ввода поиска
 searchButton.addEventListener('click', performSearch);
+
+searchInput.addEventListener('input', performSearch);
 
 // Обработчик события для поля ввода поиска при нажатии Enter
 searchInput.addEventListener('keydown', (event) => {
