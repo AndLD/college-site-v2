@@ -15,22 +15,6 @@ searchInput.addEventListener('keyup', event => {
     }
 });
 
-let delayTimeout;
-
-// Функция для открытия строки поиска с задержкой
-function openSearchWithDelay() {
-    clearTimeout(delayTimeout);
-    delayTimeout = setTimeout(() => {
-        searchContainer.classList.add('active');
-        searchInput.focus();
-    }, 500); // Задержка в миллисекундах (в данном случае 500 мс)
-}
-
-// Функция для закрытия строки поиска
-function closeSearch() {
-    searchContainer.classList.remove('active');
-}
-
 // Функция для выполнения поискового запроса на бэкенд
 async function performSearch() {
     const query = searchInput.value.trim();
