@@ -24,7 +24,7 @@ async function performSearch() {
     }
 
     try {
-        const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`resources\styles\routes?q=${encodeURIComponent(query)}`);
         if (!response.ok) {
             throw new Error('Помилка виконання пошуку');
         }
@@ -42,6 +42,9 @@ async function performSearch() {
         console.error(error);
         searchResults.innerHTML = 'Сталася помилка під час пошуку';
     }
+
+    // Очищаем строку поиска
+    searchInput.value = '';
 }
 
 // Обработчики событий для кнопки и поля ввода поиска
