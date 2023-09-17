@@ -24,7 +24,7 @@ async function performSearch() {
     }
 
     try {
-        const response = await fetch(`api/routes?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
         if (!response.ok) {
             throw new Error('Помилка виконання пошуку');
         }

@@ -3,7 +3,7 @@ const router = express.Router();
 const articleModel = require("c:/Users/Андрей/Documents/GitHub/college-site-v2/models/article");
 
 // Роут для поиска статей по названию
-router.get('/routes', async (req, res) => {
+router.get('/search', async (req, res) => {
     try {
         const searchTerm = req.query.q; // Получаем строку поиска из запроса
         if (!searchTerm) {
