@@ -47,6 +47,18 @@ async function performSearch() {
     searchInput.value = '';
 }
 
+let timeoutId; // Переменная для хранения идентификатора таймера
+
+// Функция для выполнения поиска с задержкой
+function debounceSearch() {
+    clearTimeout(timeoutId); // Очистить предыдущий таймер (если есть)
+    
+    // Установить новый таймер на 1000 миллисекунд (1 секунда)
+    timeoutId = setTimeout(() => {
+        performSearch(); // Выполнить поиск
+    }, 2000);
+}
+
 // Обработчики событий для кнопки и поля ввода поиска
 searchButton.addEventListener('click', performSearch);
 
