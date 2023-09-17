@@ -24,7 +24,7 @@ async function performSearch() {
     }
 
     try {
-        const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`/routes?q=${encodeURIComponent(query)}`);
         if (!response.ok) {
             throw new Error('Помилка виконання пошуку');
         }
@@ -53,7 +53,7 @@ let timeoutId; // Переменная для хранения идентифи�
 function debounceSearch() {
     clearTimeout(timeoutId); // Очистить предыдущий таймер (если есть)
     
-    // Установить новый таймер на 1000 миллисекунд (1 секунда)
+    // Установить новый таймер
     timeoutId = setTimeout(() => {
         performSearch(); // Выполнить поиск
     }, 2000);
