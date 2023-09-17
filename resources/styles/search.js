@@ -15,21 +15,37 @@ searchInput.addEventListener('keyup', event => {
     }
 });
 
-searchButton.addEventListener('click', () => {
-    const searchString = searchInput.value;
-    if (searchString) {
-        fetch(`/search?q=${encodeURIComponent(searchString)}`)
-            .then(response => response.json())
-            .then(data => {
-                // Обработка полученных результатов и отображение их на странице
-                const resultsHTML = data.map(article => {
-                    return `<a href="/articles/${article._id}">${article.title}</a>`;
-                }).join('<br>');
-                searchResultsContainer.innerHTML = resultsHTML;
-            })
-            .catch(error => console.error(error));
+// Функция для выполнения поискового запроса на бэкенд
+async function performSearch() {
+    const query = searchInput.value.trim();
+    if (query === '') {
+        searchResults.innerHTML = ''; // Очистите результаты, если строка поиска пуста
+        return;
     }
-});
+
+    try {
+        const response = await fetch(`/search?q=${encodeURIComponent(searchString)}`);
+        if (!response.ok) {
+            throw new Error(`Помилка виконання пошуку`);
+        }
+
+        const data = await response.json();
+        const articles = data.results;
+
+        // Отображение результатов в виде ссылок
+        const resultsHTML = articles.map((article) => {
+            return `<a href="/articles/${article._id}">${article.title}</a>`;
+        }).join('<br>');
+
+        searchResults.innerHTML = resultsHTML;
+    } catch (error) {
+        console.error(error);
+        searchResults.innerHTML = 'Сталася помилка під час пошуку';
+    }
+
+    // Очищаем строку поиска
+    searchInput.value = '';
+}
 
 let timeoutId; // Переменная для хранения идентификатора таймера
 
