@@ -3,6 +3,7 @@ const searchContainer = document.getElementById('searchContainer');
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const searchResults = document.getElementById('searchResults');
+const searchString = searchInput.value;
 
 toggleSearchButton.addEventListener('click', () => {
     searchContainer.classList.toggle('hidden');
