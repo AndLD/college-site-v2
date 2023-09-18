@@ -37,7 +37,7 @@ async function performSearch() {
       articles.length > 0
         ? articles
             .map((article) => {
-              return `<div class='search-results-item'><a href="/articles/${article.id}">${article.title}</a></div>`
+              return `<div class='search-results-item'><a href="/article/${article.id}">${article.title}</a></div>`
             })
             .join("")
         : "<div>Немає результатів</div>"
