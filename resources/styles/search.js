@@ -10,6 +10,7 @@ const searchResults = document.getElementById("searchResults")
 toggleSearchButton.addEventListener("click", () => {
   searchWrapper.classList.toggle("hidden")
   searchInput.focus()
+  searchInput.value = ""
   searchResults.innerHTML = "" // Скрываем результаты при открытии поиска
 })
 
