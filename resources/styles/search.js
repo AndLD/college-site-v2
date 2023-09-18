@@ -91,6 +91,5 @@ document.addEventListener('click', (event) => {
 
 // Обработчик события для поля ввода при получении фокуса
 searchInput.addEventListener('focus', () => {
-  searchResults.classList.remove('hidden');
   searchContainer.classList.remove('hidden');
 });
