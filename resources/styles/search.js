@@ -17,6 +17,7 @@ toggleSearchButton.addEventListener("click", () => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
       searchResults.classList.add('hidden');
+      searchContainer.classList.add('hidden');
   }
 });
 
@@ -28,6 +29,7 @@ document.addEventListener('click', (event) => {
       !searchWrapper.contains(event.target)
   ) {
     searchContainer.classList.add('hidden');
+    searchResults.classList.add('hidden');
   }
 });
 
