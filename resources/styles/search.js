@@ -72,19 +72,9 @@ searchInput.addEventListener("keydown", (event) => {
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
+    searchInput.value = ''; // Очищаем поле ввода
+    searchInput.blur(); // Убираем фокус с поля ввода
       searchResults.classList.add('hidden');
-      searchContainer.classList.add('hidden');
-  }
-});
-
-document.addEventListener('click', (event) => {
-  // Проверяем, был ли клик вне поля ввода и блока с результатами
-  if (
-      event.target !== searchInput &&
-      event.target !== searchResults &&
-      !searchWrapper.contains(event.target)
-  ) {
-    searchContainer.classList.add('hidden');
   }
 });
 
