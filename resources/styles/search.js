@@ -14,31 +14,6 @@ toggleSearchButton.addEventListener("click", () => {
   searchResults.innerHTML = "" // Скрываем результаты при открытии поиска
 })
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-      searchResults.classList.add('hidden');
-      searchContainer.classList.add('hidden');
-  }
-});
-
-document.addEventListener('click', (event) => {
-  // Проверяем, был ли клик вне поля ввода и блока с результатами
-  if (
-      event.target !== searchInput &&
-      event.target !== searchResults &&
-      !searchWrapper.contains(event.target)
-  ) {
-    searchContainer.classList.add('hidden');
-    searchResults.classList.add('hidden');
-  }
-});
-
-// Обработчик события для поля ввода при получении фокуса
-searchInput.addEventListener('focus', () => {
-  searchResults.classList.remove('hidden');
-  searchContainer.classList.remove('hidden');
-});
-
 // Функция для выполнения поискового запроса на бэкенд
 async function performSearch() {
   const query = searchInput.value.trim()
@@ -94,3 +69,28 @@ searchInput.addEventListener("keydown", (event) => {
     debounceSearch()
   }
 })
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+      searchResults.classList.add('hidden');
+      searchContainer.classList.add('hidden');
+  }
+});
+
+document.addEventListener('click', (event) => {
+  // Проверяем, был ли клик вне поля ввода и блока с результатами
+  if (
+      event.target !== searchInput &&
+      event.target !== searchResults &&
+      !searchWrapper.contains(event.target)
+  ) {
+    searchContainer.classList.add('hidden');
+    searchResults.classList.add('hidden');
+  }
+});
+
+// Обработчик события для поля ввода при получении фокуса
+searchInput.addEventListener('focus', () => {
+  searchResults.classList.remove('hidden');
+  searchContainer.classList.remove('hidden');
+});
