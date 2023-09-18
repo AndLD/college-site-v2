@@ -27,7 +27,7 @@ document.addEventListener('click', (event) => {
       event.target !== searchResults &&
       !searchWrapper.contains(event.target)
   ) {
-      searchResults.classList.add('hidden');
+    searchContainer.classList.add('hidden');
   }
 });
 
