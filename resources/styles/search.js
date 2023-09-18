@@ -29,13 +29,13 @@ document.addEventListener('click', (event) => {
       !searchWrapper.contains(event.target)
   ) {
     searchContainer.classList.add('hidden');
-    searchResults.classList.add('hidden');
   }
 });
 
 // Обработчик события для поля ввода при получении фокуса
 searchInput.addEventListener('focus', () => {
   searchResults.classList.remove('hidden');
+  searchContainer.classList.add('hidden');
 });
 
 // Функция для выполнения поискового запроса на бэкенд
