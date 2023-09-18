@@ -29,6 +29,7 @@ document.addEventListener('click', (event) => {
       !searchWrapper.contains(event.target)
   ) {
     searchContainer.classList.add('hidden');
+    searchResults.classList.add('hidden');
   }
 });
 
