@@ -79,20 +79,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-document.addEventListener('click', (event) => {
-  // Проверяем, был ли клик вне поля ввода и блока с результатами
-  if (
-      event.target !== searchInput &&
-      event.target !== searchResults &&
-      !searchWrapper.contains(event.target)
-  ) {
-      searchInput.value = ''; // Очищаем поле ввода
-      searchInput.blur(); // Убираем фокус с поля ввода
-      searchResults.classList.add('hidden'); // Скрываем блок с результатами
-      searchWrapper.classList.add('hidden'); // Скрываем строку поиска
-  }
-});
-
 // Обработчик события для поля ввода при получении фокуса
 searchInput.addEventListener('focus', () => {
   searchResults.classList.remove('hidden');
