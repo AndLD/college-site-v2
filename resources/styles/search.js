@@ -75,6 +75,7 @@ document.addEventListener('keydown', (event) => {
     searchInput.value = ''; // Очищаем поле ввода
     searchInput.blur(); // Убираем фокус с поля ввода
       searchResults.classList.add('hidden');
+      searchWrapper.classList.add('hidden'); // Скрываем строку поиска
   }
 });
 
