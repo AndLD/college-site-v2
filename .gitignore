@@ -7,3 +7,5 @@ settings.json
 debug.log
 readme.todo
 /resources/conf
+.vscode
+.idea

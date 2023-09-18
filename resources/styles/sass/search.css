@@ -1,42 +1,74 @@
-.small-button {
-    padding: 5px; /* Регулируйте размеры кнопки здесь */
-    border: none;
-    position:absolute; top: 18px; right: 5%;
+.search-wrapper {
+  /*background-color: wheat;*/
+  top: 25vh;
+  max-width: 800px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fixed {
+  position: fixed;
+}
+
+.relative {
+  width: 60vw;
+  left: 0;
+  top: 0;
+  position: relative;
+}
+
+.toggle-search-button {
+  cursor: pointer;
+  padding: 5px; /* Регулируйте размеры кнопки здесь */
+  background-color: #003e7b;
+  position: absolute;
+  top: 18px;
+  right: 5%;
 }
 
 .icon {
-    width: 30px; /* Регулируйте размер иконки здесь */
-    height: 30px;
+  width: 30px; /* Регулируйте размер иконки здесь */
+  height: 30px;
 }
 
-
-/* Добавьте другие стили по необходимости */
 .hidden {
-    display: none;
+  display: none;
 }
 
 #searchContainer {
-    text-align: center;
-    margin-top: 20px;
-    position: fixed; top: 25px;
+  display: flex;
+  text-align: center;
+  margin-top: 5px;
+  justify-content: center; /* Выравнивание по горизонтали */
+  align-items: center; /* Выравнивание по вертикали */
+}
+
+#searchResults {
+  background: white;
+  border-radius: 12px;
+  margin-top: 30px;
+  max-height: 60vh;
+  max-width: 100%;
+  overflow-y: scroll;
+}
+
+.search-results-item {
+  margin: 5px 10px;
 }
 
 #searchInput {
-    position: fixed; top: 25px;
-    padding: 10px; /* Регулируйте внутренний отступ для текстового поля */
-    border: 2px solid #ccc; /* Стиль рамки */
-    border-radius: 12px; /* Скругление углов */
-    font-size: 16px; /* Размер шрифта */
-    width: 70%; /* Установите ширину строки поиска в 70% от родительского контейнера */
-    outline: none; /* Убрать рамку при фокусе */
-    vertical-align: middle; /* Вертикальное выравнивание по центру */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Добавляем тень */
+  padding: 12px; /* Регулируйте внутренний отступ для текстового поля */
+  border-radius: 12px; /* Скругление углов */
+  font-size: 20px; /* Размер шрифта */
+  width: 100%; /* Установите ширину строки поиска в 70% от родительского контейнера */
+  outline: none; /* Убрать рамку при фокусе */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 1); /* Добавляем тень */
+  border: none;
 }
 
 .search-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle; /* Вертикальное выравнивание по центру */
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
 }

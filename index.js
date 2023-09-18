@@ -1,5 +1,6 @@
 // Подключаем библиотеку для чтения .env файла
 require('dotenv').config()
+const { v4 } = require('uuid')
 
 const dirname = __dirname
 exports.dirname = dirname
@@ -21,7 +22,7 @@ const expressRateLimit = require('express-rate-limit')
 const limiterGuard = expressRateLimit({
     windowMs: 1 * 60 * 1000, // 1 минут
     max: 100, // максимальное количество запросов, которое может послать каждый ip за 'windowMs' времени, после чего он получит 429
-    message: 'Too many requests. You are blocked.'
+    message: 'Too many requests. You are blocked.',
 })
 
 // Указываем шаблонизатор
@@ -31,7 +32,13 @@ server.set('view engine', 'ejs')
 server.use('/resources', express.static('resources'))
 
 // Для взятия элементов из тела запроса
-server.use(express.urlencoded({ limit: '30mb', parameterLimit: 10000, extended: false }))
+server.use(
+    express.urlencoded({
+        limit: '30mb',
+        parameterLimit: 10000,
+        extended: false,
+    })
+)
 
 // Подключаемся к MySQL
 const mysql = require('./db/mysql')
@@ -46,9 +53,9 @@ const mysqlStore = mysqlSession(
             columnNames: {
                 session_id: 'session_id',
                 expires: 'expires',
-                data: 'data'
-            }
-        }
+                data: 'data',
+            },
+        },
     },
     mysql.connection
 )
@@ -56,13 +63,13 @@ const mysqlStore = mysqlSession(
 const expressSession = require('express-session')
 server.use(
     expressSession({
-        secret: process.env.SESSION_SECRET,
+        secret: process.env.SESSION_SECRET || v4(),
         resave: false,
         saveUninitialized: false,
         store: mysqlStore,
         cookie: {
-            expires: 60 * 60 * 1000 * 5 // 5 часов
-        }
+            expires: 60 * 60 * 1000 * 5, // 5 часов
+        },
     })
 )
 
@@ -83,7 +90,7 @@ const multerUpload = multer({
     dest: constants.DEFAULT_BUFFER_CATALOG,
     filename: function (req, file, callback) {
         callback(null, file.originalname)
-    }
+    },
 })
 
 const userMiddlewares = require('./middlewares/user')
@@ -118,7 +125,11 @@ pagesRoutes.get('/conf', pagesControllers.confController)
 // Страница регистрации (закрыта)
 // pagesRoutes.get("/register", userMiddlewares.ipGuard, userMiddlewares.isNotLogged, pagesControllers.registerController)
 // Страница авторизации 1 фактор
-pagesRoutes.get('/login', userMiddlewares.isNotLogged, pagesControllers.loginController)
+pagesRoutes.get(
+    '/login',
+    userMiddlewares.isNotLogged,
+    pagesControllers.loginController
+)
 // Страница авторизации 2 фактор
 pagesRoutes.get(
     '/login-otp',
@@ -128,7 +139,12 @@ pagesRoutes.get(
 )
 
 // Профиль
-pagesRoutes.get('/profile', userMiddlewares.isLogged, userMiddlewares.is2FALogged, pagesControllers.profileController)
+pagesRoutes.get(
+    '/profile',
+    userMiddlewares.isLogged,
+    userMiddlewares.is2FALogged,
+    pagesControllers.profileController
+)
 
 // ! АВТОРИЗАЦИЯ
 
@@ -145,7 +161,7 @@ userRoutes.post(
     userMiddlewares.isNotLogged,
     passportConfig.passport.authenticate('local', {
         failureRedirect: '/login',
-        failureFlash: true
+        failureFlash: true,
     }),
     userControllers.loginController
 )
@@ -157,13 +173,18 @@ userRoutes.post(
     userMiddlewares.is2FANotLogged,
     passportConfig.passport.authenticate('custom', {
         failureRedirect: '/login-otp',
-        failureFlash: true
+        failureFlash: true,
     }),
     userControllers.loginOtpController
 )
 
 // Выйти
-userRoutes.post('/logout', userMiddlewares.isLogged, userMiddlewares.is2FALogged, userControllers.logoutController)
+userRoutes.post(
+    '/logout',
+    userMiddlewares.isLogged,
+    userMiddlewares.is2FALogged,
+    userControllers.logoutController
+)
 
 // ! ПОЛЬЗОВАТЕЛИ
 
@@ -244,6 +265,13 @@ articleRoutes.put('/:id', articleControllers.putArticle)
 articleRoutes.delete('/:id', articleControllers.deleteArticle)
 // Скачать статью
 articleRoutes.post('/:id', articleControllers.postDownloadArticle)
+
+const publicArticleRoutes = express.Router()
+
+server.use('/public/article', publicArticleRoutes)
+
+// Search articles
+publicArticleRoutes.get('/', articleControllers.searchArticles)
 
 // ! НОВОСТИ
 
@@ -358,7 +386,7 @@ sliderImgRoutes.put('/:sliderid/:imageid', sliderImgControllers.putSliderImg)
 sliderImgRoutes.delete('/img/:imageid', sliderImgControllers.deleteSliderImg)
 
 // Запускаем сервер
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 80
 server.listen(PORT, () => {
     console.log('Server started at ' + PORT + ' port...')
 })
