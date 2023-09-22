@@ -3,7 +3,7 @@
 }
 .desk-wrapper > :first-child img {
   margin: 2% auto;
-  max-width: 70%;
+  max-width: 40%;
   max-height: 90vh;
 }
 .desk-wrapper > :first-child .desk-title {
