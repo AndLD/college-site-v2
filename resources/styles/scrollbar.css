@@ -1,0 +1,14 @@
+.scrollable {
+    overflow-y: auto; /* Добавляет вертикальную полосу прокрутки, если контент выходит за пределы контейнера */
+    max-height: 700px; /* Максимальная высота контейнера, чтобы появлялась полоса прокрутки */
+}
+
+.scrollable::-webkit-scrollbar {
+    width: 8px; /* Ширина полосы прокрутки */
+    background-color: transparent; /* Цвет фона полосы прокрутки */
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Цвет ползунка полосы прокрутки */
+    border-radius: 5px; /* Скругление углов ползунка */
+}
