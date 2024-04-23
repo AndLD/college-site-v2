@@ -78,7 +78,6 @@ exports.selectNewsTitles = (limit, tags) => {
 
 exports.selectNews = (limit, tags) => {
     return new Promise((resolve) => {
-        limit = 10
         var query = mysql.connection.query(
             `SELECT * FROM news ${tags ? `WHERE tags LIKE "%${tags}%" ` : ''}ORDER BY addDate DESC LIMIT ${limit}`,
             (error, rows) => {
