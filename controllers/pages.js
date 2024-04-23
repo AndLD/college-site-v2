@@ -32,7 +32,7 @@ exports.indexController = async (req, res) => {
     var menu = pagesHelpers.adaptateMenu(selectedResult.data)
 
     // Получаем последние новости
-    var selectedNewsResult = await newsModel.selectNews(10)
+    var selectedNewsResult = await newsModel.selectNews(9)
     if (selectedNewsResult.error) {
         res.sendStatus(400)
     }
@@ -100,7 +100,7 @@ exports.articleController = async (req, res) => {
     var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
 
     // Получаем последние новости
-    var selectedNewsResult = await newsModel.selectNews(16)
+    var selectedNewsResult = await newsModel.selectNews(8)
     if (selectedNewsResult.error) {
         res.sendStatus(400)
     }
