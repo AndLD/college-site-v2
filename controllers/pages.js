@@ -149,38 +149,43 @@ exports.articleController = async (req, res) => {
 
 // Страница новости
 exports.singleNewsController = async (req, res) => {
-    // Получаем меню
-    var selectedMenuResult = await menuModel.selectMenu()
-    if (selectedMenuResult.error) {
-        res.sendStatus(400)
+    try {
+        // Получаем новость
+        const selectedSingleNewsResult = await newsModel.selectNewsById(req.params.id);
+        if (selectedSingleNewsResult.error) {
+            return res.sendStatus(400);
+        }
+        if (!selectedSingleNewsResult.data) {
+            return res.sendStatus(204);
+        }
+
+        const singleNews = selectedSingleNewsResult.data;
+        singleNews.addDate = pagesHelpers.adaptateDate(singleNews.addDate);
+        singleNews.type = 'news';
+
+        // Обертка изображений в теги с классом enlargeable-image
+        singleNews.html = singleNews.html.replace(/<img /g, '<img class="enlargeable-image" ');
+
+        // Получаем меню
+        const selectedMenuResult = await menuModel.selectMenu();
+        if (selectedMenuResult.error) {
+            return res.sendStatus(400);
+        }
+        const menu = pagesHelpers.adaptateMenu(selectedMenuResult.data);
+
+        // Получаем последние новости
+        const selectedNewsResult = await newsModel.selectNewsTitles(8);
+        if (selectedNewsResult.error) {
+            return res.sendStatus(400);
+        }
+        const news = pagesHelpers.adaptateNews(selectedNewsResult.data);
+
+        res.render('page', { menu, data: singleNews, news });
+    } catch (error) {
+        console.error("Error in singleNewsController:", error);
+        res.sendStatus(500);
     }
-
-    var menu = pagesHelpers.adaptateMenu(selectedMenuResult.data)
-
-    // Получаем последние новости
-    var selectedNewsResult = await newsModel.selectNewsTitles(8)
-    if (selectedNewsResult.error) {
-        res.sendStatus(400)
-    }
-
-    var news = pagesHelpers.adaptateNews(selectedNewsResult.data)
-
-    // Получаем новость
-    var selectedSingleNewsResult = await newsModel.selectNewsById(req.params.id)
-    if (selectedSingleNewsResult.error) {
-        return res.sendStatus(400)
-    }
-    if (selectedSingleNewsResult.data == null) {
-        return res.sendStatus(204)
-    }
-
-    var singleNews = selectedSingleNewsResult.data
-    singleNews.addDate = pagesHelpers.adaptateDate(singleNews.addDate)
-    singleNews.type = 'news'
-
-    res.render('page', { menu: menu, data: singleNews, news: news })
 }
-
 // Страница новостей
 exports.newsController = async (req, res) => {
     // Теги новостей

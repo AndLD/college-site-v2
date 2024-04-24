@@ -1,0 +1,11 @@
+.enlarged {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    cursor: zoom-out;
+}
