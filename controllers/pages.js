@@ -144,8 +144,14 @@ exports.articleController = async (req, res) => {
         }
     }
 
-    res.render('page', { menu: menu, currentMainMenu: currentMainMenu, data: article, news: news })
+    const articleImg = selectedArticleResult.data;
+
+    // Модифицируем статью, оборачивая изображения в теги с классом enlargeable-image
+    articleImg.html = article.html.replace(/<img /g, '<img class="enlargeable-image" ');
+
+    res.render('page', { menu: menu, currentMainMenu: currentMainMenu, data: articleImg, news: news });
 }
+
 
 // Страница новости
 exports.singleNewsController = async (req, res) => {
