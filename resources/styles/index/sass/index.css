@@ -78,12 +78,12 @@ body {
 /* "Запрошуємо на навчання!" */
 #offer {
   background-color: rgb(0, 84, 166);
-  height: 20%;
   display: flex;
   align-items: center;
+  justify-content: center; /* Центрирование по горизонтали */
   text-align: center;
   font-size: 1.8vw;
-  padding: 0 10px;
+  padding: 20px; /* Добавляем отступы для увеличения высоты блока */
   color: white;
   font-weight: bold;
   letter-spacing: 0.5em;
