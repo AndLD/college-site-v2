@@ -70,7 +70,7 @@ header #title > :nth-child(1) {
   text-align: left;
   font-size: 1.8vw;
   color: white;
-  letter-spacing: 0.35rem;
+  letter-spacing: 0.1rem;
 }
 
 @media screen and (max-width: 480px) {
