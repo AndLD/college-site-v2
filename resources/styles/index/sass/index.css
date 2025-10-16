@@ -82,8 +82,8 @@ body {
   align-items: center;
   justify-content: center; /* Центрирование по горизонтали */
   text-align: center;
-  font-size: 1.8vw;
-  padding: 20px; /* Добавляем отступы для увеличения высоты блока */
+  font-size: 1.2vw;
+  padding: 15px; /* Добавляем отступы для увеличения высоты блока */
   color: white;
   font-weight: bold;
   letter-spacing: 0.5em;
