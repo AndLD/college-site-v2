@@ -1,4 +1,3 @@
-.env
 package-lock.json
 /node_modules/
 /resources/buffer/
@@ -9,3 +8,4 @@ readme.todo
 /resources/conf
 .vscode
 .idea
+config.bat
