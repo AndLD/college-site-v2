@@ -3,9 +3,10 @@ package-lock.json
 /node_modules/
 /resources/buffer/
 /db/SQLqueries
+temp_auto_push.bat
 settings.json
 debug.log
 readme.todo
 /resources/conf
-.vscode
-.idea
+.idea.gitignore
+branch_structure.json
