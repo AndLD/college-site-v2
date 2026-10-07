@@ -1,11 +1,13 @@
-.env
 package-lock.json
 /node_modules/
 /resources/buffer/
 /db/SQLqueries
 settings.json
+temp_auto_push.bat
 debug.log
 readme.todo
 /resources/conf
-.vscode
 .idea
+config.bat
+.gitignore
+branch_structure.json
